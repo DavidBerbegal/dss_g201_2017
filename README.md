@@ -2,3 +2,4 @@
 
 #Componentes del Grupo:
 - David Berbegal Esteve
+- Leo Rodriguez Martinez 
