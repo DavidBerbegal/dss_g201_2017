@@ -1,3 +1,4 @@
 # Proyecto-DSS-2017
 
-#Repositorio clonado: Leo
+#Componentes del Grupo:
+- David Berbegal Esteve
