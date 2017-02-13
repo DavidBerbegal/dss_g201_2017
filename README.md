@@ -4,3 +4,4 @@
 - David Berbegal Esteve
 - Leo Rodriguez Martinez 
 - Álvaro Esteve Bernabeu
+- Adrián Tejedor Giménez
