@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call( NewsTableSeeder::class );
+        // Mostramos información por consola 
+        $this->command->info('News table seeded');
+       
+       //mostrar contenido de la DB, en este caso el idNew
+        $news = DB::table('news')->get(); // select * from news
+        foreach($news as $new) {
+        var_dump($new->idNew); }
     }
 }

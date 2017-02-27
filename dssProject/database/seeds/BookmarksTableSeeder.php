@@ -11,6 +11,6 @@ class BookmarksTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }
