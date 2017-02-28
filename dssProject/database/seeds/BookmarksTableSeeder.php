@@ -11,6 +11,19 @@ class BookmarksTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('bookmarks')->delete();
+
+        //Añadimos entradas de prueba
+        DB::table('bookmarks')->insert([
+            'user' => 1,
+            'new' => 'sport-news-001',
+            'createdOn' => '2017-1-2'
+        ]);
+        DB::table('bookmarks')->insert([
+            'user' => 3,
+            'new' => 'sport-news-001',
+            'createdOn'=> '2017-31-1'
+        ]);
 
     }
 }
