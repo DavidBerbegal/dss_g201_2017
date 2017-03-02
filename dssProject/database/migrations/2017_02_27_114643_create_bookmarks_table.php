@@ -14,8 +14,13 @@ class CreateBookmarksTable extends Migration
     public function up()
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('idBookmark');
+            $table->integer('user');
+            $table->string('new');
+            $table->date('createdOn');
+            $table->foreign('user')->references('idUser')->on('users');
+            $table->foreign('new')->references('idNew')->on('news');
+
         });
     }
 
@@ -26,6 +31,10 @@ class CreateBookmarksTable extends Migration
      */
     public function down()
     {
+        Schema::table('bookmarks', function (Blueprint $table){
+            $table->dropForeign('users_idUser_foreign');
+            $table->dropForeign('news_idNew_foreign');
+        });
         Schema::dropIfExists('bookmarks');
     }
 }
