@@ -8,6 +8,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
+
+    //use DatabaseMigartions;
+
     /**
      * A basic test example.
      *
@@ -16,5 +19,12 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $this->assertTrue(true);
+    }
+
+    public function testInsercionNews()
+    {
+        $this->assertDatabaseHas('news', [
+        'idNew' => 'sport-news-001'
+    ]);
     }
 }
