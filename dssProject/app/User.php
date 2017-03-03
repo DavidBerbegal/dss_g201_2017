@@ -12,4 +12,8 @@ class User extends Model
     private $email;
     private $name;
     
+    public function bookmark()
+    {
+        return $this -> hasMany('App\Bookmark');
+    }
 }
