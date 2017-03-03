@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-   protected $table='news';
-   protected $primaryKey= 'idNew';
+   protected $table = 'news';
+   protected $primaryKey = 'idNew';
    private $author;
    private $title;
    private $date;
@@ -21,4 +21,8 @@ class News extends Model
    private $language;
    private $country;
 
+   public function bookmark()
+   {
+       return $this->hasMany('App\Bookmark');
+   }
 }
