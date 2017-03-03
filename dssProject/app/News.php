@@ -21,7 +21,7 @@ class News extends Model
    private $language;
    private $country;
 
-   public function bookmark()
+   public function bookmarks()
    {
        return $this->hasMany('App\Bookmark');
    }

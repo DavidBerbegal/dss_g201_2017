@@ -9,12 +9,12 @@ class Bookmark extends Model
     protected $primaryKey = 'idBookmark';
     private $createdOn;
 
-    public function usuarios()
+    public function user()
     {
-        return $this->belongsTo('App\Users');
+        return $this->belongsTo('App\User');
     }
 
-    public function noticias()
+    public function new()
     {
         return $this->belongsTo('App\News');
     }

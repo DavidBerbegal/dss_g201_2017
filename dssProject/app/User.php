@@ -10,9 +10,9 @@ class User extends Model
     protected $primaryKey='idUser';
     private $password;
     private $email;
-    private $name;
+    public $name;
     
-    public function bookmark()
+    public function bookmarks()
     {
         return $this -> hasMany('App\Bookmark');
     }

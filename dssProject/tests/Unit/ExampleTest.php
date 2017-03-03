@@ -9,12 +9,9 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class TestPrueba extends TestCase
 {
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
-    }
+   
 
     public function testInsercionNews()
     {
@@ -22,52 +19,16 @@ class ExampleTest extends TestCase
         'idNew' => 'sport-news-001']);
     }
 
-    /*
-    public function testBorrarBookmark()
+    
+    public function testUserBookmarkUser()
     {
-        // Creo una noticia, un usuario y un bookmark asociados entre si
-        $noticia = new News();
-        $noticia->idNew = '10';
-        $noticia->author = 'David';
-        $noticia->title = 'Noticia de prueba';
-        $noticia->date = '03/03/17';
-        $noticia->description = 'Descripcion';
-        $noticia->urlNew = 'url';
-        $noticia->urlImg = 'url';
-        $noticia->positiveRate = 5;
-        $noticia->negativeRate = 2;
-        $noticia->source = 'source';
-        $noticia->category = 'categoría';
-        $noticia->language = 'lenguaje';
-        $noticia->country = 'pais';
-        $noticia->save();
-
-        $usuario = new User();
-        $usuario->idUser = '10';
-        $usuario->password = 'password';
-        $usuario->email = 'email';
-        $usuario->name = 'nombreUsuario';
-        $usuario->save();
-
-        $bookmark = new Bookmark();
-        $bookmark->noticia()->associate($noticia->idNew);
-        $bookmark->usuario()->associate($usuario->idUser);
-        $bookmark->createdOn = '3/3/17';
-        $bookmark->save();
-
-        // Creo identificadores para verificar que los datos siguen existiendo
-        $idNoticia = $noticia->idNew;
-        $idUsuario = $usuario->idUser;
-        $idBookmark = $bookmark->idBookmark;
-
-        // Comprobamos que se han relacionado los datos creados
-        $bookmarkTestNoticia = Bookmark::where('new', $idNoticia)->get();
-        $bookmarkContarNoticia = $bookmarkTestNoticia->count();
-        $this->assertEquals($bookmarkContarNoticia, '10');
-
-        $bookmarkTestUsuario = Bookmark::where('user', idUsuario)->get();
-        $bookmarkContarUsuario = $bookmarkTestUsuario->count();
-        $this->assertEquals(bookmarkContarUsuario, '10');
+        $bookmark = Bookmark::find(1);
+        $this->assertTrue($bookmark->user == 1); 
     }
-    */
+    public function testUserBookmarkNews()
+    {
+        $bookmark = Bookmark::find(1);
+        $this->assertTrue($bookmark->new == 'sport-news-001'); 
+    }
+    
 }
