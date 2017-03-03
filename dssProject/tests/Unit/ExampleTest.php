@@ -13,19 +13,19 @@ class TestPrueba extends TestCase
 {
    
 
-    public function testInsercionNews()
+    public function testQueryDatabase()
     {
         $this->assertDatabaseHas('news', [
         'idNew' => 'sport-news-001']);
     }
 
     
-    public function testUserBookmarkUser()
+    public function testBookmarkUser()
     {
         $bookmark = Bookmark::find(1);
         $this->assertTrue($bookmark->user == 1); 
     }
-    public function testUserBookmarkNews()
+    public function testBookmarkNews()
     {
         $bookmark = Bookmark::find(1);
         $this->assertTrue($bookmark->new == 'sport-news-001'); 
