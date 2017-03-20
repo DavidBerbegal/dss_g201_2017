@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //Borramos el contenido que hubiera en la tabla
-        DB::table('users')->delete();
+        
 
         //Añadimos entradas de prueba
         DB::table('users')->insert([

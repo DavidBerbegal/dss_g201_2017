@@ -13,7 +13,7 @@ class NewsTableSeeder extends Seeder
     public function run()
     {
         //borramos los datos de la tabla
-        DB::table('news')->delete();
+       
         // Añadimos una entrada a esta tabla
         DB::table('news')->insert([
             'idNew' => 'sport-news-001',

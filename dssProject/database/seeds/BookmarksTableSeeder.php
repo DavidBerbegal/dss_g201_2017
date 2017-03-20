@@ -11,7 +11,7 @@ class BookmarksTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('bookmarks')->delete();
+        
 
         //Añadimos entradas de prueba
         DB::table('bookmarks')->insert([
