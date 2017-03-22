@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateSourcesubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('sourcesubscriptions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('user_id');
+            $table->string('source_id');
+            $table->unique('user_id','source_id');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');;
+            $table->foreign('source_id')->references('id')->on('sources')
+                ->onDelete('cascade');
             $table->timestamps('created_at');
         });
     }
@@ -31,7 +34,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('sourcesubscriptions');
         Schema::enableForeignKeyConstraints();
     }
 }

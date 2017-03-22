@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookmarksTable extends Migration
+class CreateCategorysubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateBookmarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
+        Schema::create('categorysubscriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('article_id');
-            $table->unique('user_id', 'article_id');
+            $table->string('category_id');
+            $table->unique('user_id','category_id');
             $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade');
-            $table->foreign('article_id')->references('id')->on('articles')
-                ->onDelete('cascade');
+                ->onDelete('cascade');;
+            $table->foreign('category_id')->references('id')->on('categories')
+                ->onDelete('cascade');;
             $table->timestamps('created_at');
         });
     }
@@ -34,7 +34,7 @@ class CreateBookmarksTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('categorysubscriptions');
         Schema::enableForeignKeyConstraints();
     }
 }

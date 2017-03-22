@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class InitSeeder extends Seeder
 {
     /**
@@ -11,8 +11,12 @@ class InitSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('bookmarks')->delete();
-        DB::table('news')->delete();
+        DB::table('bookmarks')->truncate();
+        DB::table('sourcesubscriptions')->truncate();
+        DB::table('categorysubscriptions')->truncate();
+        DB::table('articles')->truncate();
         DB::table('users')->truncate();
+        DB::table('categories')->truncate();
+        DB::table('sources')->truncate();
     }
 }

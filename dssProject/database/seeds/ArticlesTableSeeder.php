@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class NewsTableSeeder extends Seeder
+class ArticlesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,8 @@ class NewsTableSeeder extends Seeder
         //borramos los datos de la tabla
        
         // Añadimos una entrada a esta tabla
-        DB::table('news')->insert([
-            'idNew' => 'sport-news-001',
+        DB::table('articles')->insert([
+            'articleName' => 'sport-news-001',
             'author' => 'Charles Dickens', 
             'title' => 'Title prueba 1',
             'description' => 'Descripiton prueba 1', 
@@ -25,8 +25,8 @@ class NewsTableSeeder extends Seeder
             'date' => '2016-11-11',
             'positiveRate' => '1000',
             'negativeRate' => '180',
-            'source' => 'BBC News',
-            'category' => 'sports',
+            'category_id' => 1,
+            'source_id' => 1,
             'language' => 'en',
             'country' => 'Spain'
          ]);

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->string('idNew');
-            $table->primary('idNew');
+        Schema::create('articles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('articleName');
+            $table->unique('articleName');
             $table->string('author');
             $table->string('title');
             $table->string('description');
@@ -24,12 +25,16 @@ class CreateNewsTable extends Migration
             $table->date('date');
             $table->integer('positiveRate');
             $table->integer('negativeRate');
-            $table->string('source');
-            $table->string('category');
             $table->string('language');
             $table->string('country');
+            $table->string('source_id');
+            $table->string('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')
+                ->onDelete('cascade');;
+            $table->foreign('source_id')->references('id')->on('sources')
+                ->onDelete('cascade');
             //$table->rememberToken();
-            $table->timestamps();
+            $table->timestamps('created_at');
         });
     }
 
@@ -40,6 +45,8 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('articles');
+        Schema::enableForeignKeyConstraints();
     }
 }
