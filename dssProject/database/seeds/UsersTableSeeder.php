@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -12,7 +12,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //Borramos el contenido que hubiera en la tabla
-        
 
         //Añadimos entradas de prueba
         DB::table('users')->insert([

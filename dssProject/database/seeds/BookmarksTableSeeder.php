@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class BookmarksTableSeeder extends Seeder
 {
     /**
@@ -15,14 +15,12 @@ class BookmarksTableSeeder extends Seeder
 
         //Añadimos entradas de prueba
         DB::table('bookmarks')->insert([
-            'user' => 1,
-            'new' => 'sport-news-001',
-            'createdOn' => '2017-1-2'
+            'user_id' => 1,
+            'article_id' => 1
         ]);
         DB::table('bookmarks')->insert([
-            'user' => 3,
-            'new' => 'sport-news-001',
-            'createdOn'=> '2017-31-1'
+            'user_id' => 3,
+            'article_id' => 1
         ]);
 
     }
