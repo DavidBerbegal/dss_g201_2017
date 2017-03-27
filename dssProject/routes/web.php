@@ -18,3 +18,27 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/articulos', function () {
+    return view('articulos');
+});
+
+Route::get('/categorias', function () {
+    return view('categorias');
+});
+
+Route::get('/fuentes', function () {
+    return view('fuentes');
+});
+
+Route::get('/suscripcion-categorias', function () {
+    return view('suscripcionCategorias');
+});
+
+Route::get('/suscripcion-fuentes', function () {
+    return view('suscripcionFuentes');
+});
+
+Route::get('/usuarios', function () {
+    return view('usuarios');
+});
