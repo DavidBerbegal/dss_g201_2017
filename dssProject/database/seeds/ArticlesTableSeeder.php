@@ -12,7 +12,7 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        //borramos los datos de la tabla
+         //borramos los datos de la tabla
        
         // Añadimos una entrada a esta tabla
         DB::table('articles')->insert([
@@ -30,5 +30,10 @@ class ArticlesTableSeeder extends Seeder
             'language' => 'en',
             'country' => 'Spain'
          ]);
+
+         $content = file_get_contents("https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=a522b74c74f64e2daa03511d0e80ae6f");
+         echo $content;
+         $jsonContent = json_decode($content);
+         echo $jsonContent->status;
     }
 }
