@@ -14,11 +14,6 @@ class TestPrueba extends TestCase
 {
    
 
-    public function testQueryDatabase()
-    {
-        $this->assertDatabaseHas('articles', [
-        'articleName' => 'sport-news-001']);
-    } 
     public function testBookmarTokUser()
     {
         
