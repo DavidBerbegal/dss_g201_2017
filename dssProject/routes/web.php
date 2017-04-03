@@ -11,10 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Route::get('/', function () {
     return view('index');
 });
@@ -27,9 +23,9 @@ Route::get('/categorias', function () {
     return view('categorias');
 });
 
-Route::get('/fuentes', function () {
-    return view('fuentes');
-});
+Route::get('fuentes', [
+    'uses' => 'controllerSources@index'
+]);
 
 Route::get('/suscripcion-categorias', function () {
     return view('suscripcionCategorias');
