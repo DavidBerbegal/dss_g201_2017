@@ -9,13 +9,13 @@ class controllerSources extends Controller
 {
     public function index()
     {
-        $mostrarFuentes = DB::table('sources')->get();
+        $mostrarFuentes = DB::table('sources')->paginate(10);
         return view('fuentes', ['fuentes' => $mostrarFuentes]);
     }
 
     public function create()
     {
-        //return view ('fuentes.crearFuente');
+        return 'Controlador Nueva Fuente';
     }
 
     public function store(Request $request)
