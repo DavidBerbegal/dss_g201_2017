@@ -17,7 +17,7 @@ class CreateCategorysubscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('category_id');
-            $table->unique('user_id','category_id');
+            $table->unique(['user_id','category_id']);
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');;
             $table->foreign('category_id')->references('id')->on('categories')

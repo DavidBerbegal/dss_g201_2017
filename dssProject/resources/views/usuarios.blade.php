@@ -39,6 +39,11 @@
                     <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
+                <div class="container">
+                    @foreach ($users as $user)
+                        {{ $user->name }}
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>

@@ -1,6 +1,6 @@
 <?php
 
-/*
+/*/
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -39,6 +39,4 @@ Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
 
-Route::get('/usuarios', function () {
-    return view('usuarios');
-});
+Route::any('/usuarios', 'UsersController@index');
