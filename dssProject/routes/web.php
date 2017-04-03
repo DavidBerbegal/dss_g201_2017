@@ -23,6 +23,7 @@ Route::get('/categorias', function () {
     return view('categorias');
 });
 
+
 Route::get('fuentes', [
     'uses' => 'controllerSources@index'
 ]);

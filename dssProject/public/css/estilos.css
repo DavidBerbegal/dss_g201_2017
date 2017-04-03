@@ -47,16 +47,21 @@ html, body {
 
 .m-b-md {
     margin-bottom: 30px;
-}
-
-.carousel {
-    height: 400px;
-    width: 950px;
-    margin-top: 50px;
-    position: absolute;
-}
-
-.imagenMod {
-    height: 400px;
-    width: 100%;
 } 
+
+.footer {
+    position: relative;
+    margin-top: -50px;
+    height: 40px;
+    padding:5px 0px;
+    clear: both;
+    background: #286af0;
+    text-align: center;
+    color: #fff;
+}
+
+.pie {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
