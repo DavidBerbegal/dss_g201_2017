@@ -8,16 +8,44 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name' => 'Sports',
-            'description' => 'Sport news',
+            'name' => 'business',
+            'description' => 'Business news',
         ]);
         DB::table('categories')->insert([
-            'name' => 'Science',
-            'description' => 'Science news',
+            'name' => 'entertainment',
+            'description' => 'Entertainment news',
         ]);
         DB::table('categories')->insert([
-            'name' => 'Politics',
+            'name' => 'general',
+            'description' => 'General news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'gaming',
+            'description' => 'Gaming news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'music',
+            'description' => 'Music news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'science-and-nature',
+            'description' => 'Science and nature news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'politics',
             'description' => 'Politics news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'sports',
+            'description' => 'Sports news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'technology',
+            'description' => 'Technology news',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'empty',
+            'description' => 'All categories are shown',
         ]);
     }
 }

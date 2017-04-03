@@ -11,26 +11,25 @@ class SourcesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sources')->insert([
-            'name' => 'BBC',
-            'description' => 'International news web',
-            'url' => 'www.bbc.com/news',
-            'urlLogoSmall' => '',
-            'urlLogoMedium' => ''
-        ]);
-        DB::table('sources')->insert([
-            'name' => 'theguardian',
-            'description' => 'International news web 2',
-            'url' => 'https://www.theguardian.com/international',
-            'urlLogoSmall' => '',
-            'urlLogoMedium' => ''
-        ]);
-        DB::table('sources')->insert([
-            'name' => 'cnn',
-            'description' => 'International news web 3',
-            'url' => 'edition.cnn.com',
-            'urlLogoSmall' => '',
-            'urlLogoMedium' => ''
-        ]);
+        $fuentes = file_get_contents("https://newsapi.org/v1/sources?language=en");
+
+        //introducimos el resultado de la consulta en un objeto JSON
+        $jsonFuentes = json_decode($fuentes);   
+
+        if($jsonFuentes->status = "ok"){
+            
+            foreach ($jsonFuentes->sources as $source){
+
+                DB::table('sources')->insert([
+                    'name'  => $source->name,
+                    'api' => $source->id,
+                    'description' => $source->description,
+                    'url' => $source->url,
+                    'urlLogoSmall' => $source->urlsToLogos->small,
+                    'urlLogoMedium' => $source->urlsToLogos->medium
+                ]);
+            }
+        }
     }
 }
+

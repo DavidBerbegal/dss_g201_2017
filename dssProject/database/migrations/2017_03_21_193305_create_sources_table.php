@@ -15,8 +15,9 @@ class CreateSourcesTable extends Migration
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('api');
+            $table->unique('api');
             $table->string('name');
-            $table->unique('name');
             $table->string('description');
             $table->string('url');
             $table->string('urlLogoSmall');
