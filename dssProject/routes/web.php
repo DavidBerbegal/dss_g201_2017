@@ -39,4 +39,4 @@ Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
 
-Route::any('/usuarios', 'UsersController@index');
+Route::any('/usuarios', 'UsersController@listUsers');
