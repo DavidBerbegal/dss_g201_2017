@@ -38,7 +38,13 @@ Route::get('/suscripcion-categorias', function () {
 Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
+Route::get('/fuentes/nuevaFuente', 'controllerSources@create');
 
+Route::get('/fuentes/{id}/modificarFuente', function($source) {
+    return view ('modificarFuente', ['edit' => '$source']);
+});
+
+Route::any('/usuarios', 'UsersController@index');
 Route::post('/usuarios', 'UsersController@deleteUser');
 Route::get('/usuarios', 'UsersController@listUsers');
 Route::get('/usuariosCreateUpdate', function () {
