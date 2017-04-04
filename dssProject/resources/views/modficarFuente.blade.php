@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Fuentes</title>
+        <title>Modificar Fuente</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -27,7 +27,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Fuentes
+                    Nueva Fuente
                 </div>
 
                 <div class="links">
@@ -38,39 +38,26 @@
                     <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th><h4>ID:</h4></th>
-                            <th><h4>Name:</h4></th>
-                            <th><h4>Acción:</h4></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($fuentes as $mostrarFuente)
-                        <tr>
-                            <td>{{$mostrarFuente->id}}</td>
-                            <td>{{$mostrarFuente->name}}</td>
-                            <td>
-                            <!--
-                                <a class="operations-icon" onmouseover="" style="cursor: pointer;" href="/fuentes/{{ $mostrarFuente->id }}/modificarFuente">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>
-                                -->
-                                <a onmouseover="" style="cursor: pointer;">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                    <a onmouseover="" style="cursor: pointer;" href="{{url('/fuentes/nuevaFuente')}}">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </a>
             </div>
         </div>
     </body>
+    <table class="table table-hover">
+        <tr>
+            <td><h4>Nombre:</h4></td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td><h4>Descripción:</h4></td>
+            <td><input type="text" name="description" id="description"></td>
+        </tr>
+        <tr>
+            <td><h4>Url:</h4></td>
+            <td><input type="text" name="url" id="url"></td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" class="btn btn-primary" value="Guardar">
+    </p>
     <!--
     <footer>
         <div class="footer">

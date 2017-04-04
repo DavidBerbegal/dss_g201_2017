@@ -23,12 +23,7 @@ Route::get('/categorias', function () {
     return view('categorias');
 });
 
-Route::get('fuentes', 'controllerSources@index');
-
-/*
-Route::get('fuentes', function() {
-    return view ('fuentes');
-});*/
+Route::get('/fuentes', 'controllerSources@index');
 
 Route::get('/suscripcion-categorias', function () {
     return view('suscripcionCategorias');
@@ -40,4 +35,10 @@ Route::get('/suscripcion-fuentes', function () {
 
 Route::get('/usuarios', function () {
     return view('usuarios');
+});
+
+Route::get('/fuentes/nuevaFuente', 'controllerSources@create');
+
+Route::get('/fuentes/{id}/modificarFuente', function($source) {
+    return view ('modificarFuente', ['edit' => '$source']);
 });
