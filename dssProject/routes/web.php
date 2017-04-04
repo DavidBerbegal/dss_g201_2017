@@ -39,4 +39,13 @@ Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
 
-Route::any('/usuarios', 'UsersController@listUsers');
+Route::post('/usuarios', 'UsersController@deleteUser');
+Route::get('/usuarios', 'UsersController@listUsers');
+Route::get('/usuariosCreateUpdate', function () {
+    return view('usuariosCreateUpdate');
+});
+Route::post('/usuariosCreateUpdate', 'UsersController@createUser');
+
+Route::get('/usuariosUpdate', 'UsersController@showUser');
+Route::post('/usuariosUpdate', 'UsersController@updateUser');
+

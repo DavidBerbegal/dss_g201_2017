@@ -36,17 +36,19 @@
                     </ul>
                 @endif
 
-        <h3>Crear usuario</h3>
-                <form action="{{ action('UsersController@createUser') }}" name="create"
+        <h3>Modificar usuario</h3>
+                <form action="{{ action('UsersController@updateUser') }}" name="update"
                     method="POST">
                     {{ csrf_field() }}
+                    <label for="id">ID: {{ $id }}</label><br><br>
+                    <input type="hidden" name="id" id="id" value = {{ $id }}>
                     <label for="name">Nombre:</label>
-                    <input type="text" name="name" id="name" ><br><br>
+                    <input type="text" name="name" id="name" value= {{ $name }}><br><br>
                     <label for="email">Email:</label>
-                    <input type="text" name="email" id="email"><br><br>
+                    <input type="text" name="email" id="email" value= {{ $email }}><br><br>
                     <label for="password">Password:</label>
-                    <input type="text" name="password" id="password"><br><br>
-                    <button type="submit" name="create">Crear</button>
+                    <input type="text" name="password" id="password" value= {{ $password }}><br><br>
+                    <button type="submit" name="update">Modificar</button>
                 </form>
     </body>
 </html>
