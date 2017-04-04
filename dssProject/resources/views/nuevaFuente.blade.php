@@ -41,6 +41,23 @@
             </div>
         </div>
     </body>
+    <table class="table table-hover">
+        <tr>
+            <td><h4>Nombre:</h4></td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td><h4>Descripción:</h4></td>
+            <td><input type="text" name="description" id="description"></td>
+        </tr>
+        <tr>
+            <td><h4>Url:</h4></td>
+            <td><input type="text" name="url" id="url"></td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" class="btn btn-primary" value="Guardar">
+    </p>
     <!--
     <footer>
         <div class="footer">

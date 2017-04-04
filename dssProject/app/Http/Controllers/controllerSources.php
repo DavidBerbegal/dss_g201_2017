@@ -15,7 +15,7 @@ class controllerSources extends Controller
 
     public function create()
     {
-        return 'Controlador Nueva Fuente';
+        return view('nuevaFuente');
     }
 
     public function store(Request $request)
