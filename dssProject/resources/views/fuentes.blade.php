@@ -52,9 +52,11 @@
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
                             <td>
-                                <a class="operations-icon" onmouseover="" style="cursor: pointer;" href={{url('/fuentes/modificarFuente')}}>
+                            <!--
+                                <a class="operations-icon" onmouseover="" style="cursor: pointer;" href="/fuentes/{{ $mostrarFuente->id }}/modificarFuente">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
+                                -->
                                 <a onmouseover="" style="cursor: pointer;">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>

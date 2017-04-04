@@ -57,7 +57,7 @@
     </table>
     <p>
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="submit" class="btn btn-primary" href="{{ url('fuentes') }}">Cancelar</button>
+        <button class="btn btn-primary" href="/fuentes">Cancelar</button>
     </p>
     <!--
     <footer>

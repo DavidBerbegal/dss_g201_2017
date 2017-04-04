@@ -39,4 +39,6 @@ Route::get('/usuarios', function () {
 
 Route::get('/fuentes/nuevaFuente', 'controllerSources@create');
 
-Route::get('/fuentes/modificarFuente/{id}', 'controllerSources@edit');
+Route::get('/fuentes/{id}/modificarFuente', function($source) {
+    return view ('modificarFuente', ['edit' => '$source']);
+});
