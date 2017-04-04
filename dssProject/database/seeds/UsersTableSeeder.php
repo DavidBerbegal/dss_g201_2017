@@ -14,20 +14,24 @@ class UsersTableSeeder extends Seeder
         //Borramos el contenido que hubiera en la tabla
 
         //Añadimos entradas de prueba
-        DB::table('users')->insert([
-            'name' => 'Username',
-            'email' => 'email@gmail.com',
-            'password' => 'ThePassword'
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Usuario',
-            'email' => 'correo@gmail.com',
-            'password' => 'PaSsWoRd'
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Nombre',
-            'email' => 'prueba@gmail.com',
-            'password' => 'Clave'
-        ]);
+        
+        
+        $nombres = ['antonio', 'pedro', 'jose', 'maria', 'david', 'marcelo',
+                    'adrian', 'alvaro', 'leonardo', 'marta', 'julian', 'angela',
+                    'natalia', 'manuel', 'enrique', 'eva', 'eric', 'nestor', 
+                    'oscar', 'ofelia', 'olivia', 'daniel', 'diana', 'dolores',
+                    'domingo', 'lucia', 'laura', 'leonor', 'leticia', 'lidia',
+                    'lucio', 'luis', 'jorge', 'javier', 'lucas', 'lorenzo', 'fernando',
+                    'pablo', 'paloma', 'pilar', 'jacinto', 'gema', 'gracia', 'gaspar',
+                    'gabriel', 'gregorio'];
+
+        foreach($nombres as $nombre){
+
+            DB::table('users')->insert([
+                'name' => $nombre,
+                'email' => $nombre . '@gmail.com',
+                'password' => $nombre . 'Pass'
+            ]);
+        }
     }
 }

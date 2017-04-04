@@ -17,7 +17,7 @@ class CreateSourcesubscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('source_id');
-            $table->unique('user_id','source_id');
+            $table->unique(['user_id','source_id']);
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');;
             $table->foreign('source_id')->references('id')->on('sources')
