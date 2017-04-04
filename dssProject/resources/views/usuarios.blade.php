@@ -69,4 +69,11 @@
                 <a href="{{ url('/usuariosCreateUpdate') }}">Crear un usuario</a>
      
     </body>
+    <!--
+    <footer>
+        <div class="pie">
+            <p>DSS 2016-17</p>
+        </div>
+    </footer>
+    -->
 </html>
