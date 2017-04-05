@@ -11,23 +11,42 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    
-        <div class="content">
-            <div class="title m-b-md">
-                Modificar Usuario
-            </div>
-
-            <div class="links">
-                <a href="{{ url('/') }}">Home</a>
-                <a href="{{ url('/articulos') }}">Artículos</a>
-                <a href="{{ url('/fuentes') }}">Fuentes</a>
-                <a href="{{ url('/categorias') }}">Categorías</a>
-                <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
-            </div>
     </head>
-    <body>
-    <div class="flex-center position-ref full-height">
+        
+    <body>      
+    @if (Route::has('login'))
+                <div class="top-right links">
+                    @if (Auth::check())
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ url('/login') }}">Login</a>
+                        <a href="{{ url('/register') }}">Register</a>
+                    @endif
+                </div>
+            @endif
+            
+            <div class="flex-center"><div>
+                <div class="title m-b-md">
+                    <h1>Usuarios</h1>
+                </div>
+                
+                <div class="flex-center links">
+                    <a href="{{ url('/') }}">Home</a>
+                    <a href="{{ url('/fuentes') }}">Fuentes</a>
+                    <a href="{{ url('/articulos') }}">Artículos</a>
+                    <a href="{{ url('/usuarios') }}">Usuarios</a>
+                    <a href="{{ url('/categorias') }}">Categorías</a>
+                    <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
+                    <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
+                </div>
+                
+                <br>
+               _________________________________________________________________________________________________________________________________________________________________________
+                
+
+    
+    <br>
+    
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -39,21 +58,21 @@
                 </div>
             @endif
             
-            <br>
+            <br><div class="flex-center">
             @if(count($errors) > 0)
                 <ul>
                 @foreach ($errors->all() as $error)
                     <li> {{ $error }} </li>
                 @endforeach
-                </ul>
+                </ul></div>
             @endif
 
-            <form action="{{ action('UsersController@updateUser') }}" name="update"
+            <div class="flex-center"><form action="{{ action('UsersController@updateUser') }}" name="update"
                 method="POST">
                 {{ csrf_field() }}
                 <table>
                     <tr>
-                        <td><label for="id">ID: {{ $id }}</label><br><br></td>
+                        <td><label for="id">ID del usuario: {{ $id }}</label><br><br></td>
                         <td><input type="hidden" name="id" id="id" value = {{ $id }}></td>
                     </tr>
                     <tr>
@@ -69,7 +88,7 @@
                         <td><input type="text" name="password" id="password" value= {{ $password }}><br><br></td>
                     </tr>
                 </table>
-                <button type="submit" name="update">Modificar</button>
-            </form>
+                <div class="flex-center"><button type="submit" name="update">Modificar</button></div>
+            </form><div>
     </body>
 </html>
