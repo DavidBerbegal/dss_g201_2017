@@ -44,9 +44,15 @@
                 <br>
                _________________________________________________________________________________________________________________________________________________________________________
                 @if($mensaje != "")
+<<<<<<< 89621d4bfeb10856cceb6a37846816b7bffe25a3
                     <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
                 @endif
                 <div class="flex-center"><div>
+=======
+                    <h2>{{ $mensaje }}</h2>
+                @endif
+          
+>>>>>>> Cambios visuales
                 <h3>Crear usuario</h3>
                 <a href="{{ url('/usuariosCreateUpdate') }}">Crear un usuario</a><br><br>
                 <div>
