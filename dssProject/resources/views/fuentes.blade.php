@@ -68,11 +68,6 @@
                         </tr>
                     @endforeach
                     </tbody>
-                    <div class="botonAgregar">
-                        <a type="button" class="btn btn-default" href="{{ url('/fuentes/nuevaFuente')}}">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-                    </div>
                 </table>
                 <div>
                     {{ $fuentes->links() }}
@@ -80,4 +75,9 @@
             </div>
         </div>
     </body>
+    <div class="botonAgregar">
+        <a type="button" class="btn btn-default" href="{{ url('/fuentes/nuevaFuente')}}">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </div>
 </html>
