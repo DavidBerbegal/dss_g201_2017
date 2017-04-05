@@ -43,16 +43,32 @@
     </body>
     <table class="table table-hover">
         <tr>
-            <td><h4>Nombre:</h4></td>
+            <td><label for="api">Api:</label></td>
+            <td><input type="text" name="api" id="api"></td>
+        </tr>
+        <tr>
+            <td><label for="name">Nombre:</label></td>
             <td><input type="text" name="name" id="name"></td>
         </tr>
         <tr>
-            <td><h4>Descripción:</h4></td>
+            <td><label for="description">Descripcion:</label></td>
             <td><input type="text" name="description" id="description"></td>
         </tr>
         <tr>
-            <td><h4>Url:</h4></td>
+            <td><label for="url">Url:</label></td>
             <td><input type="text" name="url" id="url"></td>
+        </tr>
+        <tr>
+            <td><label for="urlLogoSmall">Url Logo Small:</label></td>
+            <td><input type="text" name="urlLogoSmall" id="urlLogoSmall"></td>
+        </tr>
+        <tr>
+            <td><label for="urlLogoMedium">Url Logo Medium:</label></td>
+            <td><input type="text" name="urlLogoMedium" id="urlLogoMedium"></td>
+        </tr>
+        <tr>
+            <td><label for="created_at">Creado:</label></td>
+            <td><input type="text" name="created_at" id="created_at"></td>
         </tr>
     </table>
     <p>
