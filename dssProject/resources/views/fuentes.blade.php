@@ -24,6 +24,13 @@
                 <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                 <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
         </div>
+        @if($mensaje != "")
+        <div class="flex-center">
+            <h2> 
+                {{ $mensaje }} 
+            </h2>
+        </div>
+        @endif
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -53,11 +60,11 @@
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
                             <td>
-                                <a type="button" class="btn btn-default" href="{{ url('/fuentes/modificarFuente')}}">
+                                <a type="button" class="btn btn-default" href="{{ action('controllerSources@showSource', ['id' => $mostrarFuente->id ])}}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                                 <a>
-                                    <form action="{{ action('controllerSources@destroy')}}" name="delete"
+                                    <form action="{{ action('controllerSources@destroy', ['id' => $mostrarFuente->id ])}}" name="delete"
                                         method="POST">
                                         {{ csrf_field() }}
                                         
