@@ -10,10 +10,20 @@ use App\User;
 
 class UsersController extends Controller
 {
-    
     public function listUsers(Request $request) {
-        $users = DB::table('users')->paginate(5);
-        return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg')]);
+        if($request->has('order') && $request->input('order') != ""){
+            
+            $users = DB::table('users')
+                    ->orderBy($request->input('order'))
+                    ->paginate(10);
+
+            return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
+                                'sort' => $request->input('order')]);
+        }
+        $users = DB::table('users')->paginate(10);
+        return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
+                                'sort' => 'id']);
+        
     }
 
     public function showUser(Request $request){
@@ -22,6 +32,19 @@ class UsersController extends Controller
 
         return view('usuariosUpdate', ['id' => $id, 'name' => $usuario->name,
                                         'email' => $usuario->email, 'password' => $usuario->password]);
+    }
+
+    public function searchUser(Request $request){
+       
+        $name = $request->input('sName');
+        $email = $request->input('sEmail');
+        $users = DB::table('users')
+            ->where('name','LIKE', "%$name%") 
+            ->where('email', 'LIKE', "%$email%")->paginate(10);
+
+        return view('usuarios', ['users' => $users, 'mensaje' => '',
+                                'sort' => 'id']);
+        
     }
 
     public function createUser(Request $request){
