@@ -21,9 +21,20 @@ Route::get('/articulos', function () {
 });
 
 // Rutas Categorias
-Route::get('/categorias', function () {
-    return view('categorias');
+
+Route::any('/categorias', 'categoriasController@index');
+
+Route::post('/categorias', 'categoriasController@destroy');
+
+Route::get('/categorias', 'categoriasController@index');
+
+Route::get('/categorias/nuevaCategoria', function() {
+    return view('nuevaCategoria');
 });
+
+Route::post('/categorias/nuevaCategoria', 'categoriasController@create');
+
+Route::get('/categorias/modifiCarcategoria', 'categoriasController@update');
 
 // Rutas Fuentes
 Route::any('/fuentes', 'controllerSources@index');
