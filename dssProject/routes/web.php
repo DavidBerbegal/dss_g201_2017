@@ -52,7 +52,6 @@ Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
 
-<<<<<<< caecc2e47be5317bfc3f723d25c557bdfd8e7a66
 Route::any('/usuarios', 'UsersController@index');
 Route::post('/usuarios', 'UsersController@deleteUser');
 Route::get('/usuarios', 'UsersController@listUsers');
@@ -63,16 +62,3 @@ Route::post('/usuariosCreateUpdate', 'UsersController@createUser');
 
 Route::get('/usuariosUpdate', 'UsersController@showUser');
 Route::post('/usuariosUpdate', 'UsersController@updateUser');
-
-
-Route::get('/fuentes/nuevaFuente', 'controllerSources@create');
-
-Route::get('/fuentes/{id}/modificarFuente', function($source) {
-    return view ('modificarFuente', ['edit' => '$source']);
-});
-
-=======
-Route::get('/usuarios', function () {
-    return view('usuarios');
-});
->>>>>>> Corregidas rutas para las fuentes
