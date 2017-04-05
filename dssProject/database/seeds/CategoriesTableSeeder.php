@@ -36,8 +36,8 @@ class CategoriesTableSeeder extends Seeder
             'description' => 'Politics news',
         ]);
         DB::table('categories')->insert([
-            'name' => 'sports',
-            'description' => 'Sports news',
+            'name' => 'sport',
+            'description' => 'Sport news',
         ]);
         DB::table('categories')->insert([
             'name' => 'technology',

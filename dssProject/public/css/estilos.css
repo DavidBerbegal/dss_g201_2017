@@ -35,7 +35,7 @@ html, body {
 
 .content-fuentes {
     text-align: center;
-    margin-top: 250px;
+    margin-top: 400px;
     width: 1100px;
 }
 
@@ -45,8 +45,14 @@ html, body {
     width: 1100px;
 }
 
+.content-usuarios {
+    margin-top: 370px;
+    width: 1100px;
+    text-align: center;
+}
+
 .title {
-    margin-top: 10px;
+    margin-top: 30px;
     font-size: 84px;
     text-align: center;
 }
@@ -79,4 +85,14 @@ html, body {
 .crearFuente {
     margin-top: 200px;
     text-align: center;
+}
+
+.botonAgregar {
+    margin-top: 300px;
+    margin-left: 50px;
+}
+
+.tablaFuentes {
+    margin-left: 400px;
+    margin-top: 75px;
 }
