@@ -12,7 +12,7 @@ class controllerSources extends Controller
 {
     public function index(Request $request)
     {
-        $mostrarFuentes = DB::table('sources')->paginate(10);
+        $mostrarFuentes = DB::table('sources')->paginate(5);
         return view('fuentes', ['fuentes' => $mostrarFuentes, 'mensaje' => $request->input('msg')]);
     }
 
