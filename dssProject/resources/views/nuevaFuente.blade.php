@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content-nueva-fuente">
                 <div class="title m-b-md">
                     Nueva Fuente
                 </div>
@@ -41,36 +41,23 @@
             </div>
         </div>
     </body>
-    <table class="table table-hover">
-        <tr>
-            <td><h4>Nombre:</h4></td>
-            <td><input type="text" name="name" id="name"></td>
-        </tr>
-        <tr>
-            <td><h4>Descripción:</h4></td>
-            <td><input type="text" name="description" id="description"></td>
-            <td>
-            <!--
-                <select name="categoria">
-                    <option value="Deportes">Deportes</option>
-                </select>
-            -->
-            </td>
-        </tr>
-        <tr>
-            <td><h4>Url:</h4></td>
-            <td><input type="text" name="url" id="url"></td>
-        </tr>
-    </table>
-    <p>
+    <form action=" {{ action('controllerSources@create') }}" name="Crear"
+        method="POST">
+        {{ csrf_field() }}
+        <table class="crearFuente">
+            <tr>
+                <td><label for="name">Nombre:</label></td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="description">Descripcion:</label></td>
+                <td><input type="text" name="description" id="description"></td>
+            </tr>
+            <tr>
+                <td><label for="url">Url:</label></td>
+                <td><input type="text" name="url" id="url"></td>
+            </tr>
+        </table>
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="submit" class="btn btn-primary" href="/fuentes">Cancelar</button>
-    </p>
-    <!--
-    <footer>
-        <div class="footer">
-            <p>DSS 2016-17</p>
-        </div>
-    </footer>
-    -->
+    </form>
 </html>
