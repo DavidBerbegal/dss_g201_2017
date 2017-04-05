@@ -57,12 +57,16 @@
                                 <form action="{{ action('controllerSources@destroy')}}" name="delete"
                                     method="POST">
                                     {{ csrf_field() }}
-                                    <a type="submit" name="delete">Borrar</a>
+                                    <input type="text" name="id" id="id">
+                                    <button type="submit" name="delete">Borrar</button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
+                    <div class="botonAgregar">
+                        <a href="{{ url('/fuentes/nuevaFuente')}}">Crear Fuente</a>
+                    </div>
                 </table>
                 <div>
                     {{ $fuentes->links() }}
@@ -70,7 +74,4 @@
             </div>
         </div>
     </body>
-    <div class="botonAgregar">
-        <a href="{{ url('/fuentes/nuevaFuente')}}">Crear Fuente</a>
-    </div>
 </html>

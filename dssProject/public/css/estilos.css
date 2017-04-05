@@ -35,7 +35,7 @@ html, body {
 
 .content-fuentes {
     text-align: center;
-    margin-top: 200px;
+    margin-top: 250px;
     width: 1100px;
 }
 
@@ -76,12 +76,7 @@ html, body {
     color: #fff;
 }
 
-.botonAgregar {
-    margin-top: 200px;
-    text-align: center;
-}
-
 .crearFuente {
-    margin-top: 100px;
+    margin-top: 200px;
     text-align: center;
 }
