@@ -23,18 +23,15 @@ Route::get('/articulos', function () {
 // Rutas Categorias
 
 Route::any('/categorias', 'categoriasController@index');
-
 Route::post('/categorias', 'categoriasController@destroy');
-
 Route::get('/categorias', 'categoriasController@index');
 
-Route::get('/categorias/nuevaCategoria', function() {
+Route::get('/nuevaCategoria', function() {
     return view('nuevaCategoria');
 });
 
-Route::post('/categorias/nuevaCategoria', 'categoriasController@create');
-
-Route::get('/categorias/modifiCarcategoria', 'categoriasController@update');
+Route::post('/nuevaCategoria', 'categoriasController@create');
+Route::get('/categorias/modificarCategoria', 'categoriasController@update');
 
 // Rutas Fuentes
 Route::any('/fuentes', 'controllerSources@index');
@@ -74,7 +71,6 @@ Route::post('/usuariosUpdate', 'UsersController@updateUser');
 
 Route::get('', 'UsersController@deleteUser');
 Route::post('', 'UsersController@searchUser');
-Route::get('/fuentes/nuevaFuente', 'controllerSources@create');
 
 Route::get('/fuentes/{id}/modificarFuente', function($source) {
     return view ('modificarFuente', ['edit' => '$source']);

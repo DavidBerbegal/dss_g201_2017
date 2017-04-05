@@ -24,6 +24,10 @@
                 <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                 <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
         </div>
+        @if($mensaje != "")
+
+                    <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
+                @endif
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -57,7 +61,7 @@
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                                 <a>
-                                    <form action="{{ action('categoriasController@destroy')}}" name="delete"
+                                    <form action="{{ action('categoriasController@destroy', ['id' =>  $mostrarCategoria->id ]) }}" name="delete"
                                         method="POST">
                                         {{ csrf_field() }}
                                         
@@ -78,7 +82,7 @@
         </div>
     </body>
     <div class="botonAgregar">
-        <a type="button" class="btn btn-default" href="{{ url('/categorias/nuevaCategoria')}}">
+        <a type="button" class="btn btn-default" href="{{ url('/nuevaCategoria')}}">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>

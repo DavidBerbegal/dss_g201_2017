@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use App\Category;
+use Carbon\Carbon;
 
 class categoriasController extends Controller
 {
@@ -18,22 +19,24 @@ class categoriasController extends Controller
 
     public function create(Request $request)
     {
+
         $mensaje = "";
         $this->validate($request, [
 
-            'name' => 'required|name',
-            'description' => 'required|description',
-            'created_at' => 'required|created_at'
+            'name' => 'required',
+            'description' => 'required'
         ]);
 
-        try 
+        try
         {
             $category = new Category();
             $category->name = $request->input('name');
             $category->description = $request->input('description');
+            $category->created_at = Carbon::now();
             $category->save();
 
-            $mensaje = "La categoria no ha sido creada correctamente";
+
+            $mensaje = "La categoria ha sido creada correctamente";
             return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
         }
         catch (QueryException $e)
