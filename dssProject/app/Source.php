@@ -18,6 +18,11 @@ class Source extends Model
         return $this->hasMany('App\Sourcesubscription');
     }
 
+    protected $camposSource = [
+        'name', 'description',
+    ];
+
+    /*
     public static function allSources() 
     {
         return DB::table('source');
@@ -34,4 +39,5 @@ class Source extends Model
     public static function deleteSource($source){
         Source::find($source)->delete();
     }
+    */
 }

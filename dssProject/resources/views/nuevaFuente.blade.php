@@ -49,6 +49,13 @@
         <tr>
             <td><h4>Descripción:</h4></td>
             <td><input type="text" name="description" id="description"></td>
+            <td>
+            <!--
+                <select name="categoria">
+                    <option value="Deportes">Deportes</option>
+                </select>
+            -->
+            </td>
         </tr>
         <tr>
             <td><h4>Url:</h4></td>
@@ -57,7 +64,7 @@
     </table>
     <p>
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <button class="btn btn-primary" href="/fuentes">Cancelar</button>
+        <button type="submit" class="btn btn-primary" href="/fuentes">Cancelar</button>
     </p>
     <!--
     <footer>

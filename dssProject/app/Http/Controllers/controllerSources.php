@@ -4,69 +4,105 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
+use App\Source;
 
 class controllerSources extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $mostrarFuentes = DB::table('sources')->paginate(10);
-        return view('fuentes', ['fuentes' => $mostrarFuentes]);
+        return view('fuentes', ['fuentes' => $mostrarFuentes, 'mensaje' => $request->input('msg')]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('nuevaFuente');
+        $mensaje = "";
+        $this->validate($request, [
+            'name' => required|name,
+            'description' => required|description
+        ]);
+
+        try 
+        {
+            $source = new Source();
+            $source->name = $request->input('name');
+            $source->description = $request->input('description');
+            $source->save();
+
+            $mensaje = "La fuente no ha sido creada correctamente";
+            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+        }
+        catch (QueryException $e)
+        {
+            $mensaje = "Error al crear la fuente";
+            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+        }
     }
 
     public function store(Request $request)
     {
-        $fuente = new Source();
-        $fuente->name = $request->input('name');
-        $fuente->description = $request->input('description');
-        $fuente->url = $request->input('url');
-
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required|description|unique:sources,name',
-            'url' => 'required|digits:8'
-        ]);
-
-        Source::saveSource($source);
-        return redirect()->route('/fuentes');
+        //
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
+        $id = $request->input('id');
+        $source = Source::findOrFail($id);
         
+        return view('modificarFuente', ['id' => $id, 'name' => $source->name, 'description' => $source->description]);
     }
 
     public function edit($id)
     {
-        $editarFuente = Source::findSource($id);
-        return view('modificarFuente');
+        //
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $sourceUpdate = User::findSource($id);
-        $sourceUpdate->name = $request->input('name');
-        $sourceUpdate->description = $request->input('description');
-        $sourceUpdate->url = $request->input('url');
-
-        // If validation fails, redirects automatically to the form
         $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required|email|unique:sources,name',
-            'url' => 'required|digits:8',
+            'name' => required|name,
+            'description' => required|description
         ]);
 
-        Source::saveSource($sourceUpdate);
-        return redirect()->route('/fuentes');
+        $mensaje = "";
+
+        try 
+        {
+            $id = $request->input('id');
+            $source = Source::findOrFail($id);
+            $source->name = $request->input('name');
+            $source->description = $request->input('description');
+            $source->save();
+
+            $mensaje = "La fuente con ID " . $id . "se ha modificado correctamente";
+            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+        }
+        catch (ModelNotFoundException $e)
+        {
+            $mensaje = "Error al modificar la fuente";
+            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+        }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Source::deleteSource($id);
-        return redirect()->route('/fuentes');
+        $mensaje = "";
+
+        try
+        {
+            $id = $request->input('id');
+            $source = Source::findOrFail($id);
+            $source->delete();
+
+            $mensaje = "La fuente con ID " . $id . "ha sido borrada correctamente";
+            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+        }
+        catch (ModelNotFoundException $e)
+        {
+            $mensaje = "Ha ocurrido un error al intentar borrar la fuente";
+            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+        }
     }
 }
