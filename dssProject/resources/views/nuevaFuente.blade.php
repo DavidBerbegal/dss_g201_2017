@@ -41,39 +41,41 @@
             </div>
         </div>
     </body>
-    <form action=" {{ action('controllerSources@create') }}" name="create"
-        method="POST">
-        {{ csrf_field() }}
-        <table class="crearFuente">
-            <tr>
-                <td><label for="api">Api:</label></td>
-                <td><input type="text" name="api" id="api"></td>
-            </tr>
-            <tr>
-                <td><label for="name">Nombre:</label></td>
-                <td><input type="text" name="name" id="name"></td>
-            </tr>
-            <tr>
-                <td><label for="description">Descripcion:</label></td>
-                <td><input type="text" name="description" id="description"></td>
-            </tr>
-            <tr>
-                <td><label for="url">Url:</label></td>
-                <td><input type="text" name="url" id="url"></td>
-            </tr>
-            <tr>
-                <td><label for="urlLogoSmall">Url Logo Small:</label></td>
-                <td><input type="text" name="urlLogoSmall" id="urlLogoSmall"></td>
-            </tr>
-            <tr>
-                <td><label for="urlLogoMedium">Url Logo Medium:</label></td>
-                <td><input type="text" name="urlLogoMedium" id="urlLogoMedium"></td>
-            </tr>
-            <tr>
-                <td><label for="created_at">Creado:</label></td>
-                <td><input type="text" name="created_at" id="created_at"></td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary" name="create">Guardar</button>
-    </form>
+    <div class="tablaFuentes"
+        <form action=" {{ action('controllerSources@create') }}" name="create"
+            method="POST">
+            {{ csrf_field() }}
+            <table>
+                <tr>
+                    <td><label for="api">Api:</label></td>
+                    <td><input type="text" name="api" id="api"></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Nombre:</label></td>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Descripcion:</label></td>
+                    <td><input type="text" name="description" id="description"></td>
+                </tr>
+                <tr>
+                    <td><label for="url">Url:</label></td>
+                    <td><input type="text" name="url" id="url"></td>
+                </tr>
+                <tr>
+                    <td><label for="urlLogoSmall">Url Logo Small:</label></td>
+                    <td><input type="text" name="urlLogoSmall" id="urlLogoSmall"></td>
+                </tr>
+                <tr>
+                    <td><label for="urlLogoMedium">Url Logo Medium:</label></td>
+                    <td><input type="text" name="urlLogoMedium" id="urlLogoMedium"></td>
+                </tr>
+                <tr>
+                    <td><label for="created_at">Creado:</label></td>
+                    <td><input type="text" name="created_at" id="created_at"></td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-primary" name="create">Guardar</button>
+        </form>
+    </div>
 </html>

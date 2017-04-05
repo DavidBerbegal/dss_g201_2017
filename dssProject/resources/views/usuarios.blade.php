@@ -38,7 +38,7 @@
                 </div>
             @endif
             
-            <div class="content">
+            <div class="content-usuarios">
                 <br>
                 @if($mensaje != "")
                     {{ $mensaje }}
@@ -78,9 +78,10 @@
                     <button type="submit" name="delete">Borrar</button>
                 </form>
                 <br>
-                <h3>Crear usuario</h3>
-                <a href="{{ url('/usuariosCreateUpdate') }}">Crear un usuario</a>
-     
+                <div>
+                    <h3>Crear usuario</h3>
+                    <a href="{{ url('/usuariosCreateUpdate') }}">Crear un usuario</a>
+                </div>
     </body>
     <!--
     <footer>

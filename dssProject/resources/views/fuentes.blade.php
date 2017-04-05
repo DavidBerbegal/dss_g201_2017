@@ -56,14 +56,16 @@
                                 <a type="button" class="btn btn-default" href="{{ url('/fuentes/modificarFuente')}}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <form action="{{ action('controllerSources@destroy')}}" name="delete"
-                                    method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="text" name="id" id="id" class="btn btn-default">
-                                    <button type="submit" name="delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </form>
+                                <a>
+                                    <form action="{{ action('controllerSources@destroy')}}" name="delete"
+                                        method="POST">
+                                        {{ csrf_field() }}
+                                        
+                                        <button type="submit" name="delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </form>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
