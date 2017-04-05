@@ -53,28 +53,25 @@
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
                             <td>
-                                <a class="operations-icon" onmouseover="" style="cursor: pointer;" href="{{ action('controllerSources@show', ['id' => $mostrarFuente->id ])}}">"Modificar"</a>
+                                <a class="operations-icon" onmouseover="" style="cursor: pointer;">"Modificar"</a>
+                                <form action="{{ action('controllerSources@destroy')}}" name="delete"
+                                    method="POST">
+                                    {{ csrf_field() }}
+                                    <!--<input type="text" name="id" id="id"> -->
+                                    <button type="submit" name="delete">Borrar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <div>
-                    {{ $mostrarFuente->links() }}
-                </div>
-                <h3>Borrar Fuente</h3>
-                <form action="{{ action('controllerSources@deleteSource')}}" name="delete"
-                    method="POST">
-                    {{ csrf_field() }}
-                    <label for="id">ID de la fuente a borrar:</label>
-                    <input type="text" name="id" id="id">
-                    <button type="submit" name="delete">Borrar</button>
-                </form>
             </div>
-            <h3>Crear Fuente</h3>
-            <a href="{{ url('/fuentes/nuevaFuente')}}">Crear Fuente</a>
         </div>
     </body>
+    <div class="botonAgregar">
+        <h3>Crear Fuente</h3>
+            <a href="{{ url('/fuentes/nuevaFuente')}}">Crear Fuente</a>
+    </div>
     <!--
     <footer>
         <div class="footer">
