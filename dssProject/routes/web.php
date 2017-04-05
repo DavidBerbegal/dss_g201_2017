@@ -31,7 +31,9 @@ Route::get('/nuevaCategoria', function() {
 });
 
 Route::post('/nuevaCategoria', 'categoriasController@create');
-Route::get('/categorias/modificarCategoria', 'categoriasController@update');
+
+Route::get('/categoriaUpdate', 'categoriasController@showCategory');
+Route::post('/categoriaUpdate', 'categoriasController@update');
 
 // Rutas Fuentes
 Route::any('/fuentes', 'controllerSources@index');

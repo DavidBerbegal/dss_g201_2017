@@ -17,6 +17,13 @@ class categoriasController extends Controller
         return view('categorias', ['categorias' => $mostrarCategorias, 'mensaje' => $request->input('msg')]);
     }
 
+    public function showCategory(Request $request){
+        $id = $request->input('id');
+        $cat = Category::findOrFail($id);
+
+        return view('categoriaUpdate', ['id' => $id, 'name' => $cat->name, 'description' => $cat->description]);
+    }
+
     public function create(Request $request)
     {
 
@@ -68,9 +75,8 @@ class categoriasController extends Controller
     {
         $this->validate($request, [
 
-            'name' => 'required|name',
-            'description' => 'required|description',
-            'created_at' => 'required|created_at'
+            'name' => 'required',
+            'description' => 'required',
         ]);
 
         $mensaje = "";
@@ -81,9 +87,10 @@ class categoriasController extends Controller
             $category = Category::findOrFail($id);
             $category->name = $request->input('name');
             $category->description = $request->input('description');
+            $category->created_at = Carbon::now();
             $category->save();
 
-            $mensaje = "La categoria con ID " . $id . "se ha modificado correctamente";
+            $mensaje = "La categoria con ID " . $id . " se ha modificado correctamente";
             return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)

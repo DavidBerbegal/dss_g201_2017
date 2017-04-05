@@ -57,9 +57,9 @@
                             <td>{{$mostrarCategoria->id}}</td>
                             <td>{{$mostrarCategoria->name}}</td>
                             <td>
-                                <a type="button" class="btn btn-default" href="{{ url('/categorias/modificarCategoria')}}">
+                                <a type="button" class="btn btn-default" href="{{ action('categoriasController@showCategory', ['id' =>  $mostrarCategoria->id ]) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
+                                </a>                          
                                 <a>
                                     <form action="{{ action('categoriasController@destroy', ['id' =>  $mostrarCategoria->id ]) }}" name="delete"
                                         method="POST">
