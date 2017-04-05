@@ -48,7 +48,9 @@ Route::get('/fuentes/nuevaFuente', function() {
 
 Route::post('/fuentes/nuevaFuente', 'controllerSources@create');
 
-Route::get('/fuentes/modificarFuente', 'controllerSources@update');
+Route::get('/fuentes/modificarFuente', 'controllerSources@showSource');
+
+Route::post('/fuentes/modificarFuente', 'controllerSources@update');
 
 // Rutas Sucripción Categoría
 Route::get('/suscripcion-categorias', function () {
