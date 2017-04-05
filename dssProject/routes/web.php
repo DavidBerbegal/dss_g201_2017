@@ -15,24 +15,44 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Rutas Artículos
 Route::get('/articulos', function () {
     return view('articulos');
 });
 
+// Rutas Categorias
 Route::get('/categorias', function () {
     return view('categorias');
 });
 
+// Rutas Fuentes
+Route::any('/fuentes', 'controllerSources@index');
+
+Route::post('/fuentes', 'controllerSources@destroy');
+
 Route::get('/fuentes', 'controllerSources@index');
 
+Route::get('/fuentes/nuevaFuente', function() {
+    return view('nuevaFuente');
+});
+
+Route::post('/fuentes/nuevaFuente', 'controllerSources@create');
+
+Route::get('/fuentes/modificarFuente', 'controllerSources@index');
+
+Route::post('/fuentes/modificarFuente', 'controllerSources@update');
+
+// Rutas Sucripción Categoría
 Route::get('/suscripcion-categorias', function () {
     return view('suscripcionCategorias');
 });
 
+// Rutas Suscripción Fuentes
 Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
 
+<<<<<<< caecc2e47be5317bfc3f723d25c557bdfd8e7a66
 Route::any('/usuarios', 'UsersController@index');
 Route::post('/usuarios', 'UsersController@deleteUser');
 Route::get('/usuarios', 'UsersController@listUsers');
@@ -51,3 +71,8 @@ Route::get('/fuentes/{id}/modificarFuente', function($source) {
     return view ('modificarFuente', ['edit' => '$source']);
 });
 
+=======
+Route::get('/usuarios', function () {
+    return view('usuarios');
+});
+>>>>>>> Corregidas rutas para las fuentes
