@@ -75,7 +75,7 @@
                     <button type="submit" name="buscar">Buscar</button>
                 </form></div>
 
-                <table class="table table-hover">
+                <table class="flex-center table table-hover">
                     <thead>
                         <tr>
                             <th><h4>ID:</h4></th>
