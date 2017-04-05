@@ -20,10 +20,7 @@ class controllerSources extends Controller
     {
         $mensaje = "";
         $this->validate($request, [
-<<<<<<< b71a7fa49cb4d945364108194c083c07ce76204d
-            'name' => required|name,
-            'description' => required|description
-=======
+
             'api' => 'required|api',
             'name' => 'required|name',
             'description' => 'required|description',
@@ -31,7 +28,6 @@ class controllerSources extends Controller
             'urlLogoSmall' => 'required|urlLogoSmall',
             'urlLogoMedium' => 'required|urlLogoMedium',
             'created_at' => 'required|created_at'
->>>>>>> Cambiados iconos de las acciones que se pueden realizar sobre fuentes
         ]);
 
         try 
@@ -72,10 +68,6 @@ class controllerSources extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-<<<<<<< b71a7fa49cb4d945364108194c083c07ce76204d
-            'name' => required|name,
-            'description' => required|description
-=======
             'api' => 'required|api',
             'name' => 'required|name',
             'description' => 'required|description',
@@ -83,7 +75,6 @@ class controllerSources extends Controller
             'urlLogoSmall' => 'required|urlLogoSmall',
             'urlLogoMedium' => 'required|urlLogoMedium',
             'created_at' => 'required|created_at'
->>>>>>> Cambiados iconos de las acciones que se pueden realizar sobre fuentes
         ]);
 
         $mensaje = "";
