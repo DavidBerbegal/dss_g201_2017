@@ -56,7 +56,8 @@
         </tr>
     </table>
     <p>
-        <input type="submit" class="btn btn-primary" value="Guardar">
+        <input type="submit" class="btn btn-primary" value="Guardar"></input>
+        <button class="btn btn-primary" href="/fuentes">Cancelar</button>
     </p>
     <!--
     <footer>

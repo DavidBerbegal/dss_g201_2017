@@ -29,11 +29,14 @@ html, body {
 
 .content {
     text-align: center;
+    margin-top: 250px;
+    width: 1100px;
 }
 
 .title {
     margin-top: 10px;
     font-size: 84px;
+    text-align: center;
 }
 
 .links > a {
@@ -44,6 +47,7 @@ html, body {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+    margin-left: 40px;
 }
 
 .m-b-md {
