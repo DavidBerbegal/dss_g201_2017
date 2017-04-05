@@ -41,7 +41,7 @@
             </div>
         </div>
     </body>
-    <form action=" {{ action('controllerSources@create') }}" name="Crear"
+    <form action=" {{ action('controllerSources@create') }}" name="create"
         method="POST">
         {{ csrf_field() }}
         <table class="crearFuente">
@@ -58,6 +58,6 @@
                 <td><input type="text" name="url" id="url"></td>
             </tr>
         </table>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary" name="create">Guardar</button>
     </form>
 </html>
