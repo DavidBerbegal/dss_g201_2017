@@ -49,6 +49,7 @@ class ArticlesTableSeeder extends Seeder
                             }
 
                             $sourceId = DB::table('sources')->where('name', $source->name)->first()->id;
+                            $catId = DB::table('categories')->where('name', $source->category)->first()->id;
 
                             DB::table('articles')->insert([
                             'author' => $author, 
@@ -57,9 +58,12 @@ class ArticlesTableSeeder extends Seeder
                             'urlNew' => $article->url, 
                             'urlImg' => $article->urlToImage,
                             'date' => $date,
+
+                            //de momento se generan aleatoriamente
                             'positiveRate' => rand(50, 5000),
                             'negativeRate' => rand(0, 300),
-                            'category_id' => '1',
+
+                            'category_id' => $catId,
                             'source_id' => $sourceId,
                             'language' => $source->language,
                             'country' => $source->country
