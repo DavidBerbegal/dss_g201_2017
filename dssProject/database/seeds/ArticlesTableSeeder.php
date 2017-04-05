@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -40,6 +41,14 @@ class ArticlesTableSeeder extends Seeder
                             else{
                                 $author = $article->author;
                             }
+                            if(empty($article->publishedAt)){
+                                $date = Carbon::now();
+                            }
+                            else{
+                                $date = $article->publishedAt;
+                            }
+
+                            $sourceId = DB::table('sources')->where('name', $source->name)->first()->id;
 
                             DB::table('articles')->insert([
                             'author' => $author, 
@@ -47,13 +56,13 @@ class ArticlesTableSeeder extends Seeder
                             'description' => $article->description, 
                             'urlNew' => $article->url, 
                             'urlImg' => $article->urlToImage,
-                            'date' => $article->publishedAt,
-                            'positiveRate' => '0',
-                            'negativeRate' => '0',
+                            'date' => $date,
+                            'positiveRate' => rand(50, 5000),
+                            'negativeRate' => rand(0, 300),
                             'category_id' => '1',
-                            'source_id' => '1',
-                            'language' => 'en',
-                            'country' => 'UK'
+                            'source_id' => $sourceId,
+                            'language' => $source->language,
+                            'country' => $source->country
                             ]);   
                     }
                 }
