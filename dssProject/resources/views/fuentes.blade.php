@@ -38,7 +38,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content-fuentes">
                 <table class="table table-hover">
                     <thead>
                         <tr>
