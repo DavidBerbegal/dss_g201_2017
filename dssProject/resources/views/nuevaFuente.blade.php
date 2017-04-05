@@ -24,6 +24,20 @@
                     @endif
                 </div>
             @endif
+            <!--
+            <br>
+            <div class="flex-center">
+            @if(count($errors) > 0)
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li> 
+                        {{ $error }} 
+                    </li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
+            -->
 
             <div class="content-nueva-fuente">
                 <div class="title m-b-md">
@@ -41,7 +55,7 @@
             </div>
         </div>
     </body>
-    <div class="tablaFuentes"
+    <div class="tablaFuentes">
         <form action=" {{ action('controllerSources@create') }}" name="create"
             method="POST">
             {{ csrf_field() }}
@@ -75,7 +89,9 @@
                     <td><input type="text" name="created_at" id="created_at"></td>
                 </tr>
             </table>
-            <button type="submit" class="btn btn-primary" name="create">Guardar</button>
+            <div>
+                <button type="submit" class="btn btn-primary" name="create">Guardar</button>
+            </div>
         </form>
     </div>
 </html>
