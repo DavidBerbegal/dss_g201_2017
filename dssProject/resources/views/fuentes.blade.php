@@ -53,20 +53,23 @@
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
                             <td>
-                                <a href="{{ url('/fuentes/modificarFuente')}}">Modificar</a>
-                                <form action="{{ action('controllerSources@destroy')}}" name="delete"
-                                    method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="text" name="id" id="id">
-                                    <button type="submit" name="delete">Borrar</button>
-                                </form>
+                                <a type="button" class="btn btn-default" href="{{ url('/fuentes/modificarFuente')}}">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a>
+                                    <form action="{{ action('controllerSources@destroy')}}" name="delete"
+                                        method="POST">
+                                        {{ csrf_field() }}
+                                        
+                                        <button type="submit" name="delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </form>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
-                    <div class="botonAgregar">
-                        <a href="{{ url('/fuentes/nuevaFuente')}}">Crear Fuente</a>
-                    </div>
                 </table>
                 <div>
                     {{ $fuentes->links() }}
@@ -74,4 +77,9 @@
             </div>
         </div>
     </body>
+    <div class="botonAgregar">
+        <a type="button" class="btn btn-default" href="{{ url('/fuentes/nuevaFuente')}}">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </div>
 </html>
