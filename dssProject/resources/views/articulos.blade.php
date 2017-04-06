@@ -60,13 +60,9 @@
                             <th><h4>Author:</h4></th>
                             <th><h4>Title:</h4></th>
                             <th><h4>Description:</h4></th>
-                            <th><h4>UrlNew:</h4></th>
-                            <th><h4>UrlImg:</h4></th>
                             <th><h4>Date:</h4></th>
                             <th><h4>PositiveRate:</h4></th>
                             <th><h4>NegativeRate:</h4></th>
-                            <th><h4>Language:</h4></th>
-                            <th><h4>Country:</h4></th>
                             <th><h4>SourceID:</h4></th>
                             <th><h4>CategoryID:</h4></th>
                         </tr>
@@ -80,24 +76,27 @@
                     
                     @foreach($articles as $art)
                         <tr>
-                            
-
                             <td>{{$art->id}}</td>
                             <td>{{$art->author}}</td>
                             <td>{{$art->title}}</td>
                             <td>{{$art->description}}</td>
-                            <td>{{$art->urlNew}}</td>
-                            <td>{{$art->urlImg}}</td>
                             <td>{{$art->date}}</td>
                             <td>{{$art->positiveRate}}</td>
                             <td>{{$art->negativeRate}}</td>
-                            <td>{{$art->language}}</td>
-                            <td>{{$art->country}}</td>
                             <td>{{$art->source_id}}</td>
-                            <td>{{$art->category_id}}</td>
-                            
-                            <td><a href="{{ action('articulosController@delete', ['id' =>  $art->id ]) }}">
-                            <span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td>{{$art->category_id}}</td> 
+                                <td>    
+                                    <a>
+                                        <form action="{{ action('articulosController@delete', ['id' =>  $art->id ]) }}" name="delete"
+                                            method="POST">
+                                            {{ csrf_field() }}
+                                            
+                                            <button type="submit" name="delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </form>
+                                    </a> 
+                                 </td>                                            
                         </tr>
                     @endforeach
                     </tbody>

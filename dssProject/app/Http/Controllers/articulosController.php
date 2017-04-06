@@ -30,14 +30,14 @@ class articulosController extends Controller
         
     }
     public function delete(Request $request){
-        $mensaje = "";
-
+        $mensaje = "";      
+        
         try{
             $id = $request->input('id');
             $article = Article::findOrFail($id);
             $article->delete();
 
-            $mensaje = "El articulo con ID " . $id . "ha sido borrado correctamente";
+            $mensaje = "El articulo con ID " . $id . " ha sido borrado correctamente";
             return redirect()->action('articulosController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)
