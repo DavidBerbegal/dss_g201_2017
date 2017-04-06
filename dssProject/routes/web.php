@@ -24,7 +24,7 @@ Route::post('/articulos', 'articulosController@delete');
 
 Route::any('/categorias', 'categoriasController@index');
 Route::post('/categorias', 'categoriasController@destroy');
-Route::get('/categorias', 'categoriasController@index');
+Route::get('/categorias', 'categoriasController@listCategories');
 
 Route::get('/nuevaCategoria', function() {
     return view('nuevaCategoria');
