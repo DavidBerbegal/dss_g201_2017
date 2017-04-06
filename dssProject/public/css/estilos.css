@@ -8,7 +8,7 @@ html, body {
 }
 
 .full-height {
-    height: 30vh;
+    height: 10vh;
 }
 
 .flex-center {
@@ -90,9 +90,46 @@ html, body {
 .botonAgregar {
     margin-top: 300px;
     margin-left: 50px;
+    margin-bottom: 20px;
 }
 
 .tablaFuentes {
     margin-left: 400px;
     margin-top: 75px;
+}
+
+.table-hover{
+    font-weight: bold;
+}
+
+.table-hover h4{
+    font-weight: bold;
+}
+
+.form-class{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.aux.full-height{
+
+}
+
+.botones{
+    display:flex;
+    align-items: center;
+}
+
+.pagination{
+    font-weight: bold;
+}
+
+.ordenar-label{
+    margin-right: 5px;
+}
+
+.bold{
+    font-weight: bold;
 }

@@ -17,6 +17,28 @@ class categoriasController extends Controller
         return view('categorias', ['categorias' => $mostrarCategorias, 'mensaje' => $request->input('msg')]);
     }
 
+    public function listCategories(Request $request) {
+      
+        if($request->has('categorias')){
+            
+           return view('categorias', ['categorias' => $request->input('categorias'), 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]); 
+        }
+        if($request->has('order') && $request->input('order') != ""){
+           
+            $cats = DB::table('categories')
+                    ->orderBy($request->input('order'))
+                    ->paginate(5);
+
+            return view('categorias', ['categorias' => $cats, 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]);
+        }
+        $categors = DB::table('categories')->paginate(5);
+        return view('categorias', ['categorias' => $categors, 'mensaje' => $request->input('msg'),
+                                'order' => 'id']);
+        
+    }
+
     public function showCategory(Request $request){
         $id = $request->input('id');
         $cat = Category::findOrFail($id);
@@ -110,7 +132,7 @@ class categoriasController extends Controller
             $category = Category::findOrFail($id);
             $category->delete();
 
-            $mensaje = "La categoria con ID " . $id . "ha sido borrada correctamente";
+            $mensaje = "La categoria con ID " . $id . " ha sido borrada correctamente";
             return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)
