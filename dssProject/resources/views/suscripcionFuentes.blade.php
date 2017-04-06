@@ -71,8 +71,18 @@
                             <td>{{$sub->user_id}}</td>
                             <td>{{$sub->source_id}}</td>
                             
-                            <td><a href="{{ action('suscripcionFuentesController@delete', ['id' =>  $sub->id ]) }}">
-                            <span class="glyphicon glyphicon-trash"></span></a></td>
+                                <td>    
+                                    <a>
+                                        <form action="{{ action('suscripcionFuentesController@delete', ['id' =>  $sub->id ]) }}" name="delete"
+                                            method="POST">
+                                            {{ csrf_field() }}
+                                            
+                                            <button type="submit" name="delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </form>
+                                    </a> 
+                                </td>  
                         </tr>
                     @endforeach
                     </tbody>
