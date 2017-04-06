@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Usuarios</title>
+        
 
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -25,11 +25,11 @@
                     @endif
                 </div>
             @endif
-            
+            <br>
             <div class="flex-center"><div>
-                <div class="title m-b-md">
+                <!--<div class="title m-b-md">
                     <h1>Usuarios</h1>
-                </div>
+                </div>!-->
                 
                 <div class="flex-center links">
                     <a href="{{ url('/') }}">Home</a>
@@ -41,21 +41,23 @@
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
                 
-                <br>
-               _________________________________________________________________________________________________________________________________________________________________________
-                @if($mensaje != "")
+                
+                <hr>
+                 @if($mensaje != "")
 
                     <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
                 @endif
                 <div class="flex-center"><div>
 
-                <h3>Crear usuario</h3>
-                <a href="{{ url('/usuariosCreateUpdate') }}">Crear un usuario</a><br><br>
+                <div class="flex-center">
+                <a href="{{ url('/usuariosCreateUpdate') }}"><span class="glyphicon glyphicon-plus">
+                    </span>Crear nuevo usuario
+                </a><br><br></div>
                 <div>
                     
                    <form action="{{ action('UsersController@listUsers')}}" name="sortBy"
                      method="GET">
-                    {{ csrf_field() }}
+                    
                     <label for="order">Ordenar usuarios por:</label>
                     <select name="order" id='order'>
                         <option selected value="id">ID</option>
@@ -100,14 +102,16 @@
                             <td>{{$usuario->email}}</td>
                             <td>{{$usuario->password}}</td>
                             
-                            <td><a href="{{ action('UsersController@showUser', ['id' =>  $usuario->id ]) }}">Modificar</a></td>
-                            <td><a href="{{ action('UsersController@deleteUser', ['id' =>  $usuario->id ]) }}">Borrar</a></td>
+                            <td><a href="{{ action('UsersController@showUser', ['id' =>  $usuario->id ]) }}">
+                            <span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td><a href="{{ action('UsersController@deleteUser', ['id' =>  $usuario->id ]) }}">
+                            <span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
                 <div class="flex-center">
-                    {{ $users->appends(['order' >= $sort])->links() }}
+                    {{ $users->appends(['order' => $order])->links() }}
                 </div>
                 
      

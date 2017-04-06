@@ -46,9 +46,7 @@
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
                 
-                <br>
-               _________________________________________________________________________________________________________________________________________________________________________
-                <br>
+                <br><hr> <br>
     
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -81,17 +79,18 @@
             <table>
                 <tr>
                     <td><label for="name">Nombre: </label></td>
-                    <td><input type="text" name="name" id="name" ><br><br></td>
+                    <td><input type="text" name="name" id="name" value="{{ old('name') }}"><br><br></td>
                 </tr>
                 <tr>
                     <td><label for="email">Email: </label></td>
-                    <td><input type="text" name="email" id="email"><br><br></td>
+                    <td><input type="text" name="email" id="email" value="{{ old('email') }}">
+                    <br><br></td>
                 <tr>
                     <td><label for="password">Password: </label></td>
-                    <td><input type="text" name="password" id="password"><br><br></td>
+                    <td><input type="text" name="password" id="password" value="{{ old('password') }}"><br><br></td>
                 </tr>
             </table>
-            <div class="flex-center"><button type="submit" name="create">Crear</button></div>
+            <div class="flex-center"><button type="submit" name="create" ">>Crear</button></div>
         </form></div>
 
     </body>

@@ -11,18 +11,22 @@ use App\User;
 class UsersController extends Controller
 {
     public function listUsers(Request $request) {
+        if($request->has('users')){
+           return view('usuarios', ['users' => $request->input('users'), 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]); 
+        }
         if($request->has('order') && $request->input('order') != ""){
             
             $users = DB::table('users')
                     ->orderBy($request->input('order'))
-                    ->paginate(10);
+                    ->paginate(7);
 
             return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
-                                'sort' => $request->input('order')]);
+                                'order' => $request->input('order')]);
         }
-        $users = DB::table('users')->paginate(10);
+        $users = DB::table('users')->paginate(7);
         return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
-                                'sort' => 'id']);
+                                'order' => 'id']);
         
     }
 
@@ -40,10 +44,10 @@ class UsersController extends Controller
         $email = $request->input('sEmail');
         $users = DB::table('users')
             ->where('name','LIKE', "%$name%") 
-            ->where('email', 'LIKE', "%$email%")->paginate(10);
+            ->where('email', 'LIKE', "%$email%")->paginate(7);
 
         return view('usuarios', ['users' => $users, 'mensaje' => '',
-                                'sort' => 'id']);
+                                'order' => 'id']);
         
     }
 

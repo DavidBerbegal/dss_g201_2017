@@ -62,7 +62,7 @@ Route::get('/suscripcion-fuentes', function () {
     return view('suscripcionFuentes');
 });
 
-Route::any('/usuarios', 'UsersController@index');
+
 Route::post('/usuarios', 'UsersController@deleteUser');
 Route::get('/usuarios', 'UsersController@listUsers');
 Route::get('/usuariosCreateUpdate', function () {
@@ -73,8 +73,8 @@ Route::post('/usuariosCreateUpdate', 'UsersController@createUser');
 Route::get('/usuariosUpdate', 'UsersController@showUser');
 Route::post('/usuariosUpdate', 'UsersController@updateUser');
 
-Route::get('', 'UsersController@deleteUser');
-Route::post('', 'UsersController@searchUser');
+Route::get('/usuarios/delete', 'UsersController@deleteUser');
+Route::post('/usuarios', 'UsersController@searchUser');
 
 Route::get('/fuentes/{id}/modificarFuente', function($source) {
     return view ('modificarFuente', ['edit' => '$source']);
