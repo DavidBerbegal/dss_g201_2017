@@ -25,12 +25,12 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="flex-center">
                 <div class="title m-b-md">
                     Modificar Fuente
                 </div>
 
-                <div class="links">
+                <div class="flex-center links">
                     <a href="{{ url('/') }}">Home</a>
                     <a href="{{ url('/articulos') }}">Artículos</a>
                     <a href="{{ url('/usuarios') }}">Usuarios</a>
@@ -41,15 +41,21 @@
             </div>
         </div>
     </body>
+
+    <br><div class="flex-center">
+        @if(count($errors) > 0)
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li> {{ $error }} </li>
+            @endforeach
+            </ul></div>
+        @endif
+
     <div class="tablaFuentes">
         <form action="{{ action('controllerSources@update') }}" name="update"
         method="POST">
         {{ csrf_field() }}
             <table class="table table-hover">
-                <tr>
-                    <td><label for="api">Api:</label></td>
-                    <td><input type="hidden" name="api" id="api" value= {{ $api }}></td>
-                </tr>
                 <tr>
                     <td><label for="name">Nombre:</label></td>
                     <td><input type="hidden" name="name" id="name" value= {{ $name }}></td>
@@ -57,22 +63,6 @@
                 <tr>
                     <td><label for="description">Descripcion:</label></td>
                     <td><input type="hidden" name="description" id="description" value= {{ $description }}></td>
-                </tr>
-                <tr>
-                    <td><label for="url">Url:</label></td>
-                    <td><input type="hidden" name="url" id="url" value= {{ $url }}></td>
-                </tr>
-                <tr>
-                    <td><label for="urlLogoSmall">Url Logo Small:</label></td>
-                    <td><input type="hidden" name="urlLogoSmall" id="urlLogoSmall" value= {{ $urlLogoSmall }}></td>
-                </tr>
-                <tr>
-                    <td><label for="urlLogoMedium">Url Logo Medium:</label></td>
-                    <td><input type="hidden" name="urlLogoMedium" id="urlLogoMedium" value= {{ $ulrLogoMedium }}></td>
-                </tr>
-                <tr>
-                    <td><label for="created_at">Creado:</label></td>
-                    <td><input type="hidden" name="created_at" id="created_at" value= {{ $created_at }}></td>
                 </tr>
             </table>
             <a>

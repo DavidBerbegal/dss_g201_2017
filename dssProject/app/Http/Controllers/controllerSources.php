@@ -81,26 +81,18 @@ class controllerSources extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'api' => 'required',
             'name' => 'required',
-            'description' => 'required',
-            'url' => 'required',
-            'urlLogoSmall' => 'required',
-            'urlLogoMedium' => 'required',
-            'created_at' => 'required'
+            'description' => 'required'
         ]);
 
         $mensaje = "";
 
-        try 
+        try
         {
             $id = $request->input('id');
             $source = Source::findOrFail($id);
             $source->name = $request->input('name');
             $source->description = $request->input('description');
-            $source->url = $request->input('url');
-            $source->urlLogoSmall = $request->input('urlLogoSmall');
-            $source->urlLogoMedium = $request->input('urlLogoMedium');
             $source->created_at = Carbon::now();
             $source->save();
 
