@@ -31,6 +31,7 @@
                 </div>
 
                 <div class="links">
+                    <a href="{{ url('/') }}">Home</a>
                     <a href="{{ url('/articulos') }}">Artículos</a>
                     <a href="{{ url('/usuarios') }}">Usuarios</a>
                     <a href="{{ url('/categorias') }}">Categorías</a>
