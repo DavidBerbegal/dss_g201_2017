@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <div class="flex-center">
+            <div class="flex-center"><div>
                 <div class="title m-b-md">
                     Modificar Fuente
                 </div>
@@ -40,34 +40,42 @@
                 </div>
             </div>
         </div>
-    </body>
+        <br>
 
     <br><div class="flex-center">
         @if(count($errors) > 0)
             <ul>
             @foreach ($errors->all() as $error)
-                <li> {{ $error }} </li>
+                <li> 
+                    {{ $error }} 
+                </li>
             @endforeach
-            </ul></div>
+            </ul>
+        </div>
         @endif
 
-    <div class="tablaFuentes">
-        <form action="{{ action('controllerSources@update') }}" name="update"
-        method="POST">
-        {{ csrf_field() }}
-            <table class="table table-hover">
-                <tr>
-                    <td><label for="name">Nombre:</label></td>
-                    <td><input type="hidden" name="name" id="name" value= {{ $name }}></td>
-                </tr>
-                <tr>
-                    <td><label for="description">Descripcion:</label></td>
-                    <td><input type="hidden" name="description" id="description" value= {{ $description }}></td>
-                </tr>
-            </table>
-            <a>
-                <input type="submit" class="btn btn-primary" value="Guardar"></input>
-            </a>
-        </form>
-    </div>
+        <div class="tablaFuentes">
+            <form action="{{ action('controllerSources@update') }}" name="update"
+            method="POST">
+            {{ csrf_field() }}
+                <table>
+                    <tr>
+                        <td><label for="id">ID: {{ $id }}</label></td>
+                        <td><input type="hidden" name="id" id="id" value= {{ $id }}><br><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Nombre:</label></td>
+                        <td><input type="text" name="name" id="name" value= {{ $name }}><br><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="description">Descripcion:</label></td>
+                        <td><input type="text" name="description" id="description" value= {{ $description }}><br><br></td>
+                    </tr>
+                </table>
+                <div class="flex-center">
+                    <button type="submit" class="btn btn-primary" name="update">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

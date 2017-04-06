@@ -82,7 +82,7 @@ class controllerSources extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
         ]);
 
         $mensaje = "";
@@ -102,7 +102,7 @@ class controllerSources extends Controller
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Error al modificar la fuente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('controllerSources@index', ['msg' => $e]);
         }
     }
 
