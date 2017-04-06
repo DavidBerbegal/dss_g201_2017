@@ -24,6 +24,13 @@
                 <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                 <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
         </div>
+        @if($mensaje != "")
+        <div class="flex-center">
+            <h2> 
+                {{ $mensaje }} 
+            </h2>
+        </div>
+        @endif
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -38,7 +45,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content-fuentes">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -53,30 +60,33 @@
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
                             <td>
-                                <a class="operations-icon" onmouseover="" style="cursor: pointer;">"Modificar"</a>
-                                <form action="{{ action('controllerSources@destroy')}}" name="delete"
-                                    method="POST">
-                                    {{ csrf_field() }}
-                                    <!--<input type="text" name="id" id="id"> -->
-                                    <button type="submit" name="delete">Borrar</button>
-                                </form>
+                                <a type="button" class="btn btn-default" href="{{ action('controllerSources@showSource', ['id' => $mostrarFuente->id ])}}">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a>
+                                    <form action="{{ action('controllerSources@destroy', ['id' => $mostrarFuente->id ])}}" name="delete"
+                                        method="POST">
+                                        {{ csrf_field() }}
+                                        
+                                        <button type="submit" name="delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </form>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <div>
+                    {{ $fuentes->links() }}
+                </div>
             </div>
         </div>
     </body>
     <div class="botonAgregar">
-        <h3>Crear Fuente</h3>
-            <a href="{{ url('/fuentes/nuevaFuente')}}">Crear Fuente</a>
+        <a type="button" class="btn btn-default" href="{{ url('/fuentes/nuevaFuente')}}">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
     </div>
-    <!--
-    <footer>
-        <div class="footer">
-            <p>DSS 2016-17</p>
-        </div>
-    </footer>
-    -->
 </html>

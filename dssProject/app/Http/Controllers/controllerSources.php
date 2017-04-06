@@ -7,28 +7,47 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use App\Source;
+use Carbon\Carbon;
 
 class controllerSources extends Controller
 {
     public function index(Request $request)
     {
-        $mostrarFuentes = DB::table('sources')->paginate(10);
+        $mostrarFuentes = DB::table('sources')->paginate(5);
         return view('fuentes', ['fuentes' => $mostrarFuentes, 'mensaje' => $request->input('msg')]);
+    }
+
+    public function showSource(Request $request)
+    {
+        $id = $request->input('id');
+        $source = Source::findOrFail($id);
+
+        return view('modificarFuente', ['id' => $id, 'name' => $source->name, 'description' => $source->description]);
     }
 
     public function create(Request $request)
     {
         $mensaje = "";
         $this->validate($request, [
-            'name' => required|name,
-            'description' => required|description
+            'api' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'url' => 'required',
+            'urlLogoSmall' => 'required',
+            'urlLogoMedium' => 'required',
+            'created_at' => 'required'
         ]);
 
         try 
         {
             $source = new Source();
+            $source->api = $request->input('api');
             $source->name = $request->input('name');
             $source->description = $request->input('description');
+            $source->url = $request->input('url');
+            $source->urlLogoSmall = $request->input('urlLogoSmall');
+            $source->urlLogoMedium = $request->input('urlLogoMedium');
+            $source->created_at = Carbon::now();
             $source->save();
 
             $mensaje = "La fuente no ha sido creada correctamente";
@@ -62,8 +81,13 @@ class controllerSources extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => required|name,
-            'description' => required|description
+            'api' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'url' => 'required',
+            'urlLogoSmall' => 'required',
+            'urlLogoMedium' => 'required',
+            'created_at' => 'required'
         ]);
 
         $mensaje = "";
@@ -74,6 +98,10 @@ class controllerSources extends Controller
             $source = Source::findOrFail($id);
             $source->name = $request->input('name');
             $source->description = $request->input('description');
+            $source->url = $request->input('url');
+            $source->urlLogoSmall = $request->input('urlLogoSmall');
+            $source->urlLogoMedium = $request->input('urlLogoMedium');
+            $source->created_at = Carbon::now();
             $source->save();
 
             $mensaje = "La fuente con ID " . $id . "se ha modificado correctamente";

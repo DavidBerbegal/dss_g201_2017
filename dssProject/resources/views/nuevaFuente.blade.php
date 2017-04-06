@@ -24,8 +24,22 @@
                     @endif
                 </div>
             @endif
+            <!--
+            <br>
+            <div class="flex-center">
+            @if(count($errors) > 0)
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li> 
+                        {{ $error }} 
+                    </li>
+                @endforeach
+                </ul>
+            </div>
+            @endif
+            -->
 
-            <div class="content">
+            <div class="content-nueva-fuente">
                 <div class="title m-b-md">
                     Nueva Fuente
                 </div>
@@ -41,36 +55,43 @@
             </div>
         </div>
     </body>
-    <table class="table table-hover">
-        <tr>
-            <td><h4>Nombre:</h4></td>
-            <td><input type="text" name="name" id="name"></td>
-        </tr>
-        <tr>
-            <td><h4>Descripción:</h4></td>
-            <td><input type="text" name="description" id="description"></td>
-            <td>
-            <!--
-                <select name="categoria">
-                    <option value="Deportes">Deportes</option>
-                </select>
-            -->
-            </td>
-        </tr>
-        <tr>
-            <td><h4>Url:</h4></td>
-            <td><input type="text" name="url" id="url"></td>
-        </tr>
-    </table>
-    <p>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="submit" class="btn btn-primary" href="/fuentes">Cancelar</button>
-    </p>
-    <!--
-    <footer>
-        <div class="footer">
-            <p>DSS 2016-17</p>
-        </div>
-    </footer>
-    -->
+    <div class="tablaFuentes">
+        <form action=" {{ action('controllerSources@create') }}" name="create"
+            method="POST">
+            {{ csrf_field() }}
+            <table>
+                <tr>
+                    <td><label for="api">Api:</label></td>
+                    <td><input type="text" name="api" id="api"></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Nombre:</label></td>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Descripcion:</label></td>
+                    <td><input type="text" name="description" id="description"></td>
+                </tr>
+                <tr>
+                    <td><label for="url">Url:</label></td>
+                    <td><input type="text" name="url" id="url"></td>
+                </tr>
+                <tr>
+                    <td><label for="urlLogoSmall">Url Logo Small:</label></td>
+                    <td><input type="text" name="urlLogoSmall" id="urlLogoSmall"></td>
+                </tr>
+                <tr>
+                    <td><label for="urlLogoMedium">Url Logo Medium:</label></td>
+                    <td><input type="text" name="urlLogoMedium" id="urlLogoMedium"></td>
+                </tr>
+                <tr>
+                    <td><label for="created_at">Creado:</label></td>
+                    <td><input type="text" name="created_at" id="created_at"></td>
+                </tr>
+            </table>
+            <div>
+                <button type="submit" class="btn btn-primary" name="create">Guardar</button>
+            </div>
+        </form>
+    </div>
 </html>

@@ -10,10 +10,24 @@ use App\User;
 
 class UsersController extends Controller
 {
-    
     public function listUsers(Request $request) {
-        $users = DB::table('users')->paginate(5);
-        return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg')]);
+        if($request->has('users')){
+           return view('usuarios', ['users' => $request->input('users'), 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]); 
+        }
+        if($request->has('order') && $request->input('order') != ""){
+            
+            $users = DB::table('users')
+                    ->orderBy($request->input('order'))
+                    ->paginate(7);
+
+            return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]);
+        }
+        $users = DB::table('users')->paginate(7);
+        return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
+                                'order' => 'id']);
+        
     }
 
     public function showUser(Request $request){
@@ -22,6 +36,19 @@ class UsersController extends Controller
 
         return view('usuariosUpdate', ['id' => $id, 'name' => $usuario->name,
                                         'email' => $usuario->email, 'password' => $usuario->password]);
+    }
+
+    public function searchUser(Request $request){
+       
+        $name = $request->input('sName');
+        $email = $request->input('sEmail');
+        $users = DB::table('users')
+            ->where('name','LIKE', "%$name%") 
+            ->where('email', 'LIKE', "%$email%")->paginate(7);
+
+        return view('usuarios', ['users' => $users, 'mensaje' => '',
+                                'order' => 'id']);
+        
     }
 
     public function createUser(Request $request){

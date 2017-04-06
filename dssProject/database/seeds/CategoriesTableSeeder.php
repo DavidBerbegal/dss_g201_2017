@@ -1,5 +1,5 @@
 <?php
-
+//comentario de prueba
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 class CategoriesTableSeeder extends Seeder
@@ -36,8 +36,8 @@ class CategoriesTableSeeder extends Seeder
             'description' => 'Politics news',
         ]);
         DB::table('categories')->insert([
-            'name' => 'sports',
-            'description' => 'Sports news',
+            'name' => 'sport',
+            'description' => 'Sport news',
         ]);
         DB::table('categories')->insert([
             'name' => 'technology',

@@ -8,7 +8,7 @@ html, body {
 }
 
 .full-height {
-    height: 30vh;
+    height: 10vh;
 }
 
 .flex-center {
@@ -29,12 +29,30 @@ html, body {
 
 .content {
     text-align: center;
-    margin-top: 250px;
+    margin-top: 350px;
     width: 1100px;
 }
 
+.content-fuentes {
+    text-align: center;
+    margin-top: 400px;
+    width: 1100px;
+}
+
+.content-nueva-fuente {
+    text-align: center;
+    margin-top: 50px;
+    width: 1100px;
+}
+
+.content-usuarios {
+    margin-top: 370px;
+    width: 1100px;
+    text-align: center;
+}
+
 .title {
-    margin-top: 10px;
+    margin-top: 30px;
     font-size: 84px;
     text-align: center;
 }
@@ -64,7 +82,54 @@ html, body {
     color: #fff;
 }
 
-.botonAgregar {
-    margin-top: 400px;
+.crearFuente {
+    margin-top: 200px;
     text-align: center;
+}
+
+.botonAgregar {
+    margin-top: 300px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.tablaFuentes {
+    margin-left: 400px;
+    margin-top: 75px;
+}
+
+.table-hover{
+    font-weight: bold;
+}
+
+.table-hover h4{
+    font-weight: bold;
+}
+
+.form-class{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.aux.full-height{
+
+}
+
+.botones{
+    display:flex;
+    align-items: center;
+}
+
+.pagination{
+    font-weight: bold;
+}
+
+.ordenar-label{
+    margin-right: 5px;
+}
+
+.bold{
+    font-weight: bold;
 }
