@@ -5,15 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Suscripción Categorías</title>
-
-        <!-- Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -24,20 +20,67 @@
                     @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Suscripción Categorías
-                </div>
-
-                <div class="links">
+            <br>
+            <div class="flex-center"><div>
+                
+                <div class="flex-center links">
                     <a href="{{ url('/') }}">Home</a>
+                    <a href="{{ url('/fuentes') }}">Fuentes</a>
                     <a href="{{ url('/articulos') }}">Artículos</a>
                     <a href="{{ url('/usuarios') }}">Usuarios</a>
                     <a href="{{ url('/categorias') }}">Categorías</a>
-                    <a href="{{ url('/fuentes') }}">Fuentes</a>
+                    <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
+                 <div>
+                    <hr>
+                 @if($mensaje != "")
+
+                    <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
+                @endif
+                <div class="flex-center"><div>
+                   <form action="{{ action('suscripcionCategoriasController@index')}}" name="sortBy"
+                     method="GET">
+                    
+                    <label for="order">Ordenar suscripciones por:</label>
+                    <select name="order" id='order'>
+                        <option selected value="id">ID</option>
+                        <option value="user_id">UserID</option>
+                        <option  value="category_id">CategoryID</option>
+                    </select>
+                    <button type="submit" name="sortBy">Ordenar</button>
+                </form>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><h4>ID:</h4></th>
+                            <th><h4>UserID:</h4></th>
+                            <th><h4>CategoryID:</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if(sizeof($categorysubscriptions) == 0)
+                        <br>
+                        <br>
+                        <div><h3>No hay coincidencias para estos criterios de búsqueda</h3></div>
+                    @endif
+                    
+                    @foreach($categorysubscriptions as $sub)
+                        <tr>
+                            <td>{{$sub->id}}</td>
+                            <td>{{$sub->user_id}}</td>
+                            <td>{{$sub->category_id}}</td>
+                            
+                            <td><a href="{{ action('suscripcionCategoriasController@delete', ['id' =>  $sub->id ]) }}">
+                            <span class="glyphicon glyphicon-trash"></span></a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                <div class="flex-center">
+                    {{ $categorysubscriptions->appends(['order' => $order])->links() }}
+                </div>
+
             </div>
         </div>
     </body>

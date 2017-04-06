@@ -16,16 +16,15 @@ Route::get('/', function () {
 });
 
 // Rutas Artículos
-Route::get('/articulos', function () {
-    return view('articulos');
-});
+Route::any('/articulos', 'articulosController@index');
+Route::get('/articulos', 'articulosController@index');
+Route::post('/articulos', 'articulosController@delete');
 
 // Rutas Categorias
 
 Route::any('/categorias', 'categoriasController@index');
 Route::post('/categorias', 'categoriasController@destroy');
-Route::get('/categorias', 'categoriasController@listCategories');
-//Route::get('/categorias', 'categoriasController@index');
+Route::get('/categorias', 'categoriasController@index');
 
 Route::get('/nuevaCategoria', function() {
     return view('nuevaCategoria');
@@ -54,14 +53,13 @@ Route::get('/fuentes/modificarFuente', 'controllerSources@showSource');
 Route::post('/fuentes/modificarFuente', 'controllerSources@update');
 
 // Rutas Sucripción Categoría
-Route::get('/suscripcion-categorias', function () {
-    return view('suscripcionCategorias');
-});
-
+Route::any('/suscripcion-categorias', 'suscripcionCategoriasController@index');
+Route::get('/suscripcion-categorias', 'suscripcionCategoriasController@index');
+Route::post('/suscripcion-categorias', 'suscripcionCategoriasController@delete');
 // Rutas Suscripción Fuentes
-Route::get('/suscripcion-fuentes', function () {
-    return view('suscripcionFuentes');
-});
+Route::any('/suscripcion-fuentes', 'suscripcionFuentesController@index');
+Route::get('/suscripcion-fuentes', 'suscripcionFuentesController@index');
+Route::post('/suscripcion-fuentes', 'suscripcionFuentesController@delete');
 
 
 Route::post('/usuarios', 'UsersController@deleteUser');
