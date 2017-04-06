@@ -28,9 +28,22 @@
 
                     <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
                 @endif
+
+
+                <form class="form-class" action="{{ action('categoriasController@listCategories')}}" name="sortBy"
+                     method="GET">
+                    
+                    <label class="ordenar-label" for="order">Ordenar categorías por:</label>
+                    <select class="bold" name="order" id='order'>
+                        <option selected value="id">ID</option>
+                        <option value="name">Nombre</option>
+                    </select>
+                    <button class="bold" type="submit" name="sortBy">Ordenar</button>
+                </form>  
+
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="aux flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -56,12 +69,11 @@
                         <tr>
                             <td>{{$mostrarCategoria->id}}</td>
                             <td>{{$mostrarCategoria->name}}</td>
-                                <td>
+                                <td class="botones">
                                     <a type="button" class="btn btn-default" href="{{ action('categoriasController@showCategory', ['id' =>  $mostrarCategoria->id ]) }}">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a> 
-                                </td> 
-                                <td>                        
+                       
                                     <a>
                                         <form action="{{ action('categoriasController@destroy', ['id' =>  $mostrarCategoria->id ]) }}" name="delete"
                                             method="POST">
