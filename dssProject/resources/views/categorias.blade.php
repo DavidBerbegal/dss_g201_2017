@@ -56,21 +56,23 @@
                         <tr>
                             <td>{{$mostrarCategoria->id}}</td>
                             <td>{{$mostrarCategoria->name}}</td>
-                            <td>
-                                <a type="button" class="btn btn-default" href="{{ action('categoriasController@showCategory', ['id' =>  $mostrarCategoria->id ]) }}">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </a>                          
-                                <a>
-                                    <form action="{{ action('categoriasController@destroy', ['id' =>  $mostrarCategoria->id ]) }}" name="delete"
-                                        method="POST">
-                                        {{ csrf_field() }}
-                                        
-                                        <button type="submit" name="delete">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </button>
-                                    </form>
-                                </a>
-                            </td>
+                                <td>
+                                    <a type="button" class="btn btn-default" href="{{ action('categoriasController@showCategory', ['id' =>  $mostrarCategoria->id ]) }}">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a> 
+                                </td> 
+                                <td>                        
+                                    <a>
+                                        <form action="{{ action('categoriasController@destroy', ['id' =>  $mostrarCategoria->id ]) }}" name="delete"
+                                            method="POST">
+                                            {{ csrf_field() }}
+                                            
+                                            <button type="submit" name="delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </form>
+                                    </a>
+                                </td>
                         </tr>
                     @endforeach
                     </tbody>
