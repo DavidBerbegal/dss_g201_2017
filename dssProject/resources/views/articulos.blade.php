@@ -76,8 +76,6 @@
                     
                     @foreach($articles as $art)
                         <tr>
-                            
-
                             <td>{{$art->id}}</td>
                             <td>{{$art->author}}</td>
                             <td>{{$art->title}}</td>
@@ -86,10 +84,19 @@
                             <td>{{$art->positiveRate}}</td>
                             <td>{{$art->negativeRate}}</td>
                             <td>{{$art->source_id}}</td>
-                            <td>{{$art->category_id}}</td>
-                            
-                            <td><a href="{{ action('articulosController@delete', ['id' =>  $art->id ]) }}">
-                            <span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td>{{$art->category_id}}</td> 
+                                <td>    
+                                    <a>
+                                        <form action="{{ action('articulosController@delete', ['id' =>  $art->id ]) }}" name="delete"
+                                            method="POST">
+                                            {{ csrf_field() }}
+                                            
+                                            <button type="submit" name="delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </form>
+                                    </a> 
+                                 </td>                                            
                         </tr>
                     @endforeach
                     </tbody>

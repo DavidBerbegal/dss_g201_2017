@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 // Rutas Artículos
 Route::any('/articulos', 'articulosController@index');
-Route::get('/articulos', 'articulosController@index');
 Route::post('/articulos', 'articulosController@delete');
+Route::get('/articulos', 'articulosController@index');
 
 // Rutas Categorias
 
