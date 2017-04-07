@@ -21,9 +21,11 @@
                 <a href="{{ url('/articulos') }}">Artículos</a>
                 <a href="{{ url('/usuarios') }}">Usuarios</a>
                 <a href="{{ url('/categorias') }}">Categorías</a>
+                <a href="{{ url('/fuentes') }}">Fuentes</a>
                 <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                 <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
         </div>
+
         @if($mensaje != "")
         <div class="flex-center">
             <h2> 
@@ -31,9 +33,19 @@
             </h2>
         </div>
         @endif
+
+        <form class="form-class" action="{{ action('controllerSources@listSources')}}" name="sortBy"
+                method="GET">
+            <label class="ordenar-label" for="order">Ordenar fuentes por:</label>
+            <select class="bold" name="order" id='order'>
+                <option selected value="id">ID</option>
+                <option value="name">Nombre</option>
+            </select>
+            <button class="bold" type="submit" name="sortBy">Ordenar</button>
+        </form> 
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="aux flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -59,7 +71,7 @@
                         <tr>
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
-                            <td>
+                            <td class="botones">
                                 <a type="button" class="btn btn-default" href="{{ action('controllerSources@showSource', ['id' => $mostrarFuente->id ])}}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>

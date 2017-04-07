@@ -17,6 +17,28 @@ class controllerSources extends Controller
         return view('fuentes', ['fuentes' => $mostrarFuentes, 'mensaje' => $request->input('msg')]);
     }
 
+    public function listSources(Request $request) 
+    {
+        if($request->has('fuentes'))
+        {
+            return view('fuentes', ['fuentes' => $request->input('fuentes'), 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]); 
+        }
+        if($request->has('order') && $request->input('order') != "")
+        {
+            $sources = DB::table('sources')
+                    ->orderBy($request->input('order'))
+                    ->paginate(5);
+            return view('fuentes', ['fuentes' => $sources, 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]);
+        }
+
+        $fuentesAux = DB::table('sources')->paginate(5);
+        return view('fuentes', ['fuentes' => $fuentesAux, 'mensaje' => $request->input('msg'),
+                                'order' => 'id']);
+    
+    }
+
     public function showSource(Request $request)
     {
         $id = $request->input('id');
@@ -81,26 +103,18 @@ class controllerSources extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'api' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'url' => 'required',
-            'urlLogoSmall' => 'required',
-            'urlLogoMedium' => 'required',
-            'created_at' => 'required'
         ]);
 
         $mensaje = "";
 
-        try 
+        try
         {
             $id = $request->input('id');
             $source = Source::findOrFail($id);
             $source->name = $request->input('name');
             $source->description = $request->input('description');
-            $source->url = $request->input('url');
-            $source->urlLogoSmall = $request->input('urlLogoSmall');
-            $source->urlLogoMedium = $request->input('urlLogoMedium');
             $source->created_at = Carbon::now();
             $source->save();
 
@@ -110,7 +124,7 @@ class controllerSources extends Controller
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Error al modificar la fuente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('controllerSources@index', ['msg' => $e]);
         }
     }
 

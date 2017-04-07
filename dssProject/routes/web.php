@@ -40,7 +40,7 @@ Route::any('/fuentes', 'controllerSources@index');
 
 Route::post('/fuentes', 'controllerSources@destroy');
 
-Route::get('/fuentes', 'controllerSources@index');
+Route::get('/fuentes', 'controllerSources@listSources');
 
 Route::get('/fuentes/nuevaFuente', function() {
     return view('nuevaFuente');
@@ -74,8 +74,4 @@ Route::post('/usuariosUpdate', 'UsersController@updateUser');
 
 Route::get('/usuarios/delete', 'UsersController@deleteUser');
 Route::post('/usuarios', 'UsersController@searchUser');
-
-Route::get('/fuentes/{id}/modificarFuente', function($source) {
-    return view ('modificarFuente', ['edit' => '$source']);
-});
 
