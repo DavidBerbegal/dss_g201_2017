@@ -46,11 +46,11 @@ Route::get('/fuentes/nuevaFuente', function() {
     return view('nuevaFuente');
 });
 
-Route::post('/nuevaFuente', 'controllerSources@create');
+Route::post('/fuentes/nuevaFuente', 'controllerSources@create');
 
-Route::get('/modificarFuente', 'controllerSources@showSource');
+Route::get('/fuentes/modificarFuente', 'controllerSources@showSource');
 
-Route::post('/modificarFuente', 'controllerSources@update');
+Route::post('/fuentes/modificarFuente', 'controllerSources@update');
 
 // Rutas Sucripción Categoría
 Route::any('/suscripcion-categorias', 'suscripcionCategoriasController@index');
@@ -74,3 +74,4 @@ Route::post('/usuariosUpdate', 'UsersController@updateUser');
 
 Route::get('/usuarios/delete', 'UsersController@deleteUser');
 Route::post('/usuarios', 'UsersController@searchUser');
+
