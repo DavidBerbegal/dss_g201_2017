@@ -40,7 +40,7 @@ Route::any('/fuentes', 'controllerSources@index');
 
 Route::post('/fuentes', 'controllerSources@destroy');
 
-Route::get('/fuentes', 'controllerSources@index');
+Route::get('/fuentes', 'controllerSources@listSources');
 
 Route::get('/fuentes/nuevaFuente', function() {
     return view('nuevaFuente');

@@ -17,6 +17,28 @@ class controllerSources extends Controller
         return view('fuentes', ['fuentes' => $mostrarFuentes, 'mensaje' => $request->input('msg')]);
     }
 
+    public function listSources(Request $request) 
+    {
+        if($request->has('fuentes'))
+        {
+            return view('fuentes', ['fuentes' => $request->input('fuentes'), 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]); 
+        }
+        if($request->has('order') && $request->input('order') != "")
+        {
+            $sources = DB::table('sources')
+                    ->orderBy($request->input('order'))
+                    ->paginate(5);
+            return view('fuentes', ['fuentes' => $sources, 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]);
+        }
+
+        $fuentesAux = DB::table('sources')->paginate(5);
+        return view('fuentes', ['fuentes' => $fuentesAux, 'mensaje' => $request->input('msg'),
+                                'order' => 'id']);
+    
+    }
+
     public function showSource(Request $request)
     {
         $id = $request->input('id');
