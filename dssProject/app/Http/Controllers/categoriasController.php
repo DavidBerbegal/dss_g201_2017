@@ -75,24 +75,6 @@ class categoriasController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Request $request)
-    {
-        $id = $request->input('id');
-        $category = Category::findOrFail($id);
-        
-        return view('modificarCategoria', ['id' => $id, 'name' => $category->name, 'description' => $category->description]);
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request)
     {
         $this->validate($request, [

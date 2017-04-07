@@ -82,24 +82,6 @@ class controllerSources extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Request $request)
-    {
-        $id = $request->input('id');
-        $source = Source::findOrFail($id);
-        
-        return view('modificarFuente', ['id' => $id, 'name' => $source->name, 'description' => $source->description]);
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request)
     {
         $this->validate($request, [
