@@ -91,7 +91,7 @@
                     </tbody>
                 </table>
                 <div>
-                    {{ $fuentes->links() }}
+                    {{ $fuentes->appends(['order' => $order])->links() }}
                 </div>
             </div>
         </div>
