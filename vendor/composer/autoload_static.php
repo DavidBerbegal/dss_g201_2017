@@ -272,17 +272,10 @@ class ComposerStaticInitcbccbfbccfc8437d26d10f5634c96db8
     );
 
     public static $classMap = array (
-        'ArticlesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticlesTableSeeder.php',
         'BookmarksTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BookmarksTableSeeder.php',
-        'CategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoriesTableSeeder.php',
-        'CategorysubscriptionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategorysubscriptionsTableSeeder.php',
-        'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_27_114627_create_articles_table.php',
         'CreateBookmarksTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_27_114643_create_bookmarks_table.php',
-        'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_21_193254_create_categories_table.php',
-        'CreateCategorysubscriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_21_200010_create_categorysubscriptions_table.php',
+        'CreateNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_27_114627_create_news_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreateSourcesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_21_193305_create_sources_table.php',
-        'CreateSourcesubscriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_21_200020_create_sourcesubscriptions_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -356,7 +349,7 @@ class ComposerStaticInitcbccbfbccfc8437d26d10f5634c96db8
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
-        'InitSeeder' => __DIR__ . '/../..' . '/database/seeds/InitSeeder.php',
+        'NewsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/NewsTableSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -814,8 +807,6 @@ class ComposerStaticInitcbccbfbccfc8437d26d10f5634c96db8
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'SourcesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SourcesTableSeeder.php',
-        'SourcesubscriptionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SourcesubscriptionsTableSeeder.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
     );

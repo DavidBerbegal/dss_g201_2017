@@ -6,17 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ArticlesTableSeeder' => $baseDir . '/database/seeds/ArticlesTableSeeder.php',
     'BookmarksTableSeeder' => $baseDir . '/database/seeds/BookmarksTableSeeder.php',
-    'CategoriesTableSeeder' => $baseDir . '/database/seeds/CategoriesTableSeeder.php',
-    'CategorysubscriptionsTableSeeder' => $baseDir . '/database/seeds/CategorysubscriptionsTableSeeder.php',
-    'CreateArticlesTable' => $baseDir . '/database/migrations/2017_02_27_114627_create_articles_table.php',
     'CreateBookmarksTable' => $baseDir . '/database/migrations/2017_02_27_114643_create_bookmarks_table.php',
-    'CreateCategoriesTable' => $baseDir . '/database/migrations/2017_03_21_193254_create_categories_table.php',
-    'CreateCategorysubscriptionsTable' => $baseDir . '/database/migrations/2017_03_21_200010_create_categorysubscriptions_table.php',
+    'CreateNewsTable' => $baseDir . '/database/migrations/2017_02_27_114627_create_news_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreateSourcesTable' => $baseDir . '/database/migrations/2017_03_21_193305_create_sources_table.php',
-    'CreateSourcesubscriptionsTable' => $baseDir . '/database/migrations/2017_03_21_200020_create_sourcesubscriptions_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -90,7 +83,7 @@ return array(
     'Hamcrest\\Type\\IsString' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
-    'InitSeeder' => $baseDir . '/database/seeds/InitSeeder.php',
+    'NewsTableSeeder' => $baseDir . '/database/seeds/NewsTableSeeder.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
     'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
     'PHPUnit\\Framework\\TestCase' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -548,8 +541,6 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
-    'SourcesTableSeeder' => $baseDir . '/database/seeds/SourcesTableSeeder.php',
-    'SourcesubscriptionsTableSeeder' => $baseDir . '/database/seeds/SourcesubscriptionsTableSeeder.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );
