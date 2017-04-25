@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
         
-    <body>      
+    <body>     
     @if (Route::has('login'))
 
                 <div class="top-right links">
@@ -45,8 +45,7 @@
                 </div>
                 
                 <br>
-               _________________________________________________________________________________________________________________________________________________________________________
-                
+                <hr>
 
     
     <br>
