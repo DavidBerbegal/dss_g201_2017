@@ -19,7 +19,7 @@ img{
 <nav class="navbar navbar-inverse  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{{ url('/') }}">{{HTML::image('images/news.png', 'alt', array('width' => 65, 'height' => 28)) }}</a>
+      <a class="navbar-brand" href="{{ url('/') }}"><img src="{{url('/images/logo.png')}}" alt ="Image" height="25" width="25"/> </img></a>
     </div>
     <ul class="nav navbar-nav">
     <li><a href="{{ url('/') }}">Home</a></li>
