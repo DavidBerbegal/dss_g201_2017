@@ -34,7 +34,7 @@
               position: relative;
               padding: 0px;
               margin-bottom: 20px;
-              height: 600px;
+              height: 580px;
           }
           .article-container {
             width: 33%;

@@ -41,9 +41,9 @@ class articulosController extends Controller
     //búsqueda pública para el feed principal
     public function searchFeed(Request $request){
        
-        $name = $request->input('sName');
+        $title = $request->input('sName');
         $news = DB::table('articles')
-            ->where('name','LIKE', "%$name%")->get();
+            ->where('title','LIKE', "%$title%")->get();
 
         return view('feed', ['articles' => $news, 'mensaje' => 'search',
                                 'order' => 'name']); 
