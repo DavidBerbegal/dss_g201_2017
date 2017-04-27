@@ -23,6 +23,7 @@ class SourcesTableSeeder extends Seeder
                 DB::table('sources')->insert([
                     'name'  => $source->name,
                     'api' => $source->id,
+                    'category' => $source->category,
                     'description' => $source->description,
                     'url' => $source->url,
                     'urlLogoSmall' => $source->urlsToLogos->small,

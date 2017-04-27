@@ -29,6 +29,26 @@ class articulosController extends Controller
                                 'order' => 'id']);
         
     }
+
+    // vista pública para el feed principal
+    public function listArticulosFeed(Request $request){
+       
+        $news = DB::table('articles')->orderBy('name')->paginate(20);
+        return view('feed', ['articles' => $news, 'mensaje' => '',
+                                'order' => 'name']); 
+    }
+
+    //búsqueda pública para el feed principal
+    public function searchFeed(Request $request){
+       
+        $title = $request->input('sName');
+        $news = DB::table('articles')
+            ->where('title','LIKE', "%$title%")->get();
+
+        return view('feed', ['articles' => $news, 'mensaje' => 'search',
+                                'order' => 'name']); 
+    }
+
     public function delete(Request $request){
         $mensaje = "";      
         
