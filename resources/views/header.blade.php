@@ -26,6 +26,7 @@ body{ padding-top: 70px;}
     <li><a href="{{ url('/') }}">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
         <ul class="dropdown-menu">
+          <li><a href="#">General</a></li>
           <li><a href="#">Business</a></li>
           <li><a href="#">Entertainment</a></li>
           <li><a href="#">Gaming</a></li>
