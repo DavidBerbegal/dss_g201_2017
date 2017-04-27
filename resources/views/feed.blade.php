@@ -23,11 +23,18 @@
           font-family: 'Open Sans', sans-serif;
           }
 
+          .thumbnail > img {
+              margin-left: auto;
+              margin-right: auto;
+              min-height: 260px;
+          }
+
           .thumbnail {
+              height: auto;
               position: relative;
               padding: 0px;
               margin-bottom: 20px;
-              height: 270px;
+              height: 600px;
           }
           .article-container {
             width: 33%;
@@ -76,7 +83,7 @@
             <div class="thumbnail">
               <img src="{{$art->urlImg}}" alt="">
                 <div class="caption">
-                  <h3 align="center">{{$art->title}}</h4>
+                  <h3 align="left">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>
                   <div id="header-content">
                     <p align="center">

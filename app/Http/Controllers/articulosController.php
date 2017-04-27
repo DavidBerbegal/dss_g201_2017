@@ -33,11 +33,11 @@ class articulosController extends Controller
     // vista pública para el feed principal
     public function listArticulosFeed(Request $request){
        
-        $news = DB::table('articles')->orderBy('name')->get();
+        $news = DB::table('articles')->orderBy('name')->paginate(20);
         return view('feed', ['articles' => $news, 'mensaje' => '',
                                 'order' => 'name']); 
     }
-    
+
     //búsqueda pública para el feed principal
     public function searchFeed(Request $request){
        
