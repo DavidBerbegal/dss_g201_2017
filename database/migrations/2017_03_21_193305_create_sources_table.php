@@ -18,6 +18,7 @@ class CreateSourcesTable extends Migration
             $table->string('api');
             $table->unique('api');
             $table->string('name');
+            $table->string('category');
             $table->string('description');
             $table->string('url');
             $table->string('urlLogoSmall');
