@@ -43,7 +43,7 @@ class articulosController extends Controller
        
         $title = $request->input('sName');
         $news = DB::table('articles')
-            ->where('title','LIKE', "%$title%")->get();
+            ->where('title','LIKE', "%$title%")->paginate(20);
 
         return view('feed', ['articles' => $news, 'mensaje' => 'search',
                                 'order' => 'name']); 
