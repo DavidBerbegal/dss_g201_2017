@@ -39,6 +39,23 @@ class controllerSources extends Controller
     
     }
 
+    public function listPublicSources(Request $request){
+        $fuentesAux = DB::table('sources')->orderBy('name')->get();
+        return view('fuentesPub', ['fuentes' => $fuentesAux, 'mensaje' => '',
+                                'order' => 'name']); 
+    }
+
+    public function searchPubSources(Request $request){
+       
+        $name = $request->input('sName');
+        $sources = DB::table('sources')
+            ->where('name','LIKE', "%$name%")->get();
+
+        return view('fuentesPub', ['fuentes' => $sources, 'mensaje' => '',
+                                'order' => 'name']);
+        
+    }
+
     public function showSource(Request $request)
     {
         $id = $request->input('id');

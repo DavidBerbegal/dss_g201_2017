@@ -13,6 +13,7 @@
 img{
     display: inline-block;
 }
+body{ padding-top: 70px;}
 </style>
 </head>
 <body>
@@ -35,7 +36,7 @@ img{
           <li><a href="#">Technology</a></li>
         </ul>
       </li>
-      <li><a href="#">Sources</a></li>
+      <li><a href="/fuentesPub">Sources</a></li>
       <li><form class="navbar-form navbar-left">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search news...">

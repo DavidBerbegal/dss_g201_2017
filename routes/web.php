@@ -75,3 +75,7 @@ Route::post('/usuariosUpdate', 'UsersController@updateUser');
 Route::get('/usuarios/delete', 'UsersController@deleteUser');
 Route::post('/usuarios', 'UsersController@searchUser');
 
+//RUTAS SOURCE PUBLIC
+Route::get('/fuentesPub' , 'controllerSources@listPublicSources');
+Route::get('/fuentesPub/search' , 'controllerSources@searchPubSources');
+
