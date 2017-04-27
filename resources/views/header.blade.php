@@ -55,7 +55,7 @@ body{ padding-top: 70px;}
 
     @if(Auth::check())
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
     </ul>
     @else

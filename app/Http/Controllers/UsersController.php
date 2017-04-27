@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class UsersController extends Controller
@@ -117,5 +118,14 @@ class UsersController extends Controller
             return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
         }
        
+    }
+
+    public function profile(Request $request){
+        if(Auth::check()){
+            return view('perfilUsuario');
+        }
+        else{
+            return redirect('/');
+        }
     }
 }

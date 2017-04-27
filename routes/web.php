@@ -79,3 +79,6 @@ Route::post('/usuarios', 'UsersController@searchUser');
 Route::get('/fuentesPub' , 'controllerSources@listPublicSources');
 Route::get('/fuentesPub/search' , 'controllerSources@searchPubSources');
 
+//RUTA PERFIL USUARIO 
+Route::get('/profile', 'UsersController@profile');
+
