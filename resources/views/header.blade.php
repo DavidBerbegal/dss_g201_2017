@@ -13,6 +13,7 @@
 img{
     display: inline-block;
 }
+body{ padding-top: 70px;}
 </style>
 </head>
 <body>
@@ -25,6 +26,7 @@ img{
     <li><a href="{{ url('/') }}">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
         <ul class="dropdown-menu">
+          <li><a href="#">General</a></li>
           <li><a href="#">Business</a></li>
           <li><a href="#">Entertainment</a></li>
           <li><a href="#">Gaming</a></li>
@@ -35,7 +37,10 @@ img{
           <li><a href="#">Technology</a></li>
         </ul>
       </li>
-      <li><a href="#">Sources</a></li>
+      <li><a href="/fuentesPub">Sources</a></li>
+      @if(Auth::check())
+      <li><a href="/fuentesPub">Bookmarks</a></li>
+      @endif
       <li><form class="navbar-form navbar-left">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search news...">
@@ -50,7 +55,7 @@ img{
 
     @if(Auth::check())
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
     </ul>
     @else
