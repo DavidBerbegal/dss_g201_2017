@@ -41,10 +41,11 @@
       !-->
   </head>
   <body>
+      <!--Añadir esta linea para incluir pagina maestra!-->
       @extends('header')
 
       <div class="container" id="tourpackages-carousel">
-      <h1 style="color:gray;">Our sources</h1>
+      <h1 align="center" style="color:gray;">Our sources</h1>
       <h4 align="justify">Below is a list that contains all the sources from which we receive the news we use. If you are interested in a particular source, you can subscribe to it to see their news in your feed. To do this, you need to be logged in
           and find the source that interests you, then click on its subscribe button.</h4>
       <h2 style="color:gray">Search sources:</h2>

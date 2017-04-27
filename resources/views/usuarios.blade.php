@@ -14,6 +14,7 @@
     </head>
     
     <body>
+    <!--Añadir esta linea para incluir pagina maestra!-->
     @extends('header')
     <br><br><br>
                  @if($mensaje != "")
