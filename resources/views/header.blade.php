@@ -38,6 +38,9 @@ body{ padding-top: 70px;}
         </ul>
       </li>
       <li><a href="/fuentesPub">Sources</a></li>
+      @if(Auth::check())
+      <li><a href="/fuentesPub">Bookmarks</a></li>
+      @endif
       <li><form class="navbar-form navbar-left">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search news...">
