@@ -51,7 +51,7 @@ class controllerSources extends Controller
         $sources = DB::table('sources')
             ->where('name','LIKE', "%$name%")->get();
 
-        return view('fuentesPub', ['fuentes' => $sources, 'mensaje' => '',
+        return view('fuentesPub', ['fuentes' => $sources, 'mensaje' => 'search',
                                 'order' => 'name']);
         
     }

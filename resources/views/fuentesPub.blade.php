@@ -53,7 +53,6 @@
         <div class="col">
           <form action="{{ action('controllerSources@searchPubSources')}}" name="search"
                      method="GET">
-                    {{ csrf_field() }}
             <div class="input-group">
                 <input type="text" name="sName" id="sName" class="form-control" placeholder="Search sources...">
                 <div class="input-group-btn">
@@ -65,10 +64,10 @@
           </form>
 
       </div>
-      <br><br>
+      <br>
       @if(sizeof($fuentes) == 0)
-        <br>
-        <div><h3 align="center">There are no matches for these search parameters</h3></div>
+        <div><h3 align="center">There are no matches for these search parameters</h3>
+        <p align="center"><a href="/fuentesPub" class="btn btn-primary" role="button">Back</a></p></div>
       @endif
       <div class="row">
           @foreach($fuentes as $fuente)
@@ -80,9 +79,9 @@
                   <div id="header-content">
                     <p align="center">
                       @if(Auth::check())
-                      <a href="#" class="btn btn-info btn-xs" role="button">Suscribe</a>
+                      <a href="#" class="btn btn-succes btn-xs" role="button">Suscribe</a>
                       @endif
-                      <a href="{{$fuente->url}}" target="_blank" class="btn btn-default btn-xs" role="button">Go to the site 
+                      <a href="{{$fuente->url}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to the site 
                       </a>
                       
                     </p>
