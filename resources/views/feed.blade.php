@@ -40,9 +40,37 @@
             width: 33%;
           }
           #header-content {
+           
+            display: flex;
             position: absolute;
             bottom: 0px;
-            right: 20%;
+            right: 15%;
+          }
+          .boton-fuente {
+            align: center;
+            margin-left: 50px;
+          }
+          .votos {  
+            align: center;
+            margin-right: 3px;
+          }
+          .votos-negativos {
+            color: #fff;
+            background-color: #ff6549;
+            border-color: #ff6549;
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+          }
+          .votos-positivos {
+            color: #fff;
+            background-color: #30cc53;
+            border-color: #30cc53;
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
           }
 
       </style>
@@ -86,7 +114,15 @@
                   <h3 align="left">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>
                   <div id="header-content">
-                    <p align="center">
+                    <p class="votos">
+                      <p class = "votos-positivos">{{$art->positiveRate}} 
+                      </p>
+                    </p>
+                    <p class="votos">
+                      <p class="votos-negativos">{{$art->negativeRate}} 
+                      </p>
+                    </p>                    
+                    <p class="boton-fuente">
                       <a href="{{$art->urlNew}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to source 
                       </a>
                     </p>

@@ -11,17 +11,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        
-        <div class="title m-b-md">
-            Fuentes
-        </div>
 
         <div class="links">
-                <a href="{{ url('/') }}">Home</a>
                 <a href="{{ url('/articulos') }}">Artículos</a>
                 <a href="{{ url('/usuarios') }}">Usuarios</a>
                 <a href="{{ url('/categorias') }}">Categorías</a>
-                <a href="{{ url('/fuentes') }}">Fuentes</a>
                 <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                 <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
         </div>
@@ -45,6 +39,7 @@
         </form> 
     </head>
     <body>
+         @extends('header')
         <div class="aux flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
     <body>
+         @extends('header')
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -24,13 +25,11 @@
             <div class="flex-center"><div>
                 
                 <div class="flex-center links">
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="{{ url('/fuentes') }}">Fuentes</a>
                     <a href="{{ url('/articulos') }}">Artículos</a>
                     <a href="{{ url('/usuarios') }}">Usuarios</a>
                     <a href="{{ url('/categorias') }}">Categorías</a>
+                    <a href="{{ url('/fuentes') }}">Fuentes</a>
                     <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                    <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
                  <div>
                     <hr>

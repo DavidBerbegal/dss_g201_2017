@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/admin', function () {
+    return view('index');
+});
+
 // Rutas Artículos
 Route::any('/articulos', 'articulosController@index');
 Route::post('/articulos', 'articulosController@delete');
