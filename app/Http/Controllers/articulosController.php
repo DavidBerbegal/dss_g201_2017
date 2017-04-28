@@ -34,6 +34,13 @@ class articulosController extends Controller
     public function listArticulosFeed(Request $request){
        
         $news = DB::table('articles')->orderBy('name')->paginate(20);
+        foreach ($news as $new){
+
+            if((strlen($new->description)+strlen($new->title))> 130){
+                $desc = substr($new->description, 0, 90). "...";
+                $new->description = $desc;
+            }
+        }
         return view('feed', ['articles' => $news, 'mensaje' => '',
                                 'order' => 'name']); 
     }
