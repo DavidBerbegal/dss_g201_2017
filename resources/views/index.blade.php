@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Portal de noticias</title>
+        <title>Admin-mod</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -31,17 +31,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Portal de noticias
+                    Panel de Administración
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/') }}">Home</a>
                     <a href="{{ url('/articulos') }}">Artículos</a>
                     <a href="{{ url('/usuarios') }}">Usuarios</a>
                     <a href="{{ url('/categorias') }}">Categorías</a>
                     <a href="{{ url('/fuentes') }}">Fuentes</a>
-                    <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                    <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
+                    <a href="{{ url('/suscripcion-categorias') }}">Suscrip-Categorías</a>
+                    <a href="{{ url('/suscripcion-fuentes') }}">Suscrip-Fuentes</a>
                 </div>
             </div>
         </div>

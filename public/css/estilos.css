@@ -57,6 +57,12 @@ html, body {
     text-align: center;
 }
 
+.links {
+    display:flex;
+    margin-top: 20px;
+    flex: center;
+}
+
 .links > a {
     color: #636b6f;
     padding: 0 25px;
