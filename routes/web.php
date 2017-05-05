@@ -90,3 +90,5 @@ Route::get('/feed/search' , 'articulosController@searchFeed');
 //RUTA PERFIL USUARIO 
 Route::get('/profile', 'UsersController@profile');
 
+//RUTAS DESDE MASTER
+Route::get('feed/cat/{cat}');
