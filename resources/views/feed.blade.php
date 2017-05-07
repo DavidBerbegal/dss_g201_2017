@@ -34,7 +34,7 @@
               position: relative;
               padding: 0px;
               margin-bottom: 20px;
-              height: 550px;
+              height: 580px;
           }
           .article-container {
             width: 33%;
@@ -43,6 +43,7 @@
            
             display: flex;
             position: absolute;
+            align-items: center;
             bottom: 0px;
             right: 15%;
           }
@@ -109,23 +110,38 @@
           @foreach($articles as $art)
           <div class="col-xs-18 col-sm-6 col-md-3">
             <div class="thumbnail">
+              <p align="justify">{{$art->date}}</p>
               <img src="{{$art->urlImg}}" alt="">
                 <div class="caption">
                   <h3 align="left">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>
                   <div id="header-content">
+                    <div style="margin-right:10px;text-align:center">
+
+                      <a href="{{ action('articulosController@upvote', ['id' =>  $art->id ]) }}">
+                      <span class="glyphicon glyphicon-thumbs-up"></span></a>
+
                     <p class="votos">
                       <p class = "votos-positivos">{{$art->positiveRate}} 
                       </p>
                     </p>
+                    </div style="text-align:center">
+                    <div>
+                      
+                        <a href="{{ action('articulosController@downvote', ['id' =>  $art->id ]) }}">
+                        <span class="glyphicon glyphicon-thumbs-down"></span></a>
+
                     <p class="votos">
                       <p class="votos-negativos">{{$art->negativeRate}} 
                       </p>
-                    </p>                    
-                    <p class="boton-fuente">
-                      <a href="{{$art->urlNew}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to source 
-                      </a>
-                    </p>
+                    </p>  
+                    </div>  
+                    <div>                
+                      <p class="boton-fuente">
+                        <a href="{{$art->urlNew}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to source 
+                        </a>
+                      </p>
+                    </div>
                   </div>
               </div>
             </div>

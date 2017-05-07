@@ -45,6 +45,40 @@ class articulosController extends Controller
                                 'order' => 'name']); 
     }
 
+    public function downvote(Request $request){
+        $mensaje = "";      
+        
+        try{
+            $id = $request->input('id');
+            $article = Article::findOrFail($id);
+            $article->negativeRate++;
+            $article->save();
+            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+        }
+        catch (ModelNotFoundException $e)
+        {
+            $mensaje = "Ha ocurrido un error al intentar votar el artículo";
+            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+        }
+    }
+
+    public function upvote(Request $request){
+        $mensaje = "";      
+        
+        try{
+            $id = $request->input('id');
+            $article = Article::findOrFail($id);
+            $article->positiveRate++;
+            $article->save();
+            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+        }
+        catch (ModelNotFoundException $e)
+        {
+            $mensaje = "Ha ocurrido un error al intentar votar el artículo";
+            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+        }
+    }
+
     //búsqueda pública para el feed principal
     public function searchFeed(Request $request){
        
