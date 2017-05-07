@@ -23,6 +23,8 @@ Route::get('/admin', function () {
 Route::any('/articulos', 'articulosController@index');
 Route::post('/articulos', 'articulosController@delete');
 Route::get('/articulos', 'articulosController@index');
+Route::get('/upvote', 'articulosController@upvote');
+Route::get('/downvote', 'articulosController@downvote');
 
 // Rutas Categorias
 
