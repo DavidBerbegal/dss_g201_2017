@@ -21,7 +21,7 @@ class ArticlesTableSeeder extends Seeder
         $jsonFuentes = json_decode($fuentes);   
 
         if($jsonFuentes->status = "ok"){
-            
+            $this->command->getOutput()->progressStart(60);
             foreach ($jsonFuentes->sources as $source){
 
                 //hacemos la consulta http a la api sobre los artículos
@@ -73,7 +73,11 @@ class ArticlesTableSeeder extends Seeder
                 else{
                     echo "La consulta HTTP a la API ha fallado";
                 }
+            
+             $this->command->getOutput()->progressAdvance();
             }
         }
+    
+    $this->command->getOutput()->progressFinish();
     }
 }
