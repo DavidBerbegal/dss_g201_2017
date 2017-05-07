@@ -42,16 +42,19 @@ body{ padding-top: 70px;}
       @if(Auth::check())
       <li><a href="/fuentesPub">Bookmarks</a></li>
       @endif
-      <li><form class="navbar-form navbar-left">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search news...">
-            <div class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </div>
-    </form></li>
+      <li>
+          <form class="navbar-form navbar-left" action="{{ action('articulosController@searchFeed')}}" name="search"
+                     method="GET">
+            <div class="input-group">
+                <input type="text" name="sName" id="sName" class="form-control" placeholder="Search article...">
+                <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+      </li>
     </ul>
 
     @if(Auth::check())
