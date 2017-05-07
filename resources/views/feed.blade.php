@@ -109,19 +109,32 @@
           @foreach($articles as $art)
           <div class="col-xs-18 col-sm-6 col-md-3">
             <div class="thumbnail">
+              <p align="justify">{{$art->date}}</p>
               <img src="{{$art->urlImg}}" alt="">
                 <div class="caption">
                   <h3 align="left">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>
                   <div id="header-content">
+                    <div style="margin-right:10px;text-align:center">
+                      <p class="votos">
+                      <a href="{{$art->urlNew}}" target="_blank" class="glyphicon glyphicon-thumbs-up" role="button"> 
+                      </a>
+                    </p>
                     <p class="votos">
                       <p class = "votos-positivos">{{$art->positiveRate}} 
                       </p>
                     </p>
+                    </div style="text-align:center">
+                    <div>
+                      <p class="votos">
+                      <a href="{{$art->urlNew}}" target="_blank" class="glyphicon glyphicon-thumbs-down" role="button"> 
+                      </a>
+                    </p>
                     <p class="votos">
                       <p class="votos-negativos">{{$art->negativeRate}} 
                       </p>
-                    </p>                    
+                    </p>  
+                    </div>                  
                     <p class="boton-fuente">
                       <a href="{{$art->urlNew}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to source 
                       </a>
