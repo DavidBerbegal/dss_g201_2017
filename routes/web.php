@@ -52,12 +52,12 @@ Route::get('/nuevaFuente', function() {
 }) -> middleware('auth');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::any('/fuentes', 'controllerSources@index');
-    Route::post('/fuentes', 'controllerSources@destroy');
-    Route::get('/fuentes', 'controllerSources@listSources');
-    Route::post('/nuevaFuente', 'controllerSources@create');
-    Route::get('/modificarFuente', 'controllerSources@showSource');
-    Route::post('/modificarFuente', 'controllerSources@update');
+    Route::any('/fuentes', 'fuentesController@index');
+    Route::post('/fuentes', 'fuentesController@destroy');
+    Route::get('/fuentes', 'fuentesController@listSources');
+    Route::post('/nuevaFuente', 'fuentesController@create');
+    Route::get('/modificarFuente', 'fuentesController@showSource');
+    Route::post('/modificarFuente', 'fuentesController@update');
 });
 
 // Rutas Sucripción Categoría
@@ -76,13 +76,13 @@ Route::group(['middleware' => 'auth'], function() {
 
 // Rutas de Usuario
 Route::group(['middleware' => 'auth'], function() {
-    Route::post('/usuarios', 'UsersController@deleteUser');
-    Route::get('/usuarios', 'UsersController@listUsers');
-    Route::post('/usuariosCreateUpdate', 'UsersController@createUser');
-    Route::get('/usuariosUpdate', 'UsersController@showUser');
-    Route::post('/usuariosUpdate', 'UsersController@updateUser');
-    Route::get('/usuarios/delete', 'UsersController@deleteUser');
-    Route::post('/usuarios', 'UsersController@searchUser');
+    Route::post('/usuarios', 'usuariosController@deleteUser');
+    Route::get('/usuarios', 'usuariosController@listUsers');
+    Route::post('/usuariosCreateUpdate', 'usuariosController@createUser');
+    Route::get('/usuariosUpdate', 'usuariosController@showUser');
+    Route::post('/usuariosUpdate', 'usuariosController@updateUser');
+    Route::get('/usuarios/delete', 'usuariosController@deleteUser');
+    Route::post('/usuarios', 'usuariosController@searchUser');
 });
 
 Route::get('/usuariosCreateUpdate', function () {
@@ -90,8 +90,8 @@ Route::get('/usuariosCreateUpdate', function () {
 }) -> middleware('auth');
 
 //RUTAS SOURCE PUBLIC
-Route::get('/fuentesPub' , 'controllerSources@listPublicSources');
-Route::get('/fuentesPub/search' , 'controllerSources@searchPubSources');
+Route::get('/fuentesPub' , 'fuentesController@listPublicSources');
+Route::get('/fuentesPub/search' , 'fuentesController@searchPubSources');
 
 //RUTAS FEED
 Route::get('/feed' , 'articulosController@listArticulosFeed');

@@ -37,7 +37,7 @@
                 </a><br><br></div>
                 <div>
                     
-                   <form action="{{ action('UsersController@listUsers')}}" name="sortBy"
+                   <form action="{{ action('usuariosController@listUsers')}}" name="sortBy"
                      method="GET">
                     
                     <label for="order">Ordenar usuarios por:</label>
@@ -49,7 +49,7 @@
                     <button type="submit" name="sortBy">Ordenar</button>
                 </form>
                 
-                <h3>Buscar usuario</h3><form action="{{ action('UsersController@searchUser')}}" name="search"
+                <h3>Buscar usuario</h3><form action="{{ action('usuariosController@searchUser')}}" name="search"
                      method="POST">
                     {{ csrf_field() }}
                     <label for="sName">Nombre:</label>
@@ -84,9 +84,9 @@
                             <td>{{$usuario->email}}</td>
                             <td>{{$usuario->password}}</td>
                             
-                            <td><a href="{{ action('UsersController@showUser', ['id' =>  $usuario->id ]) }}">
+                            <td><a href="{{ action('usuariosController@showUser', ['id' =>  $usuario->id ]) }}">
                             <span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="{{ action('UsersController@deleteUser', ['id' =>  $usuario->id ]) }}">
+                            <td><a href="{{ action('usuariosController@deleteUser', ['id' =>  $usuario->id ]) }}">
                             <span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                     @endforeach

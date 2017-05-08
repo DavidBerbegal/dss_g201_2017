@@ -55,7 +55,7 @@
             @endif
 
         <div class="flex-center">
-            <form action="{{ action('controllerSources@update') }}" name="update"
+            <form action="{{ action('fuentesController@update') }}" name="update"
             method="POST">
             {{ csrf_field() }}
                 <table>

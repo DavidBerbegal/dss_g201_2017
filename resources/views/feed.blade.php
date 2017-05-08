@@ -118,18 +118,21 @@
                   <div id="header-content">
                     <div style="margin-right:10px;text-align:center">
 
+                    @if (Auth::check())
                       <a href="{{ action('articulosController@upvote', ['id' =>  $art->id ]) }}">
                       <span class="glyphicon glyphicon-thumbs-up"></span></a>
-
+                    @endif
+                    
                     <p class="votos">
                       <p class = "votos-positivos">{{$art->positiveRate}} 
                       </p>
                     </p>
                     </div style="text-align:center">
                     <div>
-                      
+                      @if (Auth::check())
                         <a href="{{ action('articulosController@downvote', ['id' =>  $art->id ]) }}">
                         <span class="glyphicon glyphicon-thumbs-down"></span></a>
+                      @endif
 
                     <p class="votos">
                       <p class="votos-negativos">{{$art->negativeRate}} 

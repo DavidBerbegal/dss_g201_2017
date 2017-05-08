@@ -28,7 +28,7 @@
         </div>
         @endif
 
-        <form class="form-class" action="{{ action('controllerSources@listSources')}}" name="sortBy"
+        <form class="form-class" action="{{ action('fuentesController@listSources')}}" name="sortBy"
                 method="GET">
             <label class="ordenar-label" for="order">Ordenar fuentes por:</label>
             <select class="bold" name="order" id='order'>
@@ -67,11 +67,11 @@
                             <td>{{$mostrarFuente->id}}</td>
                             <td>{{$mostrarFuente->name}}</td>
                             <td class="botones">
-                                <a type="button" class="btn btn-default" href="{{ action('controllerSources@showSource', ['id' => $mostrarFuente->id ])}}">
+                                <a type="button" class="btn btn-default" href="{{ action('fuentesController@showSource', ['id' => $mostrarFuente->id ])}}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                                 <a>
-                                    <form action="{{ action('controllerSources@destroy', ['id' => $mostrarFuente->id ])}}" name="delete"
+                                    <form action="{{ action('fuentesController@destroy', ['id' => $mostrarFuente->id ])}}" name="delete"
                                         method="POST">
                                         {{ csrf_field() }}
                                         
@@ -92,7 +92,7 @@
         </div>
     </body>
     <div class="botonAgregar">
-        <a type="button" class="btn btn-default" href="{{ url('/fuentes/nuevaFuente')}}">
+        <a type="button" class="btn btn-default" href="{{ url('/nuevaFuente')}}">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>

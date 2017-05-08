@@ -70,7 +70,7 @@
                 </ul></div>
             @endif
 
-            <div class="flex-center"><form action="{{ action('UsersController@updateUser') }}" name="update"
+            <div class="flex-center"><form action="{{ action('usuariosController@updateUser') }}" name="update"
                 method="POST">
                 {{ csrf_field() }}
                 <table>

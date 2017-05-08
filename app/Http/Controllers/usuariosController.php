@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
-class UsersController extends Controller
+class usuariosController extends Controller
 {
     public function listUsers(Request $request) {
         if($request->has('users')){
