@@ -45,9 +45,8 @@
                     <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
-                
-                <br>
-               _________________________________________________________________________________________________________________________________________________________________________
+            
+                <hr>
                 <br>
     
             @if (Route::has('login'))

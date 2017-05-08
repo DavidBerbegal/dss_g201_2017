@@ -45,7 +45,7 @@
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
                 
-                <br><hr> <br>
+                <hr> <br>
     
             @if (Route::has('login'))
                 <div class="top-right links">
