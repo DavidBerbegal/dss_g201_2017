@@ -17,6 +17,10 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+<<<<<<< aa6219349a13b08d655ffe60941bf6120af3dcd4
+=======
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+>>>>>>> Anyadida parte del login y registro de un usuario. Configuradas las rutas existentes que necesiten un login para poder ser visualizadas y utilizadas
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
     'App\\Http\\Controllers\\articulosController' => $baseDir . '/app/Http/Controllers/articulosController.php',
     'App\\Http\\Controllers\\categoriasController' => $baseDir . '/app/Http/Controllers/categoriasController.php',
@@ -2168,7 +2172,10 @@ return array(
     'Psy\\CodeCleaner\\CalledClassPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/CalledClassPass.php',
     'Psy\\CodeCleaner\\CodeCleanerPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/CodeCleanerPass.php',
     'Psy\\CodeCleaner\\ExitPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/ExitPass.php',
+<<<<<<< aa6219349a13b08d655ffe60941bf6120af3dcd4
     'Psy\\CodeCleaner\\FinalClassPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/FinalClassPass.php',
+=======
+>>>>>>> Anyadida parte del login y registro de un usuario. Configuradas las rutas existentes que necesiten un login para poder ser visualizadas y utilizadas
     'Psy\\CodeCleaner\\FunctionReturnInWriteContextPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/FunctionReturnInWriteContextPass.php',
     'Psy\\CodeCleaner\\ImplicitReturnPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/ImplicitReturnPass.php',
     'Psy\\CodeCleaner\\InstanceOfPass' => $vendorDir . '/psy/psysh/src/Psy/CodeCleaner/InstanceOfPass.php',
@@ -2292,7 +2299,10 @@ return array(
     'Ramsey\\Uuid\\Converter\\Time\\DegradedTimeConverter' => $vendorDir . '/ramsey/uuid/src/Converter/Time/DegradedTimeConverter.php',
     'Ramsey\\Uuid\\Converter\\Time\\PhpTimeConverter' => $vendorDir . '/ramsey/uuid/src/Converter/Time/PhpTimeConverter.php',
     'Ramsey\\Uuid\\DegradedUuid' => $vendorDir . '/ramsey/uuid/src/DegradedUuid.php',
+<<<<<<< aa6219349a13b08d655ffe60941bf6120af3dcd4
     'Ramsey\\Uuid\\Exception\\InvalidUuidStringException' => $vendorDir . '/ramsey/uuid/src/Exception/InvalidUuidStringException.php',
+=======
+>>>>>>> Anyadida parte del login y registro de un usuario. Configuradas las rutas existentes que necesiten un login para poder ser visualizadas y utilizadas
     'Ramsey\\Uuid\\Exception\\UnsatisfiedDependencyException' => $vendorDir . '/ramsey/uuid/src/Exception/UnsatisfiedDependencyException.php',
     'Ramsey\\Uuid\\Exception\\UnsupportedOperationException' => $vendorDir . '/ramsey/uuid/src/Exception/UnsupportedOperationException.php',
     'Ramsey\\Uuid\\FeatureSet' => $vendorDir . '/ramsey/uuid/src/FeatureSet.php',
