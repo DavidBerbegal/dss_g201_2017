@@ -9,7 +9,7 @@ use Illuminate\Database\QueryException;
 use App\Source;
 use Carbon\Carbon;
 
-class controllerSources extends Controller
+class fuentesController extends Controller
 {
     public function index(Request $request)
     {

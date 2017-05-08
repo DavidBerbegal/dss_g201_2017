@@ -52,7 +52,7 @@
       <div class="row">
 
         <div class="col">
-          <form action="{{ action('controllerSources@searchPubSources')}}" name="search"
+          <form action="{{ action('fuentesController@searchPubSources')}}" name="search"
                      method="GET">
             <div class="input-group">
                 <input type="text" name="sName" id="sName" class="form-control" placeholder="Search sources...">

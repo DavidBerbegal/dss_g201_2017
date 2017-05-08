@@ -72,7 +72,7 @@
 
         <br>
         <div class="flex-center">
-        <form action="{{ action('UsersController@createUser') }}" name="create"
+        <form action="{{ action('usuariosController@createUser') }}" name="create"
             method="POST">
             {{ csrf_field() }}
             <table>
