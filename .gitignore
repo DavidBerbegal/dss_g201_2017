@@ -4,7 +4,7 @@
 /storage/*.key
 /vendor
 /.idea
-database/database.sqlite
+/database/database.sqlite
 .phar
 Homestead.json
 Homestead.yaml
