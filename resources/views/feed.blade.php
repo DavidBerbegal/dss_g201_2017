@@ -35,9 +35,11 @@
               padding: 0px;
               margin-bottom: 20px;
               height: 580px;
+             
           }
           .article-container {
             width: 33%;
+            
           }
           #header-content {
            
