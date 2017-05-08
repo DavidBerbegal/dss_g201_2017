@@ -44,7 +44,7 @@
                     <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
                 </div>
                 
-                <br>
+
                 <hr>
 
     
