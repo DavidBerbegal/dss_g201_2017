@@ -17,7 +17,5 @@
     </head>
     <body>
         @extends('header')
-        
-
     </body>
 </html>
