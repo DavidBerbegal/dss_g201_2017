@@ -22,6 +22,7 @@ Route::get('/admin', function () {
 // Rutas Artículos
 Route::get('/upvote', 'articulosController@upvote');
 Route::get('/downvote', 'articulosController@downvote');
+Route::get('/buscaCategoria/{idCat}', 'articulosController@buscaCategoria');
 
 
 Route::group(['middleware' => 'auth'], function() {

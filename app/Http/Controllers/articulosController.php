@@ -30,6 +30,23 @@ class articulosController extends Controller
         
     }
 
+    public function buscaCategoria($idCat){
+
+        $news = DB::table('articles')
+            ->where('category_id','LIKE', "%$idCat%")->paginate(20);
+
+        foreach ($news as $new){
+
+            if((strlen($new->description)+strlen($new->title))> 130){
+                $desc = substr($new->description, 0, 90). "...";
+                $new->description = $desc;
+            }
+        }
+
+        return view('feed', ['articles' => $news, 'mensaje' => 'search',
+                                'order' => 'name']); 
+    }
+
     // vista pública para el feed principal
     public function listArticulosFeed(Request $request){
        
