@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         //Añadimos entradas de prueba
         
         
-        $nombres = ['antonio', 'pedro', 'jose', 'maria', 'david', 'marcelo',
+        $nombres = ['admin', 'antonio', 'pedro', 'jose', 'maria', 'david', 'marcelo',
                     'adrian', 'alvaro', 'leonardo', 'marta', 'julian', 'angela',
                     'natalia', 'manuel', 'enrique', 'eva', 'eric', 'nestor', 
                     'oscar', 'ofelia', 'olivia', 'daniel', 'diana', 'dolores',
@@ -30,7 +30,8 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => $nombre,
                 'email' => $nombre . '@gmail.com',
-                'password' => $nombre . 'Pass'
+                'password' => bcrypt($nombre . 'Pass'),
+                'privilegios' => 'administrador'
             ]);
         }
     }
