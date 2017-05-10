@@ -41,12 +41,9 @@ class ArticlesTableSeeder extends Seeder
                             else{
                                 $author = $article->author;
                             }
-                            if(empty($article->publishedAt)){
-                                $date = Carbon::now();
-                            }
-                            else{
-                                $date = $article->publishedAt;
-                            }
+
+                            $date = Carbon::now()->toFormattedDateString();
+
 
                             $sourceId = DB::table('sources')->where('name', $source->name)->first()->id;
                             $catId = DB::table('categories')->where('name', $source->category)->first()->id;
@@ -70,6 +67,7 @@ class ArticlesTableSeeder extends Seeder
                             ]);   
                     }
                 }
+        
                 else{
                     echo "La consulta HTTP a la API ha fallado";
                 }

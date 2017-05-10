@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('description')->nullable();
             $table->string('urlNew');
             $table->string('urlImg')->nullable();
-            $table->date('date')->nullable();
+            $table->string('date');
             $table->integer('positiveRate');
             $table->integer('negativeRate');
             $table->string('language');
@@ -31,8 +31,8 @@ class CreateArticlesTable extends Migration
                 ->onDelete('cascade');;
             $table->foreign('source_id')->references('id')->on('sources')
                 ->onDelete('cascade');
-            //$table->rememberToken();
             $table->timestamps('created_at');
+            //$table->rememberToken();
         });
     }
 

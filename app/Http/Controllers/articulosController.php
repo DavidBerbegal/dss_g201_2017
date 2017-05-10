@@ -53,12 +53,12 @@ class articulosController extends Controller
             $article = Article::findOrFail($id);
             $article->negativeRate++;
             $article->save();
-            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+            return back()->withInput();
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar votar el artículo";
-            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+            return back()->withInput();
         }
     }
 
@@ -70,12 +70,12 @@ class articulosController extends Controller
             $article = Article::findOrFail($id);
             $article->positiveRate++;
             $article->save();
-            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+            return back()->withInput();
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar votar el artículo";
-            return redirect()->action('articulosController@listArticulosFeed', ['msg' => $mensaje]);
+            return back()->withInput();
         }
     }
 
