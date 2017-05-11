@@ -63,19 +63,20 @@ class usuariosController extends Controller
             $user = new User();
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            $user->password = $request->input('password');
+            $user->password = bcrypt($request->input('password'));
+            $user->privilegios = $request->input('privilegios');
             $user->save();
             $mensaje = "El usuario se ha creado correctamente";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }
         catch(RuntimeException $e){
             $mensaje = "Error al crear el usuario";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }
 
         catch(QueryException $e){
             $mensaje = "Error al crear el usuario";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }
         
     }
@@ -92,13 +93,14 @@ class usuariosController extends Controller
             $user = User::findOrFail($id);
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            $user->password = $request->input('password');
+            $user->password = bcrypt($request->input('password'));
+            $user->privilegios = $request->input('privilegios');
             $user->save();
             $mensaje = "El usuario con ID " . $id . " se ha modificado con éxito";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }catch(ModelNotFoundException $e){
             $mensaeje = "Ha ocurrido un error al intentar modificar el usuario";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }
       
            
@@ -112,10 +114,10 @@ class usuariosController extends Controller
             $user = User::findOrFail($id);
             $user->delete();
             $mensaje = "El usuario con ID " . $id . " ha sido borrado con éxito";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }catch (ModelNotFoundException $e){
             $mensaje = "Ha ocurrido un error al intentar borrar el usuario. Vuelve a intentarlo";
-            return redirect()->action('UsersController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
         }
        
     }

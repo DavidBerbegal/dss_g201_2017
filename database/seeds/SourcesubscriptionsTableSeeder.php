@@ -11,6 +11,7 @@ class SourcesubscriptionsTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         for($i = 1; $i < 20; $i++){
             for($j = 1; $j < 4; $j++){
                 DB::table('sourcesubscriptions')->insert([
@@ -27,5 +28,6 @@ class SourcesubscriptionsTableSeeder extends Seeder
                 ]);   
             }
         }
+        */
     }
 }

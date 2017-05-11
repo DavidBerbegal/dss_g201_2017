@@ -16,21 +16,15 @@ class UsersTableSeeder extends Seeder
         //Añadimos entradas de prueba
         
         
-        $nombres = ['antonio', 'pedro', 'jose', 'maria', 'david', 'marcelo',
-                    'adrian', 'alvaro', 'leonardo', 'marta', 'julian', 'angela',
-                    'natalia', 'manuel', 'enrique', 'eva', 'eric', 'nestor', 
-                    'oscar', 'ofelia', 'olivia', 'daniel', 'diana', 'dolores',
-                    'domingo', 'lucia', 'laura', 'leonor', 'leticia', 'lidia',
-                    'lucio', 'luis', 'jorge', 'javier', 'lucas', 'lorenzo', 'fernando',
-                    'pablo', 'paloma', 'pilar', 'jacinto', 'gema', 'gracia', 'gaspar',
-                    'gabriel', 'gregorio'];
+        $nombres = ['david', 'leo', 'adri', 'alvaro', 'carlos'];
 
         foreach($nombres as $nombre){
 
             DB::table('users')->insert([
                 'name' => $nombre,
                 'email' => $nombre . '@gmail.com',
-                'password' => $nombre . 'Pass'
+                'password' => bcrypt($nombre . 'Pass'),
+                'privilegios' => 'administrador'
             ]);
         }
     }

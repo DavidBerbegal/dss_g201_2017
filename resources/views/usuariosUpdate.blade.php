@@ -90,6 +90,17 @@
                         <td><label for="password">Password:</label></td>
                         <td><input type="text" name="password" id="password" value= {{ $password }}><br><br></td>
                     </tr>
+                    <tr>
+                        <td>
+                            <label for="privilegios">Privilegios:</label>
+                        </td>
+                        <td>
+                            <select name=privilegios id='privilegios'>
+                                <option selected value="administrador">Administrador</option>
+                                <option value="usuario">Usuario</option>
+                            </select>
+                        </td>
+                    </tr>
                 </table>
                 <div class="flex-center"><button type="submit" name="update">Modificar</button></div>
             </form><div>

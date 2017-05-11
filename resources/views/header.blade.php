@@ -23,7 +23,13 @@ body{ padding-top: 70px;}
       <a class="navbar-brand" href="{{ url('/') }}"><img src="{{url('/images/logo.png')}}" alt ="Image" height="25" width="25"/> </img></a>
     </div>
     <ul class="nav navbar-nav">
-    <li><a href="{{ url('/admin') }}">Admin</a></li>
+
+    @if(Auth::user()['privilegios'] == "administrador")
+      <li>
+        <a href="{{ url('/admin') }}">Admin</a>
+      </li>
+    @endif
+
     <li><a href="{{ url('/feed') }}">Feed</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -65,6 +71,9 @@ body{ padding-top: 70px;}
           <span class="glyphicon glyphicon-log-out"></span> 
             Log out
         </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          {{ csrf_field() }}
+        </form>
       </li>
     </ul>
     @else

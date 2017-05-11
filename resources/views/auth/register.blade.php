@@ -61,6 +61,12 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('privilegios') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="privilegios" type="hidden" class="form-control" name="privilegios" value="usuario" required>
+                            </div> 
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

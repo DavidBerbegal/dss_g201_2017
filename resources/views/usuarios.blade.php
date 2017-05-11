@@ -66,6 +66,7 @@
                             <th><h4>Name:</h4></th>
                             <th><h4>Email:</h4></th>
                             <th><h4>Password:</h4></th>
+                            <th><h4>Privilegio:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +84,7 @@
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->email}}</td>
                             <td>{{$usuario->password}}</td>
+                            <td>{{$usuario->privilegios}}</td>
                             
                             <td><a href="{{ action('usuariosController@showUser', ['id' =>  $usuario->id ]) }}">
                             <span class="glyphicon glyphicon-pencil"></span></a></td>
