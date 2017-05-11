@@ -1,3 +1,4 @@
+<!--@extends('layouts.app')-->
 @extends('header')
 
 @section('content')
@@ -37,19 +38,7 @@
                                 @endif
                             </div>
                         </div>
-                        <!--
-                        <div>
-                            <td>
-                                <label for="privilegios" class="col-md-4 control-label">Privilegios</label>
-                            </td>
-                            <td>
-                                <select name=privilegios id='privilegios'>
-                                    <option selected value="usuario">Usuario</option>
-                                    <option value="usuario">Usuario</option>
-                                </select>
-                            </td>
-                        </div>
-                        -->
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -70,6 +59,12 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('privilegios') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="privilegios" type="hidden" class="form-control" name="privilegios" value="usuario" required>
+                            </div> 
                         </div>
 
                         <div class="form-group">

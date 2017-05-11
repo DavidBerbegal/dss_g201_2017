@@ -11,7 +11,7 @@ class BookmarksTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        /*
         //Añadimos entradas de prueba
         for($i = 5; $i < 20; $i++){
             for($j = 5; $j < 40; $j++){
@@ -21,7 +21,6 @@ class BookmarksTableSeeder extends Seeder
                 ]); 
             }
         }
-
-
+        */
     }
 }
