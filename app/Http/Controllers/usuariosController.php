@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Categorysubscription;
+use App\Sourcesubscription;
 
 class usuariosController extends Controller
 {
@@ -122,12 +124,27 @@ class usuariosController extends Controller
        
     }
 
-    public function profile(Request $request){
+    public function showProfile(Request $request){
         if(Auth::check()){
-            return view('perfilUsuario');
+            $id = Auth::user()->id;
+
+            //$categories = DB::table('categorysubscriptions')
+                //->where('user_id', '=', $id)->get();
+            $categories = Categorysubscription::where('user_id', $id)
+               ->get();
+            
+            //$sources = DB::table('sourcesubscriptions')
+                //->where('user_id', '=', $id)->get();
+            
+            $sources = Sourcesubscription::where('user_id', $id)
+               ->get();
+
+            return view('perfilUsuario', ['categories' => $categories, 'sources' => $sources]);
         }
         else{
             return redirect('/');
         }
     }
+
+
 }

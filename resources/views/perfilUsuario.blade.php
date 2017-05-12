@@ -17,5 +17,49 @@
     </head>
     <body>
         @extends('header')
+        
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <h1>USER PANEL</h1>
+                    <h4>Username: {{Auth::user()->name}}</h4>
+                    <h4>Email associated: {{Auth::user()->email}}</h4>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseCategorias" aria-expanded="false" aria-controls="collapseExample">
+                                Show my category subscriptions
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseCategorias">
+                            <div class="card card-block">
+                                @foreach($categories as $cat)
+                                    <p> {{$cat->category->name}} </p>
+                                    
+                                @endforeach
+                            </div><br><br><br>
+                        </div>
+                    </div>
+                        <div class="col-md-6">
+                            <p>
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseFuentes" aria-expanded="false" aria-controls="collapseExample">
+                                    Show my sources subscriptions
+                                </a>
+                                
+                            </p>
+                            <div class="collapse" id="collapseFuentes">
+                                <div class="card card-block">
+                                    @foreach($sources as $src)
+                                        <p> {{$src->source->name}} </p>
+                                    @endforeach
+                                </div><br><br><br>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

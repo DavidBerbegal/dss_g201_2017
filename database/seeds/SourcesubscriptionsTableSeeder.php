@@ -11,23 +11,14 @@ class SourcesubscriptionsTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        for($i = 1; $i < 20; $i++){
-            for($j = 1; $j < 4; $j++){
+        
+        for($i = 1; $i < 15; $i++){
                 DB::table('sourcesubscriptions')->insert([
-                    'user_id' => $i,
-                    'source_id' => $j       
+                    'user_id' => 4,
+                    'source_id' => $i      
                 ]);
-            }
-
-            $i++;
-            for($j = 4; $j < 8; $j++){
-                DB::table('sourcesubscriptions')->insert([
-                    'user_id' => $i,
-                    'source_id' => $j       
-                ]);   
-            }
+            
         }
-        */
+        
     }
 }

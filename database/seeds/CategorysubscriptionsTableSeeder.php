@@ -11,23 +11,13 @@ class CategorysubscriptionsTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        for($i = 1; $i < 20; $i++){
-            for($j = 1; $j < 4; $j++){
+        
+        for($i = 1; $i < 7; $i++){
                 DB::table('categorysubscriptions')->insert([
-                    'user_id' => $i,
-                    'category_id' => $j       
+                    'user_id' => 4,
+                    'category_id' => $i     
                 ]);
-            }
-
-            $i++;
-            for($j = 4; $j < 8; $j++){
-                DB::table('categorysubscriptions')->insert([
-                    'user_id' => $i,
-                    'category_id' => $j       
-                ]);   
-            }
-        }
-        */
+            
+        }     
     }
 }

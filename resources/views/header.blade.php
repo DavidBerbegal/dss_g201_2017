@@ -65,7 +65,7 @@ body{ padding-top: 70px;}
 
     @if(Auth::check())
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+      <li><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
       <li>
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
           <span class="glyphicon glyphicon-log-out"></span> 
