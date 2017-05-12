@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Categorysubscription;
 use App\Sourcesubscription;
+use Illuminate\Validation\Rule;
 
 class usuariosController extends Controller
 {
@@ -103,10 +104,7 @@ class usuariosController extends Controller
         }catch(ModelNotFoundException $e){
             $mensaeje = "Ha ocurrido un error al intentar modificar el usuario";
             return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
-        }
-      
-           
-        
+        }   
     }
 
     public function deleteUser(Request $request){
@@ -127,24 +125,58 @@ class usuariosController extends Controller
     public function showProfile(Request $request){
         if(Auth::check()){
             $id = Auth::user()->id;
-
-            //$categories = DB::table('categorysubscriptions')
-                //->where('user_id', '=', $id)->get();
             $categories = Categorysubscription::where('user_id', $id)
                ->get();
-            
-            //$sources = DB::table('sourcesubscriptions')
-                //->where('user_id', '=', $id)->get();
-            
+
             $sources = Sourcesubscription::where('user_id', $id)
                ->get();
-
-            return view('perfilUsuario', ['categories' => $categories, 'sources' => $sources]);
+            $mensaje = "";
+            
+            $mensaje = session('mensaje');
+            
+        return view('perfilUsuario', ['categories' => $categories, 'sources' => $sources])
+                                        ->with('mensaje', $mensaje);  
         }
         else{
-            return redirect('/');
+            return redirect('/login');
         }
     }
 
+    public function editProfile(Request $request){
+        $mensaje = "";
 
+        if(($request->input('password') == "") && ($request->input('passwordR') == "")){
+          $this->validate($request, [
+                'name' => 'min:2',
+                'email' => ['required', Rule::unique('users')->ignore(Auth::user()->id),],
+                'email' => 'email'
+            ]);  
+                        $id = Auth::user()->id;
+            $user = User::findOrFail($id);
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = Auth::user()->password;
+            $user->privilegios = Auth::user()->privilegios;
+            $user->save();
+            $mensaje = "Your profile has been updated";
+            return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
+        }
+        else{
+            $this->validate($request, [
+                'name' => 'min:2',
+                'email' => ['required', Rule::unique('users')->ignore(Auth::user()->id),],
+                'email' => 'email',  
+                'password' => 'min:5|same:repeat_password',
+            ]);
+                        $id = Auth::user()->id;
+            $user = User::findOrFail($id);
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = bcrypt($request->input('password'));
+            $user->privilegios = Auth::user()->privilegios;
+            $user->save();
+            $mensaje = "Your profile has been updated";
+            return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
+        }
+    }
 }

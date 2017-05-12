@@ -33,15 +33,15 @@ body{ padding-top: 70px;}
     <li><a href="{{ url('/feed') }}">Feed</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="http://localhost:8000/buscaCategoria/3">General</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/1">Business</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/2">Entertainment</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/4">Gaming</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/5">Music</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/6">Science and nature</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/7">Politics</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/8">Sport</a></li>
-          <li><a href="http://localhost:8000/buscaCategoria/9">Technology</a></li>
+          <li><a href="/buscaCategoria/3">General</a></li>
+          <li><a href="/buscaCategoria/1">Business</a></li>
+          <li><a href="/buscaCategoria/2">Entertainment</a></li>
+          <li><a href="/buscaCategoria/4">Gaming</a></li>
+          <li><a href="/buscaCategoria/5">Music</a></li>
+          <li><a href="/buscaCategoria/6">Science and nature</a></li>
+          <li><a href="/buscaCategoria/7">Politics</a></li>
+          <li><a href="/buscaCategoria/8">Sport</a></li>
+          <li><a href="/buscaCategoria/9">Technology</a></li>
         </ul>
       </li>
       <li><a href="/fuentesPub">Sources</a></li>
