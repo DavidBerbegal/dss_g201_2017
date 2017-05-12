@@ -46,4 +46,15 @@ class suscripcionFuentesController extends Controller
             return redirect()->action('suscripcionFuentesController@index', ['msg' => $mensaje]);
         }
     }
+
+    public function deletePub(Request $request){
+        $user_id = $request->input('user_id');
+        $source_id = $request->input('source_id');
+        $sub = SourceSubscription::where('user_id', $user_id)->
+                where('source_id', $source_id)->first();
+        $sub->delete();
+        $mensaje = "Source eliminated from your subscriptions ";  
+
+        return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
+    }
 }

@@ -101,7 +101,10 @@ Route::get('/feed/search' , 'articulosController@searchFeed');
 //RUTA PERFIL USUARIO
 Route::group(['middleware' => 'auth'], function() {
     //Route::get('/profile', 'UsersController@profile');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'usuariosController@showProfile');
+    Route::get('/profile/edit' , 'usuariosController@editProfile');
+    Route::get('/profile/eraseCat', 'suscripcionCategoriasController@deletePub');
+    Route::get('/profile/eraseSrc', 'suscripcionFuentesController@deletePub');
 });
 
 // Autenticación de usuarios

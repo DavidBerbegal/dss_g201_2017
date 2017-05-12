@@ -46,4 +46,15 @@ class suscripcionCategoriasController extends Controller
             return redirect()->action('suscripcionCategoriasController@index', ['msg' => $mensaje]);
         }
     }
+
+    public function deletePub(Request $request){
+        $user_id = $request->input('user_id');
+        $category_id = $request->input('category_id');
+        $sub = CategorySubscription::where('user_id', $user_id)->
+                where('category_id', $category_id)->first();
+        $sub->delete();
+        $mensaje = "Category eliminated from your subscriptions ";  
+
+        return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
+    }
 }
