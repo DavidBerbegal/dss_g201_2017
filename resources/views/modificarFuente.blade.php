@@ -65,11 +65,11 @@
                     </tr>
                     <tr>
                         <td><label for="name">Nombre:</label></td>
-                        <td><input type="text" name="name" id="name" value= {{ $name }}><br><br></td>
+                        <td><input type="text" name="name" id="name" value= "{{ $name }}"><br><br></td>
                     </tr>
                     <tr>
                         <td><label for="description">Descripcion:</label></td>
-                        <td><input type="text" name="description" id="description" value= {{ $description }}><br><br></td>
+                        <td><input type="text" name="description" id="description" value= "{{ $description }}"><br><br></td>
                     </tr>
                 </table>
                 <div class="flex-center">
