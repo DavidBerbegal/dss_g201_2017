@@ -24,11 +24,13 @@
     <body>
     <!--Añadir esta linea para incluir pagina maestra!-->
     @extends('header')
-    <br><br><br>
-                 @if($mensaje != "")
-
-                    <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
-                @endif
+    <br><br>
+    <div class="flex-center">
+                @if (session('mensaje'))
+                    @if (session('mensaje') != "")
+                        <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
+                    @endif
+                @endif </div>
                 <div class="flex-center"><div>
 
                 <div class="flex-center">

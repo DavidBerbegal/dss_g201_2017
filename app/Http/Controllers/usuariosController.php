@@ -15,9 +15,11 @@ use Illuminate\Validation\Rule;
 class usuariosController extends Controller
 {
     public function listUsers(Request $request) {
+        $mensaje = session('mensaje');
         if($request->has('users')){
-           return view('usuarios', ['users' => $request->input('users'), 'mensaje' => $request->input('msg'),
-                                'order' => $request->input('order')]); 
+         
+           return view('usuarios', ['users' => $request->input('users'),
+                                'order' => $request->input('order')])->with('mensaje', $mensaje); 
         }
         if($request->has('order') && $request->input('order') != ""){
             
@@ -25,12 +27,12 @@ class usuariosController extends Controller
                     ->orderBy($request->input('order'))
                     ->paginate(7);
 
-            return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
-                                'order' => $request->input('order')]);
+            return view('usuarios', ['users' => $users,
+                                'order' => $request->input('order')])->with('mensaje', $mensaje);
         }
         $users = DB::table('users')->paginate(7);
-        return view('usuarios', ['users' => $users, 'mensaje' => $request->input('msg'),
-                                'order' => 'id']);
+        return view('usuarios', ['users' => $users,
+                                'order' => 'id'])->with('mensaje', $mensaje);
         
     }
 
@@ -50,8 +52,8 @@ class usuariosController extends Controller
             ->where('name','LIKE', "%$name%") 
             ->where('email', 'LIKE', "%$email%")->paginate(7);
 
-        return view('usuarios', ['users' => $users, 'mensaje' => '',
-                                'order' => 'id']);
+        return view('usuarios', ['users' => $users,
+                                'order' => 'id'])->with('mensaje', '');;
         
     }
 
@@ -70,16 +72,16 @@ class usuariosController extends Controller
             $user->privilegios = $request->input('privilegios');
             $user->save();
             $mensaje = "El usuario se ha creado correctamente";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }
         catch(RuntimeException $e){
             $mensaje = "Error al crear el usuario";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }
 
         catch(QueryException $e){
             $mensaje = "Error al crear el usuario";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }
         
     }
@@ -100,10 +102,10 @@ class usuariosController extends Controller
             $user->privilegios = $request->input('privilegios');
             $user->save();
             $mensaje = "El usuario con ID " . $id . " se ha modificado con éxito";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }catch(ModelNotFoundException $e){
             $mensaeje = "Ha ocurrido un error al intentar modificar el usuario";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }   
     }
 
@@ -114,10 +116,10 @@ class usuariosController extends Controller
             $user = User::findOrFail($id);
             $user->delete();
             $mensaje = "El usuario con ID " . $id . " ha sido borrado con éxito";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }catch (ModelNotFoundException $e){
             $mensaje = "Ha ocurrido un error al intentar borrar el usuario. Vuelve a intentarlo";
-            return redirect()->action('usuariosController@listUsers', ['msg' => $mensaje]);
+            return redirect()->action('usuariosController@listUsers')->with('mensaje', $mensaje);
         }
        
     }
