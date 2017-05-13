@@ -25,13 +25,13 @@
     <!--Añadir esta linea para incluir pagina maestra!-->
     @extends('header')
     <br><br>
-    <div class="flex-center">
+            <div class="flex-center">
                 @if (session('mensaje'))
                     @if (session('mensaje') != "")
                         <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
                     @endif
                 @endif </div>
-                <div class="flex-center"><div>
+            <div class="flex-center"><div>
 
                 <div class="flex-center">
                 <a href="{{ url('/usuariosCreateUpdate') }}"><span class="glyphicon glyphicon-plus">

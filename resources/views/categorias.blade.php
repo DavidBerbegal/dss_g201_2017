@@ -19,11 +19,14 @@
                 <a href="{{ url('/fuentes') }}">Fuentes</a>
                 <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
                 <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
-        </div>
-        @if($mensaje != "")
-
-                    <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
-                @endif
+        </div><br>
+            <div class="flex-center">
+                @if (session('mensaje'))
+                    @if (session('mensaje') != "")
+                        <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
+                    @endif
+                @endif </div>
+            <div class="flex-center"><div>
 
 
                 <form class="form-class" action="{{ action('categoriasController@listCategories')}}" name="sortBy"

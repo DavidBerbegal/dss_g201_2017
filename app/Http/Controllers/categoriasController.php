@@ -14,15 +14,15 @@ class categoriasController extends Controller
     public function index(Request $request)
     {
         $mostrarCategorias = DB::table('categories')->paginate(5);
-        return view('categorias', ['categorias' => $mostrarCategorias, 'mensaje' => $request->input('msg')]);
+        return view('categorias', ['categorias' => $mostrarCategorias])->with('mensaje', session('mensaje'));
     }
 
     public function listCategories(Request $request) {
-      
+      $mensaje = session('mensaje');
         if($request->has('categorias')){
             
-           return view('categorias', ['categorias' => $request->input('categorias'), 'mensaje' => $request->input('msg'),
-                                'order' => $request->input('order')]); 
+           return view('categorias', ['categorias' => $request->input('categorias'), 
+                                'order' => $request->input('order')])->with('mensaje', $mensaje); 
         }
         if($request->has('order') && $request->input('order') != ""){
            
@@ -30,12 +30,12 @@ class categoriasController extends Controller
                     ->orderBy($request->input('order'))
                     ->paginate(5);
 
-            return view('categorias', ['categorias' => $cats, 'mensaje' => $request->input('msg'),
-                                'order' => $request->input('order')]);
+            return view('categorias', ['categorias' => $cats,
+                                'order' => $request->input('order')])->with('mensaje', $mensaje);
         }
         $categors = DB::table('categories')->paginate(5);
-        return view('categorias', ['categorias' => $categors, 'mensaje' => $request->input('msg'),
-                                'order' => 'id']);
+        return view('categorias', ['categorias' => $categors,
+                                'order' => 'id'])->with('mensaje', $mensaje);
         
     }
 
@@ -66,12 +66,12 @@ class categoriasController extends Controller
 
 
             $mensaje = "La categoria ha sido creada correctamente";
-            return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
+            return redirect()->action('categoriasController@index')->with('mensaje', $mensaje);
         }
         catch (QueryException $e)
         {
             $mensaje = "Error al crear la categoria";
-            return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
+            return redirect()->action('categoriasController@index')->with('mensaje', $mensaje);
         }
     }
 
@@ -95,12 +95,12 @@ class categoriasController extends Controller
             $category->save();
 
             $mensaje = "La categoria con ID " . $id . " se ha modificado correctamente";
-            return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
+            return redirect()->action('categoriasController@index')->with('mensaje', $mensaje);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Error al modificar la categoria";
-            return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
+            return redirect()->action('categoriasController@index')->with('mensaje', $mensaje);
         }
     }
 
@@ -115,12 +115,12 @@ class categoriasController extends Controller
             $category->delete();
 
             $mensaje = "La categoria con ID " . $id . " ha sido borrada correctamente";
-            return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
+            return redirect()->action('categoriasController@index')->with('mensaje', $mensaje);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar borrar la categoria";
-            return redirect()->action('categoriasController@index', ['msg' => $mensaje]);
+            return redirect()->action('categoriasController@index')->with('mensaje', $mensaje);
         }
     }
 }
