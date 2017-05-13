@@ -20,7 +20,9 @@ body{ padding-top: 70px;}
 <nav class="navbar navbar-inverse  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{{ url('/') }}"><img src="{{url('/images/logo.png')}}" alt ="Image" height="25" width="25"/> </img></a>
+      <a class="navbar-brand" href="{{ url('/feed') }}">
+        <img src="{{url('/images/logo.png')}}" alt ="Image" height="25" width="25"/></img>
+      </a>
     </div>
     <ul class="nav navbar-nav">
 
@@ -46,7 +48,9 @@ body{ padding-top: 70px;}
       </li>
       <li><a href="/fuentesPub">Sources</a></li>
       @if(Auth::check())
-      <li><a href="/fuentesPub">Bookmarks</a></li>
+        <li>
+          <a href="/fuentesPub">Bookmarks</a>
+        </li>
       @endif
       <li>
           <form class="navbar-form navbar-left" action="{{ action('articulosController@searchFeed')}}" name="search"
