@@ -148,10 +148,11 @@ class usuariosController extends Controller
         $mensaje = "";
 
         if(($request->input('password') == "") && ($request->input('passwordR') == "")){
+
           $this->validate($request, [
                 'name' => 'min:2',
-                'email' => ['required', Rule::unique('users')->ignore(Auth::user()->id),],
-                'email' => 'email'
+                'email' => 'required | email',
+                'email' => [Rule::unique('users')->ignore(Auth::user()->id)]
             ]);  
                         $id = Auth::user()->id;
             $user = User::findOrFail($id);
@@ -166,8 +167,8 @@ class usuariosController extends Controller
         else{
             $this->validate($request, [
                 'name' => 'min:2',
-                'email' => ['required', Rule::unique('users')->ignore(Auth::user()->id),],
-                'email' => 'email',  
+                'email' => 'required | email',
+                'email' => [Rule::unique('users')->ignore(Auth::user()->id)], 
                 'password' => 'min:5|same:repeat_password',
             ]);
                         $id = Auth::user()->id;
