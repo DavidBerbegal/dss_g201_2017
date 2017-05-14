@@ -55,7 +55,9 @@ class suscripcionFuentesController extends Controller
         $sub = SourceSubscription::where('user_id', $user_id)->
                 where('source_id', $source_id)->first();
         $sub->delete();
-        $mensaje = "Source eliminated from your subscriptions ";  
+
+        $source = Source::where('id', $request->input('source_id'))->first();
+        $mensaje = $source->name . " eliminated from your subscriptions ";  
 
         return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
     }

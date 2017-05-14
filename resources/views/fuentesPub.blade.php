@@ -90,7 +90,7 @@
                     <p align="center">
                       @if(Auth::check())
                         @if(in_array($fuente->id, $subs))
-                          <a href="{{ action('suscripcionFuentesController@desuscribe', ['source_id' =>  $fuente->id ]) }}" class="btn btn-danger btn-xs" role="button">Desuscribe</a>
+                          <a href="{{ action('suscripcionFuentesController@desuscribe', ['source_id' =>  $fuente->id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
                         @else
                           <a href="{{ action('suscripcionFuentesController@addPub', ['source_id' =>  $fuente->id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
                         @endif

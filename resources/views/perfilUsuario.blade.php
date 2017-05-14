@@ -12,9 +12,18 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         
         <style>
-            .verticalLine{
-                border-left: thick solid #ff0000;
+            .left{
+                width: 50%;
+                float: left;
+                text-align: left;
             }
+
+            .right{
+                width: 65%;
+                margin-left: 5px;
+                float:left;
+            }
+
         </style>
     </head>
     <body>
@@ -52,23 +61,25 @@
                                 <table>
                     
                                     <tr>
-                                        <td><label for="name">Username:</label></td>
-                                        <td><input type="text" name="name" id="name" value= {{ Auth::user()->name }}><br><br></td>
+                                        <td><label class="left"  for="name">Username:</label><input type="text" class="left" name="name" id="name" value= {{ Auth::user()->name }}></td>
+                                        <td><br><br></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="email">Email:</label></td>
-                                        <td><input type="text" name="email" id="email" value= {{ Auth::user()->email }}><br><br></td>
+                                        <td><label class="left" for="email">Email:</label><input type="text" class="left" name="email" id="email" value= {{ Auth::user()->email }}></td>
+                                        <td><br><br></td>
+                                        <br>
                                     </tr>
                                     <tr>
-                                        <td><label for="password">New password:</label></td>
-                                        <td><input type="password" name="password" id="password" value=""><br><br></td>
+                                        <td><label class="left" for="password">New password:</label><input type="password" class="left" name="password" id="password" value=""></td>
+                                        <td><br><br></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="repeat_password">Repeat password:</label></td>
-                                        <td><input type="password" name="repeat_password" id="repeat_password" value=""><br><br></td>
+                                        <td><label class="left" for="repeat_password">Repeat password:</label><input type="password" class="left" name="repeat_password" id="repeat_password" value=""></td>
+                                        <td><br><br></td>
                                     </tr>
                                 </table>
-                                <div><button type="submit" name="update">Save changes</button></div>
+                                <br>
+                                <div><button class="btn btn-success" type="submit" name="update">Save changes</button></div>
                             </form>
                         </div>
                     </div>
@@ -84,7 +95,10 @@
                         </p>
                         <div class="collapse" id="collapseCategorias">
                             <div class="card card-block">
-     
+                                    @if(count($categories) == 0)
+                                        You don't have subscriptions to any categories
+                                    @endif
+
                                     @foreach($categories as $cat)
                                         <?php 
                                             $str = '/buscaCategoria/' . $cat->category_id;
@@ -109,6 +123,9 @@
                             </p>
                             <div class="collapse" id="collapseFuentes">
                                 <div class="card card-block">
+                                    @if(count($sources) == 0)
+                                        You don't have subscriptions to any sources
+                                    @endif
                                     @foreach($sources as $src)
                                         <a href="{{ action('suscripcionFuentesController@deletePub', ['user_id' =>  Auth::user()->id,
                                                                  'source_id' => $src->source_id ]) }}">
