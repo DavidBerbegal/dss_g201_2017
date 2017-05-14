@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use App\Sourcesubscription;
+use Illuminate\Support\Facades\Auth;
+use App\Source;
 
 class suscripcionFuentesController extends Controller
 {
@@ -53,8 +55,31 @@ class suscripcionFuentesController extends Controller
         $sub = SourceSubscription::where('user_id', $user_id)->
                 where('source_id', $source_id)->first();
         $sub->delete();
-        $mensaje = "Source eliminated from your subscriptions ";  
+
+        $source = Source::where('id', $request->input('source_id'))->first();
+        $mensaje = $source->name . " eliminated from your subscriptions ";  
 
         return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
+    }
+
+    public function  addPub(Request $request){
+            $sub = new Sourcesubscription();
+            $sub->source_id = $request->input('source_id');
+            $sub->user_id =  Auth::user()->id;
+            $sub->save();
+            $source = Source::where('id', $request->input('source_id'))->first();
+            $mensaje = "You have suscribed to " . $source->name;
+            return redirect()->action('fuentesController@listPublicSources')->with('mensaje', $mensaje);
+    }
+
+    public function desuscribe(Request $request){
+        $user_id = Auth::user()->id;
+        $source_id = $request->input('source_id');
+        $sub = SourceSubscription::where('user_id', $user_id)->
+                where('source_id', $source_id)->first();
+        $sub->delete();
+        $source = Source::where('id', $request->input('source_id'))->first();
+        $mensaje = $source->name . " eliminated from your subscriptions ";
+        return redirect()->action('fuentesController@listPublicSources')->with('mensaje', $mensaje);
     }
 }

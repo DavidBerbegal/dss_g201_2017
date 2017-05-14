@@ -43,7 +43,16 @@
   <body>
       <!--Añadir esta linea para incluir pagina maestra!-->
       @extends('header')
-
+        <div class="flex-center">
+          @if (session('mensaje'))
+              @if (session('mensaje') != "")
+                  <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
+              @endif
+          @endif
+        </div>
+      <!--<script>
+        location.hash = "#HOLA"
+      </script>!-->
       <div class="container" id="tourpackages-carousel">
       <h1 align="center" style="color:gray;">Our sources</h1>
       <h4 align="justify">Below is a list that contains all the sources from which we receive the news we use. If you are interested in a particular source, you can subscribe to it to see their news in your feed. To do this, you need to be logged in
@@ -80,7 +89,11 @@
                   <div id="header-content">
                     <p align="center">
                       @if(Auth::check())
-                      <a href="#" class="btn btn-succes btn-xs" role="button">Suscribe</a>
+                        @if(in_array($fuente->id, $subs))
+                          <a href="{{ action('suscripcionFuentesController@desuscribe', ['source_id' =>  $fuente->id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
+                        @else
+                          <a href="{{ action('suscripcionFuentesController@addPub', ['source_id' =>  $fuente->id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
+                        @endif
                       @endif
                       <a href="{{$fuente->url}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to the site 
                       </a>
@@ -92,5 +105,6 @@
           </div>
           @endforeach
       </div><!-- End container -->
+      <div id ="HOLA"></div>
   </body>
 </html>

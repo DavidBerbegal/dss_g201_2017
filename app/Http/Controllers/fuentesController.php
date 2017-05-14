@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use App\Source;
 use Carbon\Carbon;
 
@@ -41,8 +42,15 @@ class fuentesController extends Controller
 
     public function listPublicSources(Request $request){
         $fuentesAux = DB::table('sources')->orderBy('name')->get();
+        $subs = [];
+        if(Auth::check()){
+            $suscripciones = DB::table('sourcesubscriptions')->where('user_id', Auth::user()->id)->get();
+            foreach($suscripciones as $sub){
+                array_push($subs, $sub->source_id);
+            }
+        }
         return view('fuentesPub', ['fuentes' => $fuentesAux, 'mensaje' => '',
-                                'order' => 'name']); 
+                                'order' => 'name', 'subs' => $subs]); 
     }
 
     public function searchPubSources(Request $request){
