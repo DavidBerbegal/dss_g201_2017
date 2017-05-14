@@ -105,9 +105,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile/edit' , 'usuariosController@editProfile');
     Route::get('/profile/eraseCat', 'suscripcionCategoriasController@deletePub');
     Route::get('/profile/eraseSrc', 'suscripcionFuentesController@deletePub');
+
+    //Suscripciones publicas
+
+    Route::get('/sources/sub' , 'suscripcionFuentesController@addPub');
+    Route::get('/sources/desub' , 'suscripcionFuentesController@desuscribe');
 });
 
 // Autenticación de usuarios
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
