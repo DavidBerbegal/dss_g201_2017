@@ -54,13 +54,19 @@ class fuentesController extends Controller
     }
 
     public function searchPubSources(Request $request){
-       
+        $subs = [];
+        if(Auth::check()){
+            $suscripciones = DB::table('sourcesubscriptions')->where('user_id', Auth::user()->id)->get();
+            foreach($suscripciones as $sub){
+                array_push($subs, $sub->source_id);
+            }
+        }
         $name = $request->input('sName');
         $sources = DB::table('sources')
             ->where('name','LIKE', "%$name%")->get();
 
         return view('fuentesPub', ['fuentes' => $sources, 'mensaje' => 'search',
-                                'order' => 'name']);
+                                'order' => 'name', 'subs' => $subs]);
         
     }
 
