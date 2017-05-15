@@ -62,7 +62,7 @@ class articulosController extends Controller
     // vista pública para el feed principal
     public function listArticulosFeed(Request $request){
         $mensaje = "";
-        $news = DB::table('articles')->orderBy('name')->paginate(20);
+        $news = DB::table('articles')->orderBy('name')->paginate(21);
         foreach ($news as $new){
 
             if((strlen($new->description)+strlen($new->title))> 130){

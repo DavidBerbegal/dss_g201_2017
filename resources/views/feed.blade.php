@@ -34,15 +34,13 @@
               position: relative;
               padding: 0px;
               margin-bottom: 20px;
-              height: 580px;
+              height: 500px;
              
           }
-
-          .thumbnail.img {
-            display: block;
-            height: 180px;
+          .thumbnail img {
+            max-height: 270px;
             width: 100%;
-          }
+          } 
           .article-container {
             width: 33%;
             
@@ -145,7 +143,7 @@
       @endif
       <div class="row">
           @foreach($articles as $art)
-          <div class="col-xs-18 col-sm-6 col-md-3">
+          <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="thumbnail">
               <div style="display: flex">
               <p style="margin-right: 150px" align="justify">{{$art->date}}</p>
@@ -157,46 +155,46 @@
               <img src="{{$art->urlImg}}" alt="">
               </a>
                 <div class="caption">
-                  <h3 align="left">{{$art->title}}</h4>
+                  <h4 align="justify">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>
                   <div id="header-content">
                     <div style="margin-right:10px;text-align:center">
 
                     @if (Auth::check())
                       <a href="{{ action('articulosController@upvote', ['id' =>  $art->id ]) }}">
-                      <span class="glyphicon glyphicon-thumbs-up"></span></a>
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                      </a>
                     @endif
                     
                     <p class="votos">
-                      <p class = "votos-positivos">{{$art->positiveRate}} 
-                      </p>
+                      <p class = "votos-positivos">{{$art->positiveRate}} </p>          
                     </p>
                     </div style="text-align:center">
-                    <div>
-                      @if (Auth::check())
-                        <a href="{{ action('articulosController@downvote', ['id' =>  $art->id ]) }}">
-                        <span class="glyphicon glyphicon-thumbs-down"></span></a>
-                      @endif
+                      <div>
+                        @if (Auth::check())
+                          <a href="{{ action('articulosController@downvote', ['id' =>  $art->id ]) }}">
+                          <span class="glyphicon glyphicon-thumbs-down"></span></a>
+                        @endif
 
-                    <p class="votos">
-                      <p class="votos-negativos">{{$art->negativeRate}} 
-                      </p>
-                    </p>  
-                    </div>  
-                    <div>                
-                      <p class="boton-fuente">
-                        <a href="{{$art->urlNew}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to source 
-                        </a>
-                      </p>
+                        <p class="votos">
+                          <p class="votos-negativos">{{$art->negativeRate}} 
+                          </p>
+                        </p>  
+                      </div>  
+                      <div>                
+                        <p class="boton-fuente">
+                          <a href="{{$art->urlNew}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to source 
+                          </a>
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          @endforeach
+            @endforeach
       </div><!-- End container -->
-    <div class="flex-center">
+      <div class="flex-center">
         {{ $articles->appends(['order' => $order])->links() }}
-    </div>
+      </div>
   </body>
 </html>
