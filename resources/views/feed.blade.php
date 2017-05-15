@@ -113,7 +113,9 @@
           <div class="col-xs-18 col-sm-6 col-md-3">
             <div class="thumbnail">
               <p align="justify">{{$art->date}}</p>
+              <a href="{{$art->urlNew}}">
               <img src="{{$art->urlImg}}" alt="">
+              </a>
                 <div class="caption">
                   <h3 align="left">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>
