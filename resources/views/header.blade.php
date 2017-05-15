@@ -13,6 +13,8 @@
       img{
           display: inline-block;
       }
+
+      body{ padding-top: 70px;}
       
     </style>
   </head>

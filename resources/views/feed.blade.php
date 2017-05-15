@@ -37,6 +37,12 @@
               height: 580px;
              
           }
+
+          .thumbnail.img {
+            display: block;
+            height: 180px;
+            width: 100%;
+          }
           .article-container {
             width: 33%;
             
@@ -76,10 +82,25 @@
             border-radius: 3px;
           }
 
+          hr.style18 { 
+            height: 30px; 
+            border-style: solid; 
+            border-color: #8c8b8b; 
+            border-width: 1px 0 0 0; 
+            border-radius: 20px; 
+          } 
+          hr.style18:before { 
+            display: block; 
+            content: ""; 
+            height: 30px; 
+            margin-top: -31px; 
+            border-style: solid; 
+            border-color: #8c8b8b; 
+            border-width: 0 0 1px 0; 
+            border-radius: 20px; 
+          }
+
       </style>
-      <!--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-      !-->
   </head>
   <body>
       <!--Añadir esta linea para incluir pagina maestra!-->
@@ -88,7 +109,8 @@
       <div class="container" id="tourpackages-carousel">
       @if ($mensaje != "")
         <div class="flex-center2">
-              <h2>{{$mensaje}} </h2>
+              <h2 class="flex-center">{{$mensaje}} 
+              
                     @if(Auth::check())
                         @if(in_array($id, $subs))
                           <a href="{{ action('suscripcionCategoriasController@desuscribe', ['category_id' =>  $id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
@@ -96,6 +118,7 @@
                           <a href="{{ action('suscripcionCategoriasController@addPub', ['category_id' =>  $id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
                         @endif
                     @endif
+                </h2><hr class="style18">
         </div>
       @endif
       <h2 style="color:gray">Search article:</h2>

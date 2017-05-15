@@ -28,6 +28,7 @@
               padding: 0px;
               margin-bottom: 20px;
               height: 270px;
+
           }
           #header-content {
             position: absolute;
@@ -96,8 +97,7 @@
                         @endif
                       @endif
                       <a href="{{$fuente->url}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to the site 
-                      </a>
-                      
+                      </a>         
                     </p>
                   </div>
               </div>

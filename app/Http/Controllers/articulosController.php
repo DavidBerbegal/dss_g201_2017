@@ -122,8 +122,8 @@ class articulosController extends Controller
             }
         }
 
-        return view('feed', ['articles' => $news, 'mensaje' => 'search',
-                                'order' => 'name']); 
+        return view('feed', ['articles' => $news, 'mensaje' => '',
+                                'order' => 'name', 'id' => Auth::user()->id, 'subs' => []]); 
     }
 
     public function delete(Request $request){
