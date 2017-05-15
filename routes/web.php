@@ -117,4 +117,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Rutas Foro
 
+Route::get('/nuevoForo', function() {
+    return view('nuevoForo');
+}) -> middleware('auth');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::any('/foro', 'foroController@index');
+    Route::post('/foro', 'foroController@destroy');
+    Route::get('/foro', 'foroController@listForo');
+    Route::post('/nuevoForo', 'foroController@create');
+});
