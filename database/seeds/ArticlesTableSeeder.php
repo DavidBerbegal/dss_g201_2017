@@ -42,6 +42,20 @@ class ArticlesTableSeeder extends Seeder
                                 $author = $article->author;
                             }
 
+                            if(empty($article->description)){ 
+                                $description = "No description was provided by the author. For more information access the original site";
+                            }
+                            else{
+                                $description = $article->description;
+                            }
+
+                            if(empty($article->urlToImage)){
+                                $imagenURL= "http://www.i.imgur.com/3kawIPH.png";
+                            } 
+                            else {
+                                $imagenURL=$article->urlToImage;
+                            }
+
                             $date = Carbon::now()->toFormattedDateString();
 
 
@@ -51,9 +65,9 @@ class ArticlesTableSeeder extends Seeder
                             DB::table('articles')->insert([
                             'author' => $author, 
                             'title' => $article->title,
-                            'description' => $article->description, 
+                            'description' => $description, 
                             'urlNew' => $article->url, 
-                            'urlImg' => $article->urlToImage,
+                            'urlImg' => $imagenURL,
                             'date' => $date,
 
                             //de momento se generan aleatoriamente
