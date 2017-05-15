@@ -82,23 +82,23 @@
       @endif
       <div class="row">
           @foreach($fuentes as $fuente)
-          <div class="col-xs-18 col-sm-6 col-md-3">
+          <div class="col-xs-18 col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
                   <h3 align="center">{{$fuente->name}}</h4>
                   <p align="justify">{{$fuente->description}}</p>
                   <div id="header-content">
-                    <p align="center">
-                      @if(Auth::check())
-                        @if(in_array($fuente->id, $subs))
-                          <a href="{{ action('suscripcionFuentesController@desuscribe', ['source_id' =>  $fuente->id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
-                        @else
-                          <a href="{{ action('suscripcionFuentesController@addPub', ['source_id' =>  $fuente->id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
+                      <p align="center">
+                        @if(Auth::check())
+                          @if(in_array($fuente->id, $subs))
+                            <a href="{{ action('suscripcionFuentesController@desuscribe', ['source_id' =>  $fuente->id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
+                          @else
+                            <a href="{{ action('suscripcionFuentesController@addPub', ['source_id' =>  $fuente->id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
+                          @endif
                         @endif
-                      @endif
-                      <a href="{{$fuente->url}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to the site 
-                      </a>         
-                    </p>
+                        <a href="{{$fuente->url}}" target="_blank" class="btn btn-primary btn-xs" role="button">Go to the site 
+                        </a>         
+                      </p>
                   </div>
               </div>
             </div>
