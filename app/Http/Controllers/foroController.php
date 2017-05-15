@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class foroController extends Controller
+{
+    public function index(Request $request)
+    {
+        $mostrarForo = DB::table('foro')->paginate(5);
+        return view('foro', ['foro' => $mostrarForo, 'mensaje' => $request->input('msg')]);
+    }
+
+    public function listForo(Request $request) 
+    {
+        if($request->has('foro'))
+        {
+            return view('foro', ['foro' => $request->input('foro'), 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]); 
+        }
+        if($request->has('order') && $request->input('order') != "")
+        {
+            $foro = DB::table('foro')
+                    ->orderBy($request->input('order'))
+                    ->paginate(5);
+            return view('foro', ['foro' => $foro, 'mensaje' => $request->input('msg'),
+                                'order' => $request->input('order')]);
+        }
+
+        $foroAux = DB::table('foro')->paginate(5);
+        return view('foro', ['foro' => $foroAux, 'mensaje' => $request->input('msg'),
+                                'order' => 'id']);
+    }
+
+    public function create(Request $request)
+    {
+        $mensaje = "";
+
+        $this->validate($request, [
+            'titulo' => 'required',
+            'comentario' => 'required',
+            'creado' => 'required'
+        ]);
+
+        try 
+        {
+            $source = new Source();
+            $source->api = $request->input('titulo');
+            $source->name = $request->input('comentario');
+            $source->creado = Carbon::now();
+            $source->save();
+
+            $mensaje = "El comentario no ha sido creado correctamente";
+            return redirect()->action('foroController@index', ['msg' => $mensaje]);
+        }
+        catch (QueryException $e)
+        {
+            $mensaje = "Error al crear el comentario";
+            return redirect()->action('foroController@index', ['msg' => $mensaje]);
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $mensaje = "";
+
+        try
+        {
+            $id = $request->input('id');
+            $source = Source::findOrFail($id);
+            $source->delete();
+
+            $mensaje = "El comentario con ID " . $id . "ha sido borrado correctamente";
+            return redirect()->action('foroController@index', ['msg' => $mensaje]);
+        }
+        catch (ModelNotFoundException $e)
+        {
+            $mensaje = "Ha ocurrido un error al intentar borrar el comentario";
+            return redirect()->action('foroController@index', ['msg' => $mensaje]);
+        }
+    }
+}
