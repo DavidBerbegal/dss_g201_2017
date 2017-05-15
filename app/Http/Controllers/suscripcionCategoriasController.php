@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use App\Categorysubscription;
+use App\Category;
 
 class suscripcionCategoriasController extends Controller
 {
@@ -56,5 +58,26 @@ class suscripcionCategoriasController extends Controller
         $mensaje = "Category eliminated from your subscriptions ";  
 
         return redirect()->action('usuariosController@showProfile')->with('mensaje', $mensaje);
+    }
+
+     public function  addPub(Request $request){
+        $sub = new Categorysubscription();
+        $sub->category_id = $request->input('category_id');
+        $sub->user_id =  Auth::user()->id;
+        $sub->save();
+        $category = Category::where('id', $request->input('category_id'))->first();
+        $mensaje = "You have suscribed to " . $category->name;
+        return back()->withInput();
+    }
+
+    public function desuscribe(Request $request){
+        $user_id = Auth::user()->id;
+        $category_id = $request->input('category_id');
+        $sub = CategorySubscription::where('category_id', $category_id)->
+                where('category_id', $category_id)->first();
+        $sub->delete();
+        $category = Category::where('id', $request->input('category_id'))->first();
+        $mensaje = $category->name . " eliminated from your subscriptions ";
+        return back()->withInput();
     }
 }

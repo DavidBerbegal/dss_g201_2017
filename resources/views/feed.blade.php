@@ -86,6 +86,18 @@
       @extends('header')
 
       <div class="container" id="tourpackages-carousel">
+      @if ($mensaje != "")
+        <div class="flex-center2">
+              <h2>{{$mensaje}} </h2>
+                    @if(Auth::check())
+                        @if(in_array($id, $subs))
+                          <a href="{{ action('suscripcionCategoriasController@desuscribe', ['category_id' =>  $id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
+                        @else
+                          <a href="{{ action('suscripcionCategoriasController@addPub', ['category_id' =>  $id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
+                        @endif
+                    @endif
+        </div>
+      @endif
       <h2 style="color:gray">Search article:</h2>
       <div class="row">
 
@@ -112,8 +124,15 @@
           @foreach($articles as $art)
           <div class="col-xs-18 col-sm-6 col-md-3">
             <div class="thumbnail">
-              <p align="justify">{{$art->date}}</p>
+              <div style="display: flex">
+              <p style="margin-right: 150px" align="justify">{{$art->date}}</p>
+                  <a href="">
+                      <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
+                  </a>
+              </div>
+              <a href="{{$art->urlNew}}" target="_blank"> 
               <img src="{{$art->urlImg}}" alt="">
+              </a>
                 <div class="caption">
                   <h3 align="left">{{$art->title}}</h4>
                   <p align="justify">{{$art->description}}</p>

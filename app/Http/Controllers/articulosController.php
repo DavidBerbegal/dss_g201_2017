@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use App\Article;
+use App\Category;
+use App\Categorysubscription;
 
 class articulosController extends Controller
 {
@@ -34,7 +37,17 @@ class articulosController extends Controller
 
         $news = DB::table('articles')
             ->where('category_id','LIKE', "%$idCat%")->paginate(20);
-
+        
+        $categoria = Category::findOrFail($idCat);
+        $mensaje = ucfirst($categoria->name);
+        $id = $idCat;
+        $subs = [];
+        if(Auth::check()){
+            $suscripciones = DB::table('categorysubscriptions')->where('user_id', Auth::user()->id)->get();
+            foreach($suscripciones as $sub){
+                array_push($subs, $sub->category_id);
+            }
+        }
         foreach ($news as $new){
 
             if((strlen($new->description)+strlen($new->title))> 130){
@@ -42,14 +55,13 @@ class articulosController extends Controller
                 $new->description = $desc;
             }
         }
-
-        return view('feed', ['articles' => $news, 'mensaje' => 'search',
-                                'order' => 'name']); 
+        return view('feed', ['articles' => $news, 'id' => $id, 'subs' => $subs, 'mensaje' => $mensaje, 
+                                'order' => 'name']);
     }
 
     // vista pública para el feed principal
     public function listArticulosFeed(Request $request){
-       
+        $mensaje = "";
         $news = DB::table('articles')->orderBy('name')->paginate(20);
         foreach ($news as $new){
 
@@ -58,8 +70,7 @@ class articulosController extends Controller
                 $new->description = $desc;
             }
         }
-        return view('feed', ['articles' => $news, 'mensaje' => '',
-                                'order' => 'name']); 
+        return view('feed', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
     }
 
     public function downvote(Request $request){

@@ -17,6 +17,11 @@ html, body {
     justify-content: center;
 }
 
+.flex-center2 {
+    align-items: center;
+    justify-content: center;
+}
+
 .position-ref {
     position: relative;
 }

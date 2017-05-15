@@ -110,6 +110,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/sources/sub' , 'suscripcionFuentesController@addPub');
     Route::get('/sources/desub' , 'suscripcionFuentesController@desuscribe');
+    Route::get('/categories/sub' , 'suscripcionCategoriasController@addPub');
+    Route::get('/categories/desub' , 'suscripcionCategoriasController@desuscribe');
 });
 
 // Autenticación de usuarios
