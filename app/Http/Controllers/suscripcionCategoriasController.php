@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use App\Categorysubscription;
+use App\Category;
 
 class suscripcionCategoriasController extends Controller
 {
@@ -75,7 +77,7 @@ class suscripcionCategoriasController extends Controller
                 where('category_id', $category_id)->first();
         $sub->delete();
         $category = Category::where('id', $request->input('category_id'))->first();
-        //$mensaje = $category->name . " eliminated from your subscriptions ";
+        $mensaje = $category->name . " eliminated from your subscriptions ";
         return back()->withInput();
     }
 }

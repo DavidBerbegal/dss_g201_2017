@@ -86,8 +86,17 @@
       @extends('header')
 
       <div class="container" id="tourpackages-carousel">
-      @if ($mensaje != '')
-            <h2>{{$mensaje}} </h2>
+      @if ($mensaje != "")
+        <div class="flex-center2">
+              <h2>{{$mensaje}} </h2>
+                    @if(Auth::check())
+                        @if(in_array($id, $subs))
+                          <a href="{{ action('suscripcionCategoriasController@desuscribe', ['category_id' =>  $id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
+                        @else
+                          <a href="{{ action('suscripcionCategoriasController@addPub', ['category_id' =>  $id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
+                        @endif
+                    @endif
+        </div>
       @endif
       <h2 style="color:gray">Search article:</h2>
       <div class="row">
