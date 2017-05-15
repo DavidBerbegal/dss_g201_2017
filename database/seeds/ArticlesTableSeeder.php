@@ -50,7 +50,7 @@ class ArticlesTableSeeder extends Seeder
                             }
 
                             if(empty($article->urlToImage)){
-                                $imagenURL= "http://www.i.imgur.com/3kawIPH.png";
+                                $imagenURL= "http://www.fitworx.com/wp-content/uploads/2016/10/sorry-image-not-available.png";
                             } 
                             else {
                                 $imagenURL=$article->urlToImage;
