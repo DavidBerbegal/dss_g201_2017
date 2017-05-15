@@ -73,8 +73,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                         
+            <span class="icon-bar"></span>                       
           </button>
           <a class="navbar-brand" href="{{ url('/feed') }}">
             <img src="{{url('/images/logo.png')}}" alt ="Image" height="25" width="25"/></img>
