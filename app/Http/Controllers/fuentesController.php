@@ -152,12 +152,12 @@ class fuentesController extends Controller
             $source->delete();
 
             $mensaje = "La fuente con ID " . $id . "ha sido borrada correctamente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar borrar la fuente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index', ['msg' => $mensaje]);
         }
     }
 }
