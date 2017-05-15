@@ -98,6 +98,10 @@
             border-radius: 20px; 
           }
 
+          #bot{
+            margin-left:10px;
+          }
+
       </style>
   </head>
   <body>
@@ -108,7 +112,7 @@
       @if ($mensaje != "")
         <div class="flex-center2">
               <h2 class="flex-center">{{$mensaje}} 
-              
+                    <div id=bot>
                     @if(Auth::check())
                         @if(in_array($id, $subs))
                           <a href="{{ action('suscripcionCategoriasController@desuscribe', ['category_id' =>  $id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
@@ -116,6 +120,7 @@
                           <a href="{{ action('suscripcionCategoriasController@addPub', ['category_id' =>  $id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
                         @endif
                     @endif
+                    </div>
                 </h2><hr class="style18">
         </div>
       @endif
