@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use App\Article;
+use App\Category;
 
 class articulosController extends Controller
 {
@@ -34,6 +35,9 @@ class articulosController extends Controller
 
         $news = DB::table('articles')
             ->where('category_id','LIKE', "%$idCat%")->paginate(20);
+        
+        $categoria = Category::findOrFail($idCat);
+        $mensaje = ucfirst($categoria->name);
 
         foreach ($news as $new){
 
@@ -43,8 +47,8 @@ class articulosController extends Controller
             }
         }
 
-        return view('feed', ['articles' => $news, 'mensaje' => 'search',
-                                'order' => 'name']); 
+        return view('feed', ['articles' => $news, 'mensaje' => $mensaje, 
+                                'order' => 'name']);
     }
 
     // vista pública para el feed principal
@@ -58,8 +62,7 @@ class articulosController extends Controller
                 $new->description = $desc;
             }
         }
-        return view('feed', ['articles' => $news, 'mensaje' => '',
-                                'order' => 'name']); 
+        return view('feed', ['articles' => $news, 'mensaje' => '', 'order' => 'name']); 
     }
 
     public function downvote(Request $request){

@@ -86,6 +86,9 @@
       @extends('header')
 
       <div class="container" id="tourpackages-carousel">
+      @if ($mensaje != '')
+            <h2>{{$mensaje}} </h2>
+      @endif
       <h2 style="color:gray">Search article:</h2>
       <div class="row">
 
