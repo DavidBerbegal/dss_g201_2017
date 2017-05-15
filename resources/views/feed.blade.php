@@ -112,7 +112,12 @@
           @foreach($articles as $art)
           <div class="col-xs-18 col-sm-6 col-md-3">
             <div class="thumbnail">
-              <p align="justify">{{$art->date}}</p>
+              <div style="display: flex">
+              <p style="margin-right: 150px" align="justify">{{$art->date}}</p>
+                  <a href="">
+                      <span class="glyphicon glyphicon-bookmark"></span>
+                  </a>
+              </div>
               <a href="{{$art->urlNew}}">
               <img src="{{$art->urlImg}}" alt="">
               </a>
