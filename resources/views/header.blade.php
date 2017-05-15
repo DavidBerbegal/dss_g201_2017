@@ -59,20 +59,17 @@
             @endif
           </ul>
             
-              <form class="navbar-form navbar-left" action="{{ action('articulosController@searchFeed')}}" name="search"
+          <form class="navbar-form navbar-left" action="{{ action('articulosController@searchFeed')}}" name="search"
                           method="GET">
-                <div class="input-group">
-                  <input type="text" name="sName" id="sName" class="form-control" placeholder="Search article...">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                      <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            
-          
-
+            <div class="input-group">
+              <input type="text" name="sName" id="sName" class="form-control" placeholder="Search article...">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
           @if(Auth::check())
             <ul class="nav navbar-nav navbar-right">
               <li><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
