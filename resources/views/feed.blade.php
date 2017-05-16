@@ -120,7 +120,6 @@
                           <a href="{{ action('suscripcionCategoriasController@addPub', ['category_id' =>  $id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
                         @endif
                     @endif
-                    </div>
                 </h2><hr class="style18">
         </div>
       @endif

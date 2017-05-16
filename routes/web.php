@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::any('/' , 'articulosController@listArticulosFeed');
 
 Route::get('/admin', function () {
     return view('index');
@@ -95,7 +93,7 @@ Route::get('/fuentesPub' , 'fuentesController@listPublicSources');
 Route::get('/fuentesPub/search' , 'fuentesController@searchPubSources');
 
 //RUTAS FEED
-Route::get('/feed' , 'articulosController@listArticulosFeed');
+Route::any('/feed' , 'articulosController@listArticulosFeed');
 Route::get('/feed/search' , 'articulosController@searchFeed');
 
 //RUTA PERFIL USUARIO
