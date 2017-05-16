@@ -14,7 +14,7 @@ class foroController extends Controller
 {
     public function index(Request $request)
     {
-        $mostrarForo = DB::table('foro')->paginate(8);
+        $mostrarForo = DB::table('foro')->paginate(5);
         return view('foro', ['foro' => $mostrarForo, 'mensaje' => $request->input('msg')]);
     }
 
@@ -29,12 +29,12 @@ class foroController extends Controller
         {
             $foro = DB::table('foro')
                     ->orderBy($request->input('order'))
-                    ->paginate(8);
+                    ->paginate(5);
             return view('foro', ['foro' => $foro, 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]);
         }
 
-        $foroAux = DB::table('foro')->paginate(8);
+        $foroAux = DB::table('foro')->paginate(5);
         return view('foro', ['foro' => $foroAux, 'mensaje' => $request->input('msg'),
                                 'order' => 'id']);
     }
