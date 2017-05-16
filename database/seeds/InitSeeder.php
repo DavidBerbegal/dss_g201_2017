@@ -18,5 +18,6 @@ class InitSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('categories')->truncate();
         DB::table('sources')->truncate();
+        DB::table('foro')->truncate();
     }
 }

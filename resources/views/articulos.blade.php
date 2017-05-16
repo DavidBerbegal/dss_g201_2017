@@ -23,17 +23,6 @@
             @endif
             <br>
             <div class="flex-center"><div>
-                <!--<div class="title m-b-md">
-                    Artículos
-                </div>
-                    !-->
-                <div class="flex-center links">
-                    <a href="{{ url('/usuarios') }}">Usuarios</a>
-                    <a href="{{ url('/categorias') }}">Categorías</a>
-                    <a href="{{ url('/fuentes') }}">Fuentes</a>
-                    <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                    <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
-                </div>
                  <div>
                     <hr>
                  @if($mensaje != "")

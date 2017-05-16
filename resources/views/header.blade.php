@@ -61,6 +61,57 @@
           }
       }
 
+    @if(Auth::user()['privilegios'] == "administrador")
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url('/articulos') }}">Artículos</a></li>
+            <li><a href="{{ url('/usuarios') }}">Usuarios</a></li>
+            <li><a href="{{ url('/categorias') }}">Categorías</a></li>
+            <li><a href="{{ url('/fuentes') }}">Fuentes</a></li>
+            <li><a href="{{ url('/suscripcion-categorias') }}">Suscrip-Categorías</a></li>
+            <li><a href="{{ url('/suscripcion-fuentes') }}">Suscrip-Fuentes</a></li>
+          </ul>
+        </li>
+    @endif
+
+    <li><a href="{{ url('/feed') }}">Feed</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/buscaCategoria/3">General</a></li>
+          <li><a href="/buscaCategoria/1">Business</a></li>
+          <li><a href="/buscaCategoria/2">Entertainment</a></li>
+          <li><a href="/buscaCategoria/4">Gaming</a></li>
+          <li><a href="/buscaCategoria/5">Music</a></li>
+          <li><a href="/buscaCategoria/6">Science and nature</a></li>
+          <li><a href="/buscaCategoria/7">Politics</a></li>
+          <li><a href="/buscaCategoria/8">Sport</a></li>
+          <li><a href="/buscaCategoria/9">Technology</a></li>
+        </ul>
+      </li>
+      <li><a href="/fuentesPub">Sources</a></li>
+      @if(Auth::check())
+        <li>
+          <a href="/fuentesPub">Bookmarks</a>
+        </li>
+        <li>
+          <a href="/foro">Foro</a>
+        </li>
+      @endif
+      <li>
+          <form class="navbar-form navbar-left" action="{{ action('articulosController@searchFeed')}}" name="search"
+                     method="GET">
+            <div class="input-group">
+                <input type="text" name="sName" id="sName" class="form-control" placeholder="Search article...">
+                <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+      </li>
+    </ul>
+
       body{ padding-top: 70px;}
       
     </style>

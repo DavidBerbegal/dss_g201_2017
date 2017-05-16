@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SourcesTableSeeder::class);
         $this->command->info('Sources table seeded');
 
+        $this->call(ForoTableSeeder::class);
+        $this->command->info('Foro table seeded');
+
         $this->call( ArticlesTableSeeder::class );
         $this->command->info('Articles table seeded');
 
