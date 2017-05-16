@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
+use App\Foro;
+use Carbon\Carbon;
 
 class foroController extends Controller
 {
     public function index(Request $request)
     {
-        $mostrarForo = DB::table('foro')->paginate(5);
+        $mostrarForo = DB::table('foro')->paginate(8);
         return view('foro', ['foro' => $mostrarForo, 'mensaje' => $request->input('msg')]);
     }
 
@@ -23,12 +29,12 @@ class foroController extends Controller
         {
             $foro = DB::table('foro')
                     ->orderBy($request->input('order'))
-                    ->paginate(5);
+                    ->paginate(8);
             return view('foro', ['foro' => $foro, 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]);
         }
 
-        $foroAux = DB::table('foro')->paginate(5);
+        $foroAux = DB::table('foro')->paginate(8);
         return view('foro', ['foro' => $foroAux, 'mensaje' => $request->input('msg'),
                                 'order' => 'id']);
     }
@@ -40,16 +46,16 @@ class foroController extends Controller
         $this->validate($request, [
             'titulo' => 'required',
             'comentario' => 'required',
-            'creado' => 'required'
         ]);
 
         try 
         {
-            $source = new Source();
-            $source->api = $request->input('titulo');
-            $source->name = $request->input('comentario');
-            $source->creado = Carbon::now();
-            $source->save();
+            $foro = new Foro();
+            $foro->titulo = $request->input('titulo');
+            $foro->comentario = $request->input('comentario');
+            $foro->autor = Auth::User()['name'];
+            $foro->created_at = Carbon::now();
+            $foro->save();
 
             $mensaje = "El comentario no ha sido creado correctamente";
             return redirect()->action('foroController@index', ['msg' => $mensaje]);
@@ -68,8 +74,8 @@ class foroController extends Controller
         try
         {
             $id = $request->input('id');
-            $source = Source::findOrFail($id);
-            $source->delete();
+            $foro = Foro::findOrFail($id);
+            $foro->delete();
 
             $mensaje = "El comentario con ID " . $id . "ha sido borrado correctamente";
             return redirect()->action('foroController@index', ['msg' => $mensaje]);

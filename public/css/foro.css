@@ -1,0 +1,57 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    padding-top: 100px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.thumbnail {
+    height: auto;
+    position: relative;
+    padding: 0px;
+    margin-bottom: 10px;
+    height: 400px;
+}
+
+.article-container {
+    width: 33%;
+}
+
+#header-content {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    bottom: 0px;
+    right: 15%;
+}
+
+.boton-fuente {
+    align: center;
+    margin-left: 50px;
+}
+
+.botonBorrar {
+    margin-left: 200px;
+}
+
+.textbox {
+  border: 1px solid #DBE1EB;
+  font-size: 18px;
+  font-family: Arial, Verdana;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+  color: #2E3133;
+}

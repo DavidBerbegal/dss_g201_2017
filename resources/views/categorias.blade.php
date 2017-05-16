@@ -12,14 +12,7 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-
-        <div class="links">
-                <a href="{{ url('/articulos') }}">Artículos</a>
-                <a href="{{ url('/usuarios') }}">Usuarios</a>
-                <a href="{{ url('/fuentes') }}">Fuentes</a>
-                <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
-        </div><br>
+        <br>
             <div class="flex-center">
                 @if (session('mensaje'))
                     @if (session('mensaje') != "")
@@ -44,17 +37,6 @@
     <body>
          @extends('header')
         <div class="aux flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <!--<a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>-->
-                    @endif
-                </div>
-            @endif
-
             <div class="content-fuentes">
                 <table class="table table-hover">
                     <thead>

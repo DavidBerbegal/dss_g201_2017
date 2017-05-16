@@ -17,7 +17,8 @@ class CreateForoTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('comentario');
-            $table->timestamps('creado');
+            $table->string('autor');
+            $table->timestamps('created_at');
         });
     }
 

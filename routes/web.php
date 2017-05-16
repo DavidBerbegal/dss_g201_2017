@@ -13,10 +13,6 @@
 
 Route::any('/' , 'articulosController@listArticulosFeed');
 
-Route::get('/admin', function () {
-    return view('index');
-}) -> middleware ('auth');
-
 // Rutas Artículos
 Route::get('/upvote', 'articulosController@upvote');
 Route::get('/downvote', 'articulosController@downvote');

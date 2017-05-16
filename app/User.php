@@ -13,14 +13,22 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Bookmark');
     }
+
     public function sourcesubscriptions()
     {
         return $this->hasMany('App\Sourcesubscription');
     }
+
     public function categorysubscriptions()
     {
         return $this->hasMany('App\Categorysubscription');
     }
+
+    public function foro()
+    {
+        return $this->hasMany('App\Foro');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
