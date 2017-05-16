@@ -61,19 +61,6 @@
           }
       }
 
-    @if(Auth::user()['privilegios'] == "administrador")
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url('/articulos') }}">Artículos</a></li>
-            <li><a href="{{ url('/usuarios') }}">Usuarios</a></li>
-            <li><a href="{{ url('/categorias') }}">Categorías</a></li>
-            <li><a href="{{ url('/fuentes') }}">Fuentes</a></li>
-            <li><a href="{{ url('/suscripcion-categorias') }}">Suscrip-Categorías</a></li>
-            <li><a href="{{ url('/suscripcion-fuentes') }}">Suscrip-Fuentes</a></li>
-          </ul>
-        </li>
-    @endif
-
     <li><a href="{{ url('/feed') }}">Feed</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -133,9 +120,16 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             @if(Auth::user()['privilegios'] == "administrador")
-              <li>
-                <a href="{{ url('/admin') }}">Admin</a>
-              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ url('/articulos') }}">Artículos</a></li>
+                    <li><a href="{{ url('/usuarios') }}">Usuarios</a></li>
+                    <li><a href="{{ url('/categorias') }}">Categorías</a></li>
+                    <li><a href="{{ url('/fuentes') }}">Fuentes</a></li>
+                    <li><a href="{{ url('/suscripcion-categorias') }}">Suscrip-Categorías</a></li>
+                    <li><a href="{{ url('/suscripcion-fuentes') }}">Suscrip-Fuentes</a></li>
+                  </ul>
+                </li>
             @endif
 
             <li><a href="{{ url('/feed') }}">Feed</a></li>
