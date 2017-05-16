@@ -20,6 +20,13 @@
                     @endif
                 @endif </div>
             <div class="flex-center"><div>
+                <div style="text-align:center">
+                    <div>
+                        <p align="center">
+                            <a href="{{ url('/nuevaCategoria')}}" class="btn btn-primary" role="button">Nueva Categoría</a>
+                        </p>
+                    </div>
+                </div>
 
 
                 <form class="form-class" action="{{ action('categoriasController@listCategories')}}" name="sortBy"
@@ -77,9 +84,4 @@
             </div>
         </div>
     </body>
-    <div class="botonAgregar">
-        <a type="button" class="btn btn-default" href="{{ url('/nuevaCategoria')}}">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </div>
 </html>

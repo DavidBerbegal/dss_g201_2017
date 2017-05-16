@@ -20,6 +20,14 @@
         </div>
         @endif
 
+        <div style="text-align:center">
+            <div>
+                <p align="center">
+                    <a href="{{ url('/nuevaFuente')}}" class="btn btn-primary" role="button">Nueva Fuente</a>
+                </p>
+            </div>
+        </div>
+
         <form class="form-class" action="{{ action('fuentesController@listSources')}}" name="sortBy"
                 method="GET">
             <label class="ordenar-label" for="order">Ordenar fuentes por:</label>
@@ -72,9 +80,4 @@
             </div>
         </div>
     </body>
-    <div class="botonAgregar">
-        <a type="button" class="btn btn-default" href="{{ url('/nuevaFuente')}}">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </div>
 </html>
