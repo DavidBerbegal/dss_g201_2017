@@ -23,11 +23,16 @@
                     @endif
                 @endif </div>
             <div class="flex-center"><div>
+            <div style="text-align:center">
+                <div>
+                    <p align="center">
+                        <a href="{{ url('/usuariosCreateUpdate') }}" class="btn btn-primary" role="button">Nuevo Usuario</a>
+                    </p>
+                </div>
+            </div>
 
                 <div class="flex-center">
-                <a href="{{ url('/usuariosCreateUpdate') }}"><span class="glyphicon glyphicon-plus">
-                    </span>Crear nuevo usuario
-                </a><br><br></div>
+                <br><br></div>
                 <div>
                     
                    <form action="{{ action('usuariosController@listUsers')}}" name="sortBy"

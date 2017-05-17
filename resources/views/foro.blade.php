@@ -9,61 +9,56 @@
       <link rel="stylesheet" type="text/css" href="/css/estilos.css">
       <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
       <link rel="stylesheet" type="text/css" href="/css/foro.css">
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   </head>
   <body>
       @extends('header')
-
-      <div class="container" id="tourpackages-carousel">
-      <br>
-      @if(sizeof($foro) == 0)
-        <div><h3 align="center">There are no matches for these search parameters</h3>
-        <p align="center"><a href="/feed" class="btn btn-primary" role="button">Back</a></p></div>
-      @endif
-      <div style="text-align:center">
-        <div>
-            <p align="center">
-                <a href="/nuevoForo" class="btn btn-primary" role="button">Nuevo Mensaje</a>
-            </p>
-        </div>
-    </div>
-      <div class="row">
-          @foreach($foro as $mensaje)
-          <div class="col-xs-18 col-sm-6 col-md-3">
-            <div class="thumbnail">
-                <table>
-                    <tr>
-                        <td><p align="justify">{{$mensaje->created_at}}</p></td>
-                        <td><p style="margin-left: 100px"> {{$mensaje->autor}} </p></td>
-                        <td>
-                            <p>
-                                @if(Auth::user()['privilegios'] == "administrador")
-                                    <a>
-                                        <form action="{{ action('foroController@destroy', ['id' => $mensaje->id ])}}" name="delete"
-                                            method="POST">
-                                            {{ csrf_field() }}
-                                            
-                                            <button type="submit" name="delete">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                            </button>
-                                        </form>
-                                    </a>
-                                @endif
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-              <div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="btn-panel btn-panel-conversation">
                 </div>
-                <div class="caption">
-                  <h3 align="left">{{$mensaje->titulo}}</h4>
-                  <p align="justify">{{$mensaje->comentario}}</p>
-              </div>
             </div>
-          </div>
-          @endforeach
-      </div><!-- End container -->
-    <div class="flex-center">
-        {{ $foro->appends(['order' => $order])->links() }}
+
+            <div class="col-lg-offset-1 col-lg-7">
+                <div class="btn-panel btn-panel-msg">
+                    <a href="/nuevoForo" class="btn  col-lg-3  send-message-btn pull-right" role="button"><i class="fa fa-gears"></i> Nuevo Comentario</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="message-wrap col-lg-8">
+            @foreach($foro as $mensaje)
+                <div class="msg-wrap">
+                    <div class="media msg ">
+                        <a class="pull-left" href="#">
+                            @if(Auth::user()['privilegios'] == "administrador")
+                                <form action="{{ action('foroController@destroy', ['id' => $mensaje->id ])}}" name="delete"
+                                    method="POST">
+                                    {{ csrf_field() }}
+                                    
+                                    <button type="submit" name="delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </form>
+                            @endif
+                        </a>
+                        <div class="media-body">
+                            <small class="pull-right time"><i class="fa fa-clock-o"></i>{{$mensaje->created_at}}</small>
+                            <h5 class="media-heading">{{$mensaje->autor}}</h5>
+                            <strong>{{$mensaje->titulo}}</strong>
+                            <small class="col-lg-10">{{$mensaje->comentario}}</small>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <div class="send-wrap ">
+                </div>
+                <div class="btn-panel">
+                    {{ $foro->appends(['order' => $order])->links() }}
+                </div>
+            </div>
+        </div>
     </div>
   </body>
 </html>
