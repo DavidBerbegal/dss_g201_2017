@@ -41,16 +41,16 @@ class bookmarksController extends Controller
 
         return back()->withInput();
     }
-    
-    public function desuscribe(Request $request){
+
+    public function deleteBookmark(Request $request){
         
         $user_id = Auth::user()->id;
-        $category_id = $request->input('category_id');
-        $sub = CategorySubscription::where('category_id', $category_id)->
-                where('category_id', $category_id)->first();
-        $sub->delete();
-        $category = Category::where('id', $request->input('category_id'))->first();
-        $mensaje = $category->name . " eliminated from your subscriptions ";
+
+        $article_id = $request->input('article_id');
+        $book = Bookmark::where('user_id', $user_id)->
+                where('article_id', $article_id)->first();
+        $book->delete();
+
         return back()->withInput();
     }
 }

@@ -151,8 +151,8 @@
             <div class="thumbnail">
               <div style="display: flex">
               <p style="margin-right: 251px" align="justify">{{$art->date}}</p>
-                  <a href="">
-                      <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
+                  <a href="{{ action('bookmarksController@deleteBookmark', ['article_id' =>  $art->id ]) }}">
+                      <span style="color: #5362d1" class="glyphicon glyphicon-bookmark"></span>
                   </a>
               </div>
               <a href="{{$art->urlNew}}" target="_blank"> 
@@ -196,7 +196,6 @@
               </div>
             </div>
             @endforeach
-      </div><!-- End container -->
-
+      </div>
   </body>
 </html>

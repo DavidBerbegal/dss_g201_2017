@@ -92,9 +92,10 @@ Route::get('/fuentesPub/search' , 'fuentesController@searchPubSources');
 Route::any('/feed' , 'articulosController@listArticulosFeed');
 Route::get('/feed/search' , 'articulosController@searchFeed');
 
-//RUTAS FEED
+//RUTAS BOOKMARKS
 Route::any('/bookmarks' , 'bookmarksController@listaBookmarks');
 Route::get('/bookmarks/add' , 'bookmarksController@addBookmark');
+Route::get('/categories/delete' , 'bookmarksController@deleteBookmark');
 
 //RUTA PERFIL USUARIO
 Route::group(['middleware' => 'auth'], function() {
