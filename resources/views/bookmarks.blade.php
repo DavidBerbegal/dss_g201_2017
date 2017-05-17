@@ -151,11 +151,9 @@
             <div class="thumbnail">
               <div style="display: flex">
               <p style="margin-right: 251px" align="justify">{{$art->date}}</p>
-              @if (Auth::check())
                   <a href="">
                       <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
                   </a>
-              @endif
               </div>
               <a href="{{$art->urlNew}}" target="_blank"> 
               <img src="{{$art->urlImg}}" alt="">
