@@ -151,7 +151,8 @@
             <div class="thumbnail">
               <div style="display: flex">
               <p style="margin-right: 251px" align="justify">{{$art->date}}</p>
-              @if (Auth::check())
+              
+              @if(Auth::check())
                       @if(in_array($art->id, $articles_id))
                         <a href="{{ action('bookmarksController@deleteBookmark', ['article_id' =>  $art->id ]) }}">
                           <span style="color: #5362d1" class="glyphicon glyphicon-bookmark"></span>

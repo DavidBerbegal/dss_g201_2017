@@ -36,6 +36,7 @@ class articulosController extends Controller
 
     public function buscaCategoria($idCat){
 
+        $user_id = Auth::user()->id;
         $news = DB::table('articles')
             ->where('category_id','LIKE', "%$idCat%")->paginate(20);
         
@@ -56,7 +57,14 @@ class articulosController extends Controller
                 $new->description = $desc;
             }
         }
-        return view('feed', ['articles' => $news, 'id' => $id, 'subs' => $subs, 'mensaje' => $mensaje, 
+
+        $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+        $articles_id = array();
+
+        foreach ($bookmarks as $book){  
+        array_push($articles_id,$book->article_id);
+        }
+        return view('feed', ['articles' => $news, 'id' => $id,'articles_id' => $articles_id, 'subs' => $subs, 'mensaje' => $mensaje, 
                                 'order' => 'name']);
     }
 
