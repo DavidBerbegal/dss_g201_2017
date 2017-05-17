@@ -71,7 +71,6 @@ class articulosController extends Controller
     // vista pública para el feed principal
     public function listArticulosFeed(Request $request){
 
-        $user_id = Auth::user()->id;
         $mensaje = "";
         $news = DB::table('articles')->orderBy('name')->paginate(21);
         foreach ($news as $new){
@@ -81,11 +80,16 @@ class articulosController extends Controller
                 $new->description = $desc;
             }
         }
-        $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
-        $articles_id = array();
-
-        foreach ($bookmarks as $book){  
-        array_push($articles_id,$book->article_id);
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+            $articles_id = array();
+            foreach ($bookmarks as $book){  
+            array_push($articles_id,$book->article_id);
+            }
+        }
+        else{
+            $articles_id="";
         }
 
         //$bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(7);
