@@ -28,7 +28,7 @@ class bookmarksController extends Controller
         array_push($articles_id,$book->article_id);
         }
         $news = Article::findMany($articles_id);
-
+        
         return view('bookmarks', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
     }
 

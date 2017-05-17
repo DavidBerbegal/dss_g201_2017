@@ -152,9 +152,15 @@
               <div style="display: flex">
               <p style="margin-right: 251px" align="justify">{{$art->date}}</p>
               @if (Auth::check())
-                  <a href="{{ action('bookmarksController@addBookmark', ['article_id' =>  $art->id ]) }}">
-                      <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
-                  </a>
+                      @if(in_array($art->id, $articles_id))
+                        <a href="{{ action('bookmarksController@deleteBookmark', ['article_id' =>  $art->id ]) }}">
+                          <span style="color: #5362d1" class="glyphicon glyphicon-bookmark"></span>
+                        </a> 
+                      @else
+                        <a href="{{ action('bookmarksController@addBookmark', ['article_id' =>  $art->id ]) }}">
+                          <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
+                        </a>
+                      @endif
               @endif
               </div>
               <a href="{{$art->urlNew}}" target="_blank"> 
