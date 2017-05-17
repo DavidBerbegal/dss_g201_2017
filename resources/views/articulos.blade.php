@@ -35,7 +35,7 @@
                     
                     <label for="order">Ordenar articulos por:</label>
                     <select name="order" id='order'>
-                        <option selected value="id">ID</option>
+                        <option selected value="articleid">ID</option>
                         <option value="author">Author</option>
                         <option  value="title">Title</option>
                     </select>
@@ -51,8 +51,8 @@
                             <th><h4>Date:</h4></th>
                             <th><h4>PositiveRate:</h4></th>
                             <th><h4>NegativeRate:</h4></th>
-                            <th><h4>SourceID:</h4></th>
-                            <th><h4>CategoryID:</h4></th>
+                            <th><h4>Source:</h4></th>
+                            <th><h4>Category:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,18 +64,18 @@
                     
                     @foreach($articles as $art)
                         <tr>
-                            <td>{{$art->id}}</td>
+                            <td>{{$art->articleid}}</td>
                             <td>{{$art->author}}</td>
                             <td>{{$art->title}}</td>
                             <td>{{$art->description}}</td>
                             <td>{{$art->date}}</td>
                             <td>{{$art->positiveRate}}</td>
                             <td>{{$art->negativeRate}}</td>
-                            <td>{{$art->source_id}}</td>
-                            <td>{{$art->category_id}}</td> 
+                            <td>{{$art->source}}</td>
+                            <td>{{$art->category}}</td> 
                                 <td>    
                                     <a>
-                                        <form action="{{ action('articulosController@delete', ['id' =>  $art->id ]) }}" name="delete"
+                                        <form action="{{ action('articulosController@delete', ['id' =>  $art->articleid ]) }}" name="delete"
                                             method="POST">
                                             {{ csrf_field() }}
                                             

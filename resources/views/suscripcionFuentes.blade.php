@@ -35,9 +35,9 @@
                     
                     <label for="order">Ordenar suscripciones por:</label>
                     <select name="order" id='order'>
-                        <option selected value="id">ID</option>
-                        <option value="user_id">UserID</option>
-                        <option  value="source_id">SourceID</option>
+                        <option selected value="subid">ID</option>
+                        <option value="user">User</option>
+                        <option  value="source">Source</option>
                     </select>
                     <button type="submit" name="sortBy">Ordenar</button>
                 </form>
@@ -45,8 +45,8 @@
                     <thead>
                         <tr>
                             <th><h4>ID:</h4></th>
-                            <th><h4>UserID:</h4></th>
-                            <th><h4>SourceID:</h4></th>
+                            <th><h4>User:</h4></th>
+                            <th><h4>Source:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,13 +58,13 @@
                     
                     @foreach($sourcesubscriptions as $sub)
                         <tr>
-                            <td>{{$sub->id}}</td>
-                            <td>{{$sub->user_id}}</td>
-                            <td>{{$sub->source_id}}</td>
+                            <td>{{$sub->subid}}</td>
+                            <td>{{$sub->user}}</td>
+                            <td>{{$sub->source}}</td>
                             
                                 <td>    
                                     <a>
-                                        <form action="{{ action('suscripcionFuentesController@delete', ['id' =>  $sub->id ]) }}" name="delete"
+                                        <form action="{{ action('suscripcionFuentesController@delete', ['id' =>  $sub->subid ]) }}" name="delete"
                                             method="POST">
                                             {{ csrf_field() }}
                                             

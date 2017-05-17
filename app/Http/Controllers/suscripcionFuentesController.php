@@ -20,15 +20,22 @@ class suscripcionFuentesController extends Controller
         if($request->has('order') && $request->input('order') != ""){
             
             $subs = DB::table('sourcesubscriptions')
+                    ->join('users','user_id','=','users.id')
+                    ->join('sources','source_id','=','sources.id')
+                    ->select('sourcesubscriptions.id as subid','users.name as user','sources.name as source')
                     ->orderBy($request->input('order'))
                     ->paginate(7);
 
             return view('suscripcionFuentes', ['sourcesubscriptions' => $subs, 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]);
         }
-        $subs = DB::table('sourcesubscriptions')->paginate(7);
+        $subs = DB::table('sourcesubscriptions')
+                ->join('users','user_id','=','users.id')
+                ->join('sources','source_id','=','sources.id')
+                ->select('sourcesubscriptions.id as subid','users.name as user','sources.name as source')
+                ->paginate(7);
         return view('suscripcionFuentes', ['sourcesubscriptions' => $subs, 'mensaje' => $request->input('msg'),
-                                'order' => 'id']);
+                                'order' => 'subid']);
         
     }
     public function delete(Request $request){

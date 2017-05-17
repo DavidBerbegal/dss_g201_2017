@@ -35,7 +35,7 @@ class suscripcionCategoriasController extends Controller
                 ->select('categorysubscriptions.id as subid','users.name as user','categories.name as category')
                 ->paginate(7);
         return view('suscripcionCategorias', ['categorysubscriptions' => $subs, 'mensaje' => $request->input('msg'),
-                                'order' => 'id']);
+                                'order' => 'subid']);
         
     }
     public function delete(Request $request){
