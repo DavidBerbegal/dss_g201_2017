@@ -20,13 +20,20 @@ class suscripcionCategoriasController extends Controller
         if($request->has('order') && $request->input('order') != ""){
             
             $subs = DB::table('categorysubscriptions')
+                    ->join('users','user_id','=','users.id')
+                    ->join('categories','category_id','=','categories.id')
+                    ->select('categorysubscriptions.id as subid','users.name as user','categories.name as category')
                     ->orderBy($request->input('order'))
                     ->paginate(7);
 
             return view('suscripcionCategorias', ['categorysubscriptions' => $subs, 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]);
         }
-        $subs = DB::table('categorysubscriptions')->paginate(7);
+        $subs = DB::table('categorysubscriptions')
+                ->join('users','user_id','=','users.id')
+                ->join('categories','category_id','=','categories.id')
+                ->select('categorysubscriptions.id as subid','users.name as user','categories.name as category')
+                ->paginate(7);
         return view('suscripcionCategorias', ['categorysubscriptions' => $subs, 'mensaje' => $request->input('msg'),
                                 'order' => 'id']);
         

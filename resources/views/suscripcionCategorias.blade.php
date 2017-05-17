@@ -35,9 +35,9 @@
                     
                     <label for="order">Ordenar suscripciones por:</label>
                     <select name="order" id='order'>
-                        <option selected value="id">ID</option>
-                        <option value="user_id">UserID</option>
-                        <option  value="category_id">CategoryID</option>
+                        <option selected value="subid">ID</option>
+                        <option value="user">User</option>
+                        <option  value="category">Category</option>
                     </select>
                     <button type="submit" name="sortBy">Ordenar</button>
                 </form>
@@ -45,8 +45,8 @@
                     <thead>
                         <tr>
                             <th><h4>ID:</h4></th>
-                            <th><h4>UserID:</h4></th>
-                            <th><h4>CategoryID:</h4></th>
+                            <th><h4>User:</h4></th>
+                            <th><h4>Category:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,12 +58,12 @@
                     
                     @foreach($categorysubscriptions as $sub)
                         <tr>
-                            <td>{{$sub->id}}</td>
-                            <td>{{$sub->user_id}}</td>
-                            <td>{{$sub->category_id}}</td>
+                            <td>{{$sub->subid}}</td>
+                            <td>{{$sub->user}}</td>
+                            <td>{{$sub->category}}</td>
                                 <td>    
                                     <a>
-                                        <form action="{{ action('suscripcionCategoriasController@delete', ['id' =>  $sub->id ]) }}" name="delete"
+                                        <form action="{{ action('suscripcionCategoriasController@delete', ['id' =>  $sub->subid ]) }}" name="delete"
                                             method="POST">
                                             {{ csrf_field() }}
                                             
