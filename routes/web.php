@@ -94,6 +94,7 @@ Route::get('/feed/search' , 'articulosController@searchFeed');
 
 //RUTAS FEED
 Route::any('/bookmarks' , 'bookmarksController@listaBookmarks');
+Route::get('/bookmarks/add' , 'bookmarksController@addBookmark');
 
 //RUTA PERFIL USUARIO
 Route::group(['middleware' => 'auth'], function() {

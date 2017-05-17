@@ -152,7 +152,7 @@
               <div style="display: flex">
               <p style="margin-right: 251px" align="justify">{{$art->date}}</p>
               @if (Auth::check())
-                  <a href="">
+                  <a href="{{ action('bookmarksController@addBookmark', ['article_id' =>  $art->id ]) }}">
                       <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
                   </a>
               @endif

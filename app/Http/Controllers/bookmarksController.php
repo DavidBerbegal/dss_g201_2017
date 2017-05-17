@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use App\Categorysubscription;
 use App\Bookmark;
+use Illuminate\Support\Facades\Auth;
 use App\Article;
 
 class bookmarksController extends Controller
@@ -34,14 +35,13 @@ class bookmarksController extends Controller
         return view('feed', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
     }
 
-    public function  addPub(Request $request){
+    public function addBookmark(Request $request){
        
         $sub = new Bookmark();
         $sub->user_id =  Auth::user()->id;
         $sub->article_id = $request->input('article_id');
         $sub->save();
-        $source = Source::where('id', $request->input('source_id'))->first();
-        $mensaje = "You have suscribed to " . $source->name;
-        return redirect()->action('fuentesController@listPublicSources')->with('mensaje', $mensaje);
+
+        return back()->withInput();
     }
 }
