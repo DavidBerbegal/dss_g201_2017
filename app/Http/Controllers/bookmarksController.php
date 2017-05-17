@@ -7,32 +7,29 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use App\Categorysubscription;
-use App\Bookmark;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Model;
 use App\Article;
+use App\User;
+use App\Bookmark;
+
 
 class bookmarksController extends Controller
 {
     public function listaBookmarks(Request $request){
        
-       $id = Auth::user()->id;
-       //$suscripciones = Categorysubscription::where('user_id', $id)->get();
-            
-        $sub = new Bookmark();
-        $sub->user_id = $request->input('source_id');
-        $sub->user_id =  Auth::user()->id;
-        $sub->save();
-
+        $user_id = Auth::user()->id;         
         $mensaje = "";
-        $news = DB::table('articles')->orderBy('name')->paginate(21);
-        foreach ($news as $new){
 
-            if((strlen($new->description)+strlen($new->title))> 130){
-                $desc = substr($new->description, 0, 90). "...";
-                $new->description = $desc;
-            }
+        $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+        $articles_id = array();
+
+        foreach ($bookmarks as $book){  
+        array_push($articles_id,$book->article_id);
         }
-        return view('feed', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
+        $news = Article::findMany($articles_id);
+
+        return view('bookmarks', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
     }
 
     public function addBookmark(Request $request){
@@ -42,6 +39,18 @@ class bookmarksController extends Controller
         $sub->article_id = $request->input('article_id');
         $sub->save();
 
+        return back()->withInput();
+    }
+    
+    public function desuscribe(Request $request){
+        
+        $user_id = Auth::user()->id;
+        $category_id = $request->input('category_id');
+        $sub = CategorySubscription::where('category_id', $category_id)->
+                where('category_id', $category_id)->first();
+        $sub->delete();
+        $category = Category::where('id', $request->input('category_id'))->first();
+        $mensaje = $category->name . " eliminated from your subscriptions ";
         return back()->withInput();
     }
 }
