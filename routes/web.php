@@ -106,6 +106,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/sources/desub' , 'suscripcionFuentesController@desuscribe');
     Route::get('/categories/sub' , 'suscripcionCategoriasController@addPub');
     Route::get('/categories/desub' , 'suscripcionCategoriasController@desuscribe');
+
+    //RUTAS BOOKMARKS
+    Route::any('/bookmarks' , 'bookmarksController@listaBookmarks');
+    Route::get('/bookmarks/add' , 'bookmarksController@addBookmark');
+    Route::get('/categories/delete' , 'bookmarksController@deleteBookmark');
 });
 
 // Autenticación de usuarios

@@ -111,7 +111,7 @@
             <li><a href="/fuentesPub">Sources</a></li>
             @if(Auth::check())
               <li>
-                <a href="/fuentesPub">Bookmarks</a>
+                <a href="/bookmarks">Bookmarks</a>
               </li> 
               <li>
                 <a href="/foro">Foro</a>

@@ -9,6 +9,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
 use App\Category;
+use App\Bookmark;
 use App\Categorysubscription;
 
 class articulosController extends Controller
@@ -61,6 +62,8 @@ class articulosController extends Controller
 
     // vista pública para el feed principal
     public function listArticulosFeed(Request $request){
+
+        $user_id = Auth::user()->id;
         $mensaje = "";
         $news = DB::table('articles')->orderBy('name')->paginate(21);
         foreach ($news as $new){
@@ -70,7 +73,15 @@ class articulosController extends Controller
                 $new->description = $desc;
             }
         }
-        return view('feed', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
+        $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+        $articles_id = array();
+
+        foreach ($bookmarks as $book){  
+        array_push($articles_id,$book->article_id);
+        }
+
+        //$bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(7);
+        return view('feed', ['articles' => $news, 'articles_id' => $articles_id, 'mensaje' => $mensaje, 'order' => 'name']); 
     }
 
     public function downvote(Request $request){
