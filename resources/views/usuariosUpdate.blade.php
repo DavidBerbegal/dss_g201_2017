@@ -15,52 +15,11 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
         
-    <body>     
-    @if (Route::has('login'))
-
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <!--<a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>-->
-                    @endif
-                </div>
-            @endif
-            
-
+    <body>  
+    @extends('header')   
             <div class="flex-center"><div>
-                <div class="title m-b-md">
-                    <h1>Usuarios</h1>
-                </div>
-                
-                <div class="flex-center links">
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="{{ url('/articulos') }}">Artículos</a>
-                    <a href="{{ url('/usuarios') }}">Usuarios</a>
-                    <a href="{{ url('/categorias') }}">Categorías</a>
-                    <a href="{{ url('/fuentes') }}">Fuentes</a>
-                    <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                    <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
-                </div>
-                
-
                 <hr>
-
-    
-    <br>
-    
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-            
+    <br>            
             <br><div class="flex-center">
             @if(count($errors) > 0)
                 <ul>
@@ -96,8 +55,10 @@
                         </td>
                         <td>
                             <select name=privilegios id='privilegios'>
-                                <option selected value="administrador">Administrador</option>
-                                <option value="usuario">Usuario</option>
+                                <option selected value="usuario">Usuario</option>
+                                @if(Auth::user()['privilegios'] == "administrador")
+                                    <option value="administrador">Administrador</option>
+                                @endif
                             </select>
                         </td>
                     </tr>
