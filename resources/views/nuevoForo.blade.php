@@ -44,7 +44,7 @@
                     <tr>
                         <td><label for="comentario">Comentario:</label></td>
                         <td>
-                            <textarea cols="25" rows="10" class="textbox" name="comentario" id="comentario" style="margin-top: 10px; height: 150px; width: 300px"></textarea>
+                            <textarea cols="20" rows="10" class="textbox" name="comentario" id="comentario" style="margin-top: 10px; height: 150px; width: 300px"></textarea>
                         </td>
                     </tr>
                 </table>
