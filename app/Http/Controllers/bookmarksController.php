@@ -28,6 +28,14 @@ class bookmarksController extends Controller
         array_push($articles_id,$book->article_id);
         }
         $news = Article::findMany($articles_id);
+
+        foreach ($news as $new){
+
+            if((strlen($new->description)+strlen($new->title))> 130){
+                $desc = substr($new->description, 0, 90). "...";
+                $new->description = $desc;
+            }
+        }
         
         return view('bookmarks', ['articles' => $news, 'mensaje' => $mensaje, 'order' => 'name']); 
     }
