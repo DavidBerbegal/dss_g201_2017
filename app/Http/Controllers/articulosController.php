@@ -145,7 +145,19 @@ class articulosController extends Controller
             }
         }
 
-        return view('feed', ['articles' => $news, 'mensaje' => '',
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+            $articles_id = array();
+            foreach ($bookmarks as $book){  
+            array_push($articles_id,$book->article_id);
+            }
+        }
+        else{
+            $articles_id="";
+        }
+
+        return view('feed', ['articles' => $news, 'articles_id' => $articles_id,'mensaje' => '',
                                 'order' => 'name', 'id' => Auth::user()->id, 'subs' => []]); 
     }
 
