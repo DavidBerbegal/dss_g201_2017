@@ -19,7 +19,7 @@
         max-height:none;
       }
 
-      @media (max-width: 980px) {
+      @media (max-width: 1000px) {
           .navbar-header {
               float: none;
           }
