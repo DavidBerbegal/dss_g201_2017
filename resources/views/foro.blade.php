@@ -46,7 +46,6 @@
                         <div class="media-body">
                             <small class="pull-right time"><i class="fa fa-clock-o"></i>{{$mensaje->created_at}}</small>
                             <h5 class="media-heading">{{$mensaje->autor}}</h5>
-                            <strong>{{$mensaje->titulo}}</strong>
                             <small class="col-lg-10">{{$mensaje->comentario}}</small>
                         </div>
                     </div>

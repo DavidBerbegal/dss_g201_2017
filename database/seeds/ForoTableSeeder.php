@@ -19,7 +19,6 @@ class ForoTableSeeder extends Seeder
             $date = Carbon::now();
 
             DB::table('foro')->insert([
-                'titulo' => $comentario,
                 'comentario' => $comentario . ' Comentario sobre el artículo anterior. Con este comentario se quiere comprobar si el tamaño de las celdas de los comentarios es el correcto o necesita ser modificado. De no ser as
                 será necesario modificar',
                 'autor' => 'admin',

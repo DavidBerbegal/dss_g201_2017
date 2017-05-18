@@ -38,10 +38,6 @@
                 {{ csrf_field() }}
                 <table>
                     <tr>
-                        <td><label for="titulo">Título:</label></td>
-                        <td><input class="textbox" type="text" name="titulo" id="titulo" style="width: 300px; "></td>
-                    </tr>
-                    <tr>
                         <td><label for="comentario">Comentario:</label></td>
                         <td>
                             <textarea cols="20" rows="10" class="textbox" name="comentario" id="comentario" style="margin-top: 10px; height: 150px; width: 300px"></textarea>
