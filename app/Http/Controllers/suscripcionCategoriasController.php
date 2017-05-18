@@ -46,7 +46,7 @@ class suscripcionCategoriasController extends Controller
             $sub = CategorySubscription::findOrFail($id);
             $sub->delete();
 
-            $mensaje = "La suscripción con ID " . $id . "ha sido borrada correctamente";
+            $mensaje = "La suscripción con ID " . $id . " ha sido borrada correctamente";
             return redirect()->action('suscripcionCategoriasController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)

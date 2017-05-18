@@ -131,7 +131,7 @@ class fuentesController extends Controller
             $source->created_at = Carbon::now();
             $source->save();
 
-            $mensaje = "La fuente con ID " . $id . "se ha modificado correctamente";
+            $mensaje = "La fuente con ID " . $id . " se ha modificado correctamente";
             return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)
@@ -151,7 +151,7 @@ class fuentesController extends Controller
             $source = Source::findOrFail($id);
             $source->delete();
 
-            $mensaje = "La fuente con ID " . $id . "ha sido borrada correctamente";
+            $mensaje = "La fuente con ID " . $id . " ha sido borrada correctamente";
             return redirect()->action('fuentesController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)

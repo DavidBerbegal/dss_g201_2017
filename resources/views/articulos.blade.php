@@ -22,14 +22,18 @@
                 </div>
             @endif
             <br>
+            <div class="flex-center"></div>
             <div class="flex-center"><div>
                  <div>
-                    <hr>
-                 @if($mensaje != "")
+                      @if($mensaje != "")
 
                     <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
-                @endif
-                <div class="flex-center"><div>
+                @endif</div>
+                <div class="flex-center">
+                    <br><br></div>
+                    <div>
+                    
+
                    <form action="{{ action('articulosController@index')}}" name="sortBy"
                      method="GET">
                     
@@ -40,7 +44,10 @@
                         <option  value="title">Title</option>
                     </select>
                     <button type="submit" name="sortBy">Ordenar</button>
-                </form>
+                </form></div>
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -72,7 +79,7 @@
                             <td>{{$art->positiveRate}}</td>
                             <td>{{$art->negativeRate}}</td>
                             <td>{{$art->source}}</td>
-                            <td>{{$art->category}}</td> 
+                            <td>{{$art->category}}</td>
                                 <td>    
                                     <a>
                                         <form action="{{ action('articulosController@delete', ['id' =>  $art->articleid ]) }}" name="delete"
@@ -89,6 +96,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
+                </div>
+                </div>
                 <div class="flex-center">
                     {{ $articles->appends(['order' => $order])->links() }}
                 </div>

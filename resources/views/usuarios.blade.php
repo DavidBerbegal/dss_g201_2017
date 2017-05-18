@@ -19,7 +19,7 @@
             <div class="flex-center">
                 @if (session('mensaje'))
                     @if (session('mensaje') != "")
-                        <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
+                        <div class="flex-center"><h2>{{session('mensaje')}}</h2></div>
                     @endif
                 @endif </div>
             <div class="flex-center"><div>
@@ -56,7 +56,9 @@
                     <input type="text" name="sEmail" id="sEmail">
                     <button type="submit" name="buscar">Buscar</button>
                 </form></div>
-
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -65,6 +67,7 @@
                             <th><h4>Email:</h4></th>
                             <th><h4>Password:</h4></th>
                             <th><h4>Privilegio:</h4></th>
+                            <th><h4>Acción:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,14 +87,26 @@
                             <td>{{$usuario->password}}</td>
                             <td>{{$usuario->privilegios}}</td>
                             
-                            <td><a href="{{ action('usuariosController@showUser', ['id' =>  $usuario->id ]) }}">
-                            <span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="{{ action('usuariosController@deleteUser', ['id' =>  $usuario->id ]) }}">
-                            <span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td class="botones">
+                            <a href="{{ action('usuariosController@showUser', ['id' =>  $usuario->id ]) }}">
+                            <button type="submit" name="edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            </a>
+
+                            <a href="{{ action('usuariosController@deleteUser', ['id' =>  $usuario->id ]) }}">
+                            <button type="submit" name="delete">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                            </a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                </div>
+                </div>
+                </div>
                 <div class="flex-center">
                     {{ $users->appends(['order' => $order])->links() }}
                 </div>

@@ -46,7 +46,7 @@ class suscripcionFuentesController extends Controller
             $sub = SourceSubscription::findOrFail($id);
             $sub->delete();
 
-            $mensaje = "La suscripción con ID " . $id . "ha sido borrada correctamente";
+            $mensaje = "La suscripción con ID " . $id . " ha sido borrada correctamente";
             return redirect()->action('suscripcionFuentesController@index', ['msg' => $mensaje]);
         }
         catch (ModelNotFoundException $e)

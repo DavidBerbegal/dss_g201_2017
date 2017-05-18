@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
     <body>
+    <br><br>
          @extends('header')
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -24,12 +25,14 @@
             <br>
             <div class="flex-center"><div>
                  <div>
-                    <hr>
+                    
                  @if($mensaje != "")
 
                     <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
                 @endif
-                <div class="flex-center"><div>
+                <div class="flex-center">
+                <br><br></div>
+                <div>
                    <form action="{{ action('suscripcionFuentesController@index')}}" name="sortBy"
                      method="GET">
                     
@@ -41,12 +44,16 @@
                     </select>
                     <button type="submit" name="sortBy">Ordenar</button>
                 </form>
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th><h4>ID:</h4></th>
                             <th><h4>User:</h4></th>
                             <th><h4>Source:</h4></th>
+                            <th><h4>Acción:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +85,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                 </div>
+                </div>
+                </div>
                 <div class="flex-center">
                     {{ $sourcesubscriptions->appends(['order' => $order])->links() }}
                 </div>
