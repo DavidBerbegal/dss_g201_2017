@@ -15,7 +15,6 @@ class CreateForoTable extends Migration
     {
         Schema::create('foro', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
             $table->string('comentario');
             $table->string('autor');
             $table->timestamps('created_at');

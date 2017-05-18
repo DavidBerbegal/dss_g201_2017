@@ -25,18 +25,20 @@ class foroController extends Controller
             return view('foro', ['foro' => $request->input('foro'), 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]); 
         }
+
         if($request->has('order') && $request->input('order') != "")
         {
             $foro = DB::table('foro')
-                    ->orderBy($request->input('order'))
+                    ->orderBy(($request->input('order')), 'desc')
                     ->paginate(5);
             return view('foro', ['foro' => $foro, 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]);
         }
 
         $foroAux = DB::table('foro')->paginate(5);
+
         return view('foro', ['foro' => $foroAux, 'mensaje' => $request->input('msg'),
-                                'order' => 'id']);
+                                'order' => 'created_at']);
     }
 
     public function create(Request $request)
@@ -44,14 +46,12 @@ class foroController extends Controller
         $mensaje = "";
 
         $this->validate($request, [
-            'titulo' => 'required',
             'comentario' => 'required',
         ]);
 
         try 
         {
             $foro = new Foro();
-            $foro->titulo = $request->input('titulo');
             $foro->comentario = $request->input('comentario');
             $foro->autor = Auth::User()['name'];
             $foro->created_at = Carbon::now();
