@@ -33,6 +33,16 @@
         @if (session('mensaje'))
             <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
         @endif
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
         <br>
             <p class=" text-info"></p>
