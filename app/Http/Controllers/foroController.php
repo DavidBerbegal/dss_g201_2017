@@ -14,7 +14,7 @@ class foroController extends Controller
 {
     public function index(Request $request)
     {
-        $mostrarForo = DB::table('foro')->paginate(5);
+        $mostrarForo = DB::table('foro')->orderBy('created_at', 'desc')->paginate(5);
         return view('foro', ['foro' => $mostrarForo, 'mensaje' => $request->input('msg')]);
     }
 

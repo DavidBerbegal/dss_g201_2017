@@ -54,7 +54,7 @@
                 <div class="send-wrap ">
                 </div>
                 <div class="btn-panel">
-                    {{ $foro->appends(['order' => $order])->links() }}
+                    {{ $foro->links() }}
                 </div>
             </div>
         </div>

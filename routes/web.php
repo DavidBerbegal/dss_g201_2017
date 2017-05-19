@@ -127,6 +127,6 @@ Route::get('/nuevoForo', function() {
 Route::group(['middleware' => 'auth'], function() {
     Route::any('/foro', 'foroController@index');
     Route::post('/foro', 'foroController@destroy');
-    Route::get('/foro', 'foroController@listForo');
+    //Route::get('/foro', 'foroController@listForo');
     Route::post('/nuevoForo', 'foroController@create');
 });
