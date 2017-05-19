@@ -93,18 +93,42 @@ class articulosController extends Controller
         }
         if(Auth::check()){
             $user_id = Auth::user()->id;
-            $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+            $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(21);
             $articles_id = array();
+
             foreach ($bookmarks as $book){  
             array_push($articles_id,$book->article_id);
             }
         }
         else{
             $articles_id = array();
+            $cats_ids = array();
+            $sources_ids = array();
         }
 
         //$bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(7);
         return view('feed', ['articles' => $news, 'articles_id' => $articles_id, 'mensaje' => $mensaje, 'order' => 'name']); 
+    }
+
+    public function mostrarSuscripciones(){
+
+            $cats = DB::table('categorysubscriptions')->where('user_id',$user_id)->paginate(21);
+            $sources = DB::table('sourcesubscriptions')->where('user_id',$user_id)->paginate(21);
+            $cats_ids = array();
+            $sources_ids = array();
+
+            foreach ($cats as $cat){  
+            array_push($cats_ids,$cat->category_id);
+            }
+
+            foreach ($sources as $sour){  
+            array_push($sources_ids,$sour->source_id);
+            }
+
+            $categorySubs = Article::whereIn('category_id', $cats_ids)->get();
+
+            return view('feed', ['articles' => $news, 'articles_id' => $articles_id, 'mensaje' => $mensaje, 'order' => 'name']); 
+
     }
 
     public function downvote(Request $request){

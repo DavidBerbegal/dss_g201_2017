@@ -138,13 +138,15 @@
               </div>
             </div>
           </form>
-
       </div>
+
+
       <br>
       @if(sizeof($articles) == 0)
         <div><h3 align="center">There are no matches for these search parameters</h3>
         <p align="center"><a href="/feed" class="btn btn-primary" role="button">Back</a></p></div>
       @endif
+
       <div class="row">
           @foreach($articles as $art)
           <div class="col-xs-12 col-sm-6 col-md-4">
@@ -206,6 +208,8 @@
             </div>
             @endforeach
       </div><!-- End container -->
-
+      <div class="flex-center">
+      {{$articles->appends(['order'=>$order])->links() }}
+</div>
   </body>
 </html>
