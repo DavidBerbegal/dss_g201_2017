@@ -47,12 +47,12 @@ class suscripcionFuentesController extends Controller
             $sub->delete();
 
             $mensaje = "La suscripción con ID " . $id . " ha sido borrada correctamente";
-            return redirect()->action('suscripcionFuentesController@index', ['msg' => $mensaje]);
+            return redirect()->action('suscripcionFuentesController@index')->with ('msg' , $mensaje);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar borrar la suscripción";
-            return redirect()->action('suscripcionFuentesController@index', ['msg' => $mensaje]);
+            return redirect()->action('suscripcionFuentesController@index')->with ('msg' , $mensaje);
         }
     }
 

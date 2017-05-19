@@ -181,12 +181,12 @@ class articulosController extends Controller
             $article->delete();
 
             $mensaje = "El articulo con ID " . $id . " ha sido borrado correctamente";
-            return redirect()->action('articulosController@index', ['msg' => $mensaje]);
+            return redirect()->action('articulosController@index')->with('msg' , $mensaje);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar borrar el articulo";
-            return redirect()->action('articulosController@index', ['msg' => $mensaje]);
+            return redirect()->action('articulosController@index')->with('msg' , $mensaje);
         }
     }
 }

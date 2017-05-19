@@ -26,11 +26,12 @@
             <br>
             <div class="flex-center"></div>
             <div class="flex-center"><div>
-                 <div>
-                      @if($mensaje != "")
-
-                    <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
-                @endif</div>
+                 <div class="flex-center">
+                @if (session('msg'))
+                    @if (session('msg') != "")
+                        <div class="flex-center"><h2>{{session('msg')}}</h2></div>
+                    @endif
+                @endif </div>
                 <div class="flex-center">
                     <br><br></div>
                     <div>

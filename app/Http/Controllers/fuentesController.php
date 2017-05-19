@@ -104,12 +104,12 @@ class fuentesController extends Controller
             $source->save();
 
             $mensaje = "La fuente no ha sido creada correctamente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index')->with ('msg' , $mensaje);
         }
         catch (QueryException $e)
         {
             $mensaje = "Error al crear la fuente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index')->with ('msg' , $mensaje);
         }
     }
 
@@ -132,12 +132,12 @@ class fuentesController extends Controller
             $source->save();
 
             $mensaje = "La fuente con ID " . $id . " se ha modificado correctamente";
-            return redirect()->action('controllerSources@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index')->with ('msg' , $mensaje);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Error al modificar la fuente";
-            return redirect()->action('controllerSources@index', ['msg' => $e]);
+            return redirect()->action('fuentesController@index')->with ('msg' , $e);
         }
     }
 
@@ -152,12 +152,12 @@ class fuentesController extends Controller
             $source->delete();
 
             $mensaje = "La fuente con ID " . $id . " ha sido borrada correctamente";
-            return redirect()->action('fuentesController@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index')->with ('msg', $mensaje);
         }
         catch (ModelNotFoundException $e)
         {
             $mensaje = "Ha ocurrido un error al intentar borrar la fuente";
-            return redirect()->action('fuentesController@index', ['msg' => $mensaje]);
+            return redirect()->action('fuentesController@index')->with('msg' , $mensaje);
         }
     }
 }
