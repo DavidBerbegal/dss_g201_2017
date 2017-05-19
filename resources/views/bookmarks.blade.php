@@ -183,5 +183,8 @@
             </div>
             @endforeach
       </div>
+  <div class="flex-center">
+      {{$articles->appends(['order'=>$order])->links() }}
+</div>
   </body>
 </html>

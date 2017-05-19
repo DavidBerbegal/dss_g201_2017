@@ -40,7 +40,7 @@ class suscriptionsFeedController extends Controller
                 $articles_id = array();
             }
          
-            $news = Article::whereIn('category_id', $cats_ids)->get();
+            $news = Article::whereIn('category_id', $cats_ids)->paginate(15);
 
             foreach ($news as $new){
 
@@ -78,7 +78,7 @@ class suscriptionsFeedController extends Controller
                 $articles_id = array();
             }
          
-            $news = Article::whereIn('category_id', $sources_ids)->get();
+            $news = Article::whereIn('category_id', $sources_ids)->paginate(15);
 
             foreach ($news as $new){
 
