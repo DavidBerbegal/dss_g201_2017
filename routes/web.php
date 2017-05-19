@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/categories/delete' , 'bookmarksController@deleteBookmark');
     
     //SUSCRIPTIONS FEED
-    Route::any('/suscriptions' , 'suscrptionsFeedController@listaSuscripciones');
+    Route::any('/suscriptions' , 'suscriptionsFeedController@listaSuscripciones');
 
 });
 
