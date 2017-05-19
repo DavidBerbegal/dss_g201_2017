@@ -12,46 +12,17 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
-    <body class="bold">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <!--<a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>-->
-                @endif
-            </div>
-        @endif
-
-        <div class="flex-center"><div>
-            <div class="title m-b-md">
-                Modificar Fuente
-            </div>
-
-            <div class="flex-center links">
-                <a href="{{ url('/') }}">Home</a>
-                <a href="{{ url('/articulos') }}">Artículos</a>
-                <a href="{{ url('/usuarios') }}">Usuarios</a>
-                <a href="{{ url('/categorias') }}">Categorías</a>
-                <a href="{{ url('/fuentes') }}">Fuentes</a>
-                <a href="{{ url('/suscripcion-categorias') }}">Suscripción-Categorías</a>
-                <a href="{{ url('/suscripcion-fuentes') }}">Suscripción-Fuentes</a>
-            </div>
-        <hr>
-        <br>
-
-        <br>
-        <div class="flex-center">
+   <body>  
+    @extends('header')   
+            <div class="flex-center"><div>
+                    <br>            
+            <br><div class="flex-center">
             @if(count($errors) > 0)
                 <ul>
                 @foreach ($errors->all() as $error)
-                    <li> 
-                        {{ $error }} 
-                    </li>
+                    <li> {{ $error }} </li>
                 @endforeach
-                </ul>
-            </div>
+                </ul></div>
             @endif
 
         <div class="flex-center">
@@ -60,16 +31,16 @@
             {{ csrf_field() }}
                 <table>
                     <tr>
-                        <td><label for="id">ID: {{ $id }}</label></td>
-                        <td><input type="hidden" name="id" id="id" value= {{ $id }}><br><br></td>
+                        <td><label for="id">ID de la fuente: {{ $id }}</label><br><br></td>
+                        <td><input type="hidden" name="id" id="id" value= {{ $id }}></td>
                     </tr>
                     <tr>
-                        <td><label for="name">Nombre:</label></td>
-                        <td><input type="text" name="name" id="name" value= "{{ $name }}"><br><br></td>
+                        <td><label for="name">Nombre:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name" value= "{{ $name }}"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="description">Descripcion:</label></td>
-                        <td><input type="text" name="description" id="description" value= "{{ $description }}"><br><br></td>
+                        <td><label for="description">Descripción:</label>&nbsp&nbsp<input type="text" name="description" id="description" value= "{{ $description }}"><br><br></td>
+                        
                     </tr>
                 </table>
                 <div class="flex-center">

@@ -16,8 +16,9 @@
     @extends('header')
         <div class="flex-center"><div>
             <div class="title m-b-md">
-                Nueva Fuente
+                <h2>Nueva Fuente<h2>
             </div>
+            <hr><br><br>
         <div class="flex-center">
         @if(count($errors) > 0)
             <ul>
@@ -37,36 +38,36 @@
                 {{ csrf_field() }}
                 <table>
                     <tr>
-                        <td><label for="api">Api:</label></td>
-                        <td><input type="text" name="api" id="api"></td>
+                        <td><label for="api">Api:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="api" id="api"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="name">Nombre:</label></td>
-                        <td><input type="text" name="name" id="name"></td>
+                        <td><label for="name">Nombre:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="description">Descripcion:</label></td>
-                        <td><input type="text" name="description" id="description"></td>
+                        <td><label for="description">Descripción:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="description" id="description"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="url">Url:</label></td>
-                        <td><input type="text" name="url" id="url"></td>
+                        <td><label for="url">Url:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="url" id="url"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="urlLogoSmall">Url Logo Small:</label></td>
-                        <td><input type="text" name="urlLogoSmall" id="urlLogoSmall"></td>
+                        <td><label for="urlLogoSmall">Url Logo Small:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="urlLogoSmall" id="urlLogoSmall"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="urlLogoMedium">Url Logo Medium:</label></td>
-                        <td><input type="text" name="urlLogoMedium" id="urlLogoMedium"></td>
+                        <td><label for="urlLogoMedium">Url Logo Medium:</label>&nbsp&nbsp<input type="text" name="urlLogoMedium" id="urlLogoMedium"><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="created_at">Creado:</label></td>
-                        <td><input type="text" name="created_at" id="created_at"></td>
+                        <td><label for="created_at">Creado:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="created_at" id="created_at"></td>
+                        
                     </tr>
                 </table>
-                <div class="flex-center">
-                    <button type="submit" class="btn btn-primary" name="create">Guardar</button>
+                <br><div class="flex-center">
+                    <button type="submit" class="btn btn-primary" name="create">Crear fuente</button>
                 </div>
             </form>
         </div>

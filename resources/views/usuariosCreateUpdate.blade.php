@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-        <title>Usuarios</title>
+        <title>Nuevo usuario</title>
 
         
 
@@ -21,7 +21,7 @@
     @extends('header')
             <div class="flex-center"><div>
                 <div class="title m-b-md">
-                    <h1>Nuevo Usuario</h1>
+                    <h2>Nuevo Usuario</h2>
                 </div>                
                 <hr> <br>
     
@@ -55,30 +55,28 @@
             {{ csrf_field() }}
             <table>
                 <tr>
-                    <td><label for="name">Nombre: </label></td>
-                    <td><input type="text" name="name" id="name" value="{{ old('name') }}"><br><br></td>
+                    <td><label for="name">Nombre: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name" value="{{ old('name') }}"><br><br></td>
+                    
                 </tr>
                 <tr>
-                    <td><label for="email">Email: </label></td>
-                    <td><input type="text" name="email" id="email" value="{{ old('email') }}">
+                    <td><label for="email">Email: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="email" id="email" value="{{ old('email') }}">
                     <br><br></td>
+                    
                 <tr>
-                    <td><label for="password">Password: </label></td>
-                    <td><input type="text" name="password" id="password" value="{{ old('password') }}"><br><br></td>
+                    <td><label for="password">Password: </label>&nbsp&nbsp&nbsp<input type="text" name="password" id="password" value="{{ old('password') }}"><br><br></td>
+                    
                 </tr>
                 <tr>
                     <td>
-                        <label for="privilegios">Privilegios:</label>
-                    </td>
-                    <td>
-                        <select name=privilegios id='privilegios'>
+                        <label for="privilegios">Privilegios:</label>&nbsp&nbsp<select name=privilegios id='privilegios'>
                             <option selected value="administrador">Administrador</option>
                             <option value="usuario">Usuario</option>
                         </select>
                     </td>
+                
                 </tr>
             </table>
-            <div class="flex-center"><button type="submit" name="create">Crear</button></div>
+            <br><div class="flex-center"><button type="submit" class="btn btn-primary" name="create">Crear usuario</button></div>
         </form></div>
 
     </body>
