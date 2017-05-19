@@ -143,6 +143,7 @@
 
       <br>
       <h3> Your category suscriptions </h3>
+
       @if(sizeof($articles) == 0)
         <div><h3 align="center">There are no matches for these search parameters</h3>
         <p align="center"><a href="/feed" class="btn btn-primary" role="button">Back</a></p></div>

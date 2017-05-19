@@ -117,10 +117,10 @@
                 <a href="/foro">Foro</a>
               </li>
               <li>
-                <a href="/suscriptions">My Sources</a>
+                <a href="/suscriptionsSources">My Sources</a>
               </li>
                <li>
-                <a href="/suscriptions">My Categories</a>
+                <a href="/suscriptionsCategories">My Categories</a>
               </li>     
             @endif
           
