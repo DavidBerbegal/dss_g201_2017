@@ -5,18 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Categorias</title>
+        <title>Categorías</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        </head>
 
-        <br>
+        <body>
+        <br><br>
             <div class="flex-center">
                 @if (session('mensaje'))
                     @if (session('mensaje') != "")
-                        <div class="alert alert-success" role="alert">{{session('mensaje')}}</div>
+                        <div class="flex-center"><h2>{{session('mensaje')}}</h2></div>
                     @endif
                 @endif </div>
             <div class="flex-center"><div>
@@ -27,24 +29,31 @@
                         </p>
                     </div>
                 </div>
+                
+                 <div class="flex-center">
+                <br><br></div>
+                <div>
 
 
-                <form class="form-class" action="{{ action('categoriasController@listCategories')}}" name="sortBy"
+                <form action="{{ action('categoriasController@listCategories')}}" name="sortBy"
                      method="GET">
                     
-                    <label class="ordenar-label" for="order">Ordenar categorías por:</label>
-                    <select class="bold" name="order" id='order'>
+                    <label for="order">Ordenar categorías por:</label>
+                    <select name="order" id='order'>
                         <option selected value="id">ID</option>
                         <option value="name">Nombre</option>
                     </select>
-                    <button class="bold" type="submit" name="sortBy">Ordenar</button>
+                    <button type="submit" name="sortBy">Ordenar</button>
                 </form>  
-
-    </head>
-    <body>
-         @extends('header')
+                </div>
+    
+    
+        <!-- @extends('header')
         <div class="aux flex-center position-ref full-height">
-            <div class="content-fuentes">
+            <div class="content-fuentes">-->
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -59,8 +68,10 @@
                             <td>{{$mostrarCategoria->id}}</td>
                             <td>{{$mostrarCategoria->name}}</td>
                                 <td class="botones">
-                                    <a type="button" class="btn btn-default" href="{{ action('categoriasController@showCategory', ['id' =>  $mostrarCategoria->id ]) }}">
+                                    <a href="{{ action('categoriasController@showCategory', ['id' =>  $mostrarCategoria->id ]) }}">
+                                        <button type="submit" name="edit">
                                         <span class="glyphicon glyphicon-pencil"></span>
+                                        </button>
                                     </a> 
                        
                                     <a>
@@ -78,7 +89,10 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div>
+                  </div>
+                </div>
+                </div>
+                <div class="flex-center">
                     {{ $categorias->links() }}
                 </div>
             </div>

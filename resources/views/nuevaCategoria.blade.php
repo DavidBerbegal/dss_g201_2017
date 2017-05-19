@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-        <title>Usuarios</title>
+        <title>Nueva categoría</title>
 
         
 
@@ -56,15 +56,14 @@
             {{ csrf_field() }}
             <table>
                 <tr>
-                    <td><label for="name">Nombre: </label></td>
-                    <td><input type="text" name="name" id="name" ><br><br></td>
+                    <td><label for="name">Nombre: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name" ><br><br></td>
+                    
                 </tr>
                 <tr>
-                    <td><label for="description">Descripción: </label></td>
-                    <td><input type="text" name="description" id="description"><br><br></td>
+                    <td><label for="description">Descripción: </label>&nbsp&nbsp<input type="text" name="description" id="description"></td>
                 <tr>
             </table>
-            <div class="flex-center"><button type="submit" name="create">Crear Categoría</button></div>
+            <br><div class="flex-center"><button type="submit" class="btn btn-primary" name="create">Crear categoría</button></div>
         </form></div>
 
     </body>

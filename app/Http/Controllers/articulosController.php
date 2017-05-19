@@ -22,15 +22,22 @@ class articulosController extends Controller
         if($request->has('order') && $request->input('order') != ""){
             
             $articles = DB::table('articles')
+                    ->join('sources','source_id','=','sources.id')
+                    ->join('categories','category_id','=','categories.id')
+                    ->select('articles.id as articleid','articles.author','articles.title','articles.date','articles.positiveRate','articles.negativeRate','articles.description','sources.name as source','categories.name as category')
                     ->orderBy($request->input('order'))
                     ->paginate(7);
 
             return view('articulos', ['articles' => $articles, 'mensaje' => $request->input('msg'),
                                 'order' => $request->input('order')]);
         }
-        $articles = DB::table('articles')->paginate(7);
+        $articles = DB::table('articles')
+                    ->join('sources','source_id','=','sources.id')
+                    ->join('categories','category_id','=','categories.id')
+                    ->select('articles.id as articleid','articles.author','articles.title','articles.date','articles.positiveRate','articles.negativeRate','articles.description','sources.name as source','categories.name as category')
+                    ->paginate(7);
         return view('articulos', ['articles' => $articles, 'mensaje' => $request->input('msg'),
-                                'order' => 'id']);
+                                'order' => 'articlesid']);
         
     }
 

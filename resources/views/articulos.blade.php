@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Artículos</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
@@ -22,25 +24,32 @@
                 </div>
             @endif
             <br>
+            <div class="flex-center"></div>
             <div class="flex-center"><div>
                  <div>
-                    <hr>
-                 @if($mensaje != "")
+                      @if($mensaje != "")
 
                     <div class="flex-center"><h2>{{ $mensaje }}</h2></div>
-                @endif
-                <div class="flex-center"><div>
+                @endif</div>
+                <div class="flex-center">
+                    <br><br></div>
+                    <div>
+                    
+
                    <form action="{{ action('articulosController@index')}}" name="sortBy"
                      method="GET">
                     
                     <label for="order">Ordenar articulos por:</label>
                     <select name="order" id='order'>
-                        <option selected value="id">ID</option>
+                        <option selected value="articleid">ID</option>
                         <option value="author">Author</option>
                         <option  value="title">Title</option>
                     </select>
                     <button type="submit" name="sortBy">Ordenar</button>
-                </form>
+                </form></div>
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -51,8 +60,8 @@
                             <th><h4>Date:</h4></th>
                             <th><h4>PositiveRate:</h4></th>
                             <th><h4>NegativeRate:</h4></th>
-                            <th><h4>SourceID:</h4></th>
-                            <th><h4>CategoryID:</h4></th>
+                            <th><h4>Source:</h4></th>
+                            <th><h4>Category:</h4></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,18 +73,18 @@
                     
                     @foreach($articles as $art)
                         <tr>
-                            <td>{{$art->id}}</td>
+                            <td>{{$art->articleid}}</td>
                             <td>{{$art->author}}</td>
                             <td>{{$art->title}}</td>
                             <td>{{$art->description}}</td>
                             <td>{{$art->date}}</td>
                             <td>{{$art->positiveRate}}</td>
                             <td>{{$art->negativeRate}}</td>
-                            <td>{{$art->source_id}}</td>
-                            <td>{{$art->category_id}}</td> 
+                            <td>{{$art->source}}</td>
+                            <td>{{$art->category}}</td>
                                 <td>    
                                     <a>
-                                        <form action="{{ action('articulosController@delete', ['id' =>  $art->id ]) }}" name="delete"
+                                        <form action="{{ action('articulosController@delete', ['id' =>  $art->articleid ]) }}" name="delete"
                                             method="POST">
                                             {{ csrf_field() }}
                                             
@@ -89,6 +98,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
+                </div>
+                </div>
                 <div class="flex-center">
                     {{ $articles->appends(['order' => $order])->links() }}
                 </div>

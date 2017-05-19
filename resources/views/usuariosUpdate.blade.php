@@ -18,8 +18,7 @@
     <body>  
     @extends('header')   
             <div class="flex-center"><div>
-                <hr>
-    <br>            
+                    <br>            
             <br><div class="flex-center">
             @if(count($errors) > 0)
                 <ul>
@@ -38,32 +37,30 @@
                         <td><input type="hidden" name="id" id="id" value = {{ $id }}></td>
                     </tr>
                     <tr>
-                        <td><label for="name">Nombre:</label></td>
-                        <td><input type="text" name="name" id="name" value= {{ $name }}><br><br></td>
+                        <td><label for="name">Nombre:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name" value= {{ $name }}><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="email">Email:</label></td>
-                        <td><input type="text" name="email" id="email" value= {{ $email }}><br><br></td>
+                        <td><label for="email">Email:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="email" id="email" value= {{ $email }}><br><br></td>
+                        
                     </tr>
                     <tr>
-                        <td><label for="password">Password:</label></td>
-                        <td><input type="text" name="password" id="password" value= {{ $password }}><br><br></td>
+                        <td><label for="password">Password:</label>&nbsp&nbsp&nbsp<input type="text" name="password" id="password" value= {{ $password }}><br><br></td>
+                        
                     </tr>
                     <tr>
                         <td>
-                            <label for="privilegios">Privilegios:</label>
-                        </td>
-                        <td>
-                            <select name=privilegios id='privilegios'>
+                            <label for="privilegios">Privilegios:</label>&nbsp&nbsp<select name=privilegios id='privilegios'>
                                 <option selected value="usuario">Usuario</option>
                                 @if(Auth::user()['privilegios'] == "administrador")
                                     <option value="administrador">Administrador</option>
                                 @endif
                             </select>
                         </td>
-                    </tr>
+                                            
+                            </tr>
                 </table>
-                <div class="flex-center"><button type="submit" name="update">Modificar</button></div>
+                <br><div class="flex-center"><button type="submit" class="btn btn-primary" name="update">Guardar</button></div>
             </form><div>
 
     </body>
