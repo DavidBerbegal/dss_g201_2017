@@ -17,20 +17,14 @@ class suscriptionsFeedController extends Controller
 {
     public function listaSuscripcionesCategories(Request $request){
        
-        $user_id = Auth::user()->id;       
+            $user_id = Auth::user()->id;       
             $cats = DB::table('categorysubscriptions')->where('user_id',$user_id)->paginate(21);
-            $sources = DB::table('sourcesubscriptions')->where('user_id',$user_id)->paginate(21);
             $cats_ids = array();
-            $sources_ids = array();
             $articles_id = array();
             $mensaje = "";
 
             foreach ($cats as $cat){  
             array_push($cats_ids,$cat->category_id);
-            }
-
-            foreach ($sources as $sour){  
-            array_push($sources_ids,$sour->source_id);
             }
 
             if(Auth::check()){
@@ -61,17 +55,11 @@ class suscriptionsFeedController extends Controller
 
         public function listaSuscripcionesSources(Request $request){
        
-        $user_id = Auth::user()->id;       
-            $cats = DB::table('categorysubscriptions')->where('user_id',$user_id)->paginate(21);
+            $user_id = Auth::user()->id;       
             $sources = DB::table('sourcesubscriptions')->where('user_id',$user_id)->paginate(21);
-            $cats_ids = array();
             $sources_ids = array();
             $articles_id = array();
             $mensaje = "";
-
-            foreach ($cats as $cat){  
-            array_push($cats_ids,$cat->category_id);
-            }
 
             foreach ($sources as $sour){  
             array_push($sources_ids,$sour->source_id);
@@ -90,7 +78,7 @@ class suscriptionsFeedController extends Controller
                 $articles_id = array();
             }
          
-            $news = Article::whereIn('category_id', $cats_ids)->get();
+            $news = Article::whereIn('category_id', $sources_ids)->get();
 
             foreach ($news as $new){
 
