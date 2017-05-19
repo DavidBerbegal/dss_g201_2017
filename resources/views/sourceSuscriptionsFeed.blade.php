@@ -109,6 +109,20 @@
       @extends('header')
 
       <div class="container" id="tourpackages-carousel">
+      @if ($mensaje != "")
+        <div class="flex-center2">
+              <h2 class="flex-center">{{$mensaje}} 
+                    <div id=bot>
+                    @if(Auth::check())
+                        @if(in_array($id, $subs))
+                          <a href="{{ action('suscripcionCategoriasController@desuscribe', ['category_id' =>  $id ]) }}" class="btn btn-danger btn-xs" role="button">Unsuscribe</a>
+                        @else
+                          <a href="{{ action('suscripcionCategoriasController@addPub', ['category_id' =>  $id ]) }}" class="btn btn-success btn-xs" role="button">Suscribe</a>
+                        @endif
+                    @endif
+                </h2><hr class="style18">
+        </div>
+      @endif
       <h2 style="color:gray">Search article:</h2>
       <div class="row">
 
@@ -124,22 +138,35 @@
               </div>
             </div>
           </form>
-
       </div>
+
+
       <br>
+      <h3> Your source suscriptions </h3>
+
       @if(sizeof($articles) == 0)
         <div><h3 align="center">There are no matches for these search parameters</h3>
         <p align="center"><a href="/feed" class="btn btn-primary" role="button">Back</a></p></div>
       @endif
+
       <div class="row">
           @foreach($articles as $art)
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="thumbnail">
               <div style="display: flex">
               <p style="margin-right: 251px" align="justify">{{$art->date}}</p>
-                  <a href="{{ action('bookmarksController@deleteBookmark', ['article_id' =>  $art->id ]) }}">
-                      <span style="color: #5362d1" class="glyphicon glyphicon-bookmark"></span>
-                  </a>
+              
+              @if(Auth::check())
+                      @if(in_array($art->id, $articles_id))
+                        <a href="{{ action('bookmarksController@deleteBookmark', ['article_id' =>  $art->id ]) }}">
+                          <span style="color: #5362d1" class="glyphicon glyphicon-bookmark"></span>
+                        </a> 
+                      @else
+                        <a href="{{ action('bookmarksController@addBookmark', ['article_id' =>  $art->id ]) }}">
+                          <span style="color: #b7b5b5" class="glyphicon glyphicon-bookmark"></span>
+                        </a>
+                      @endif
+              @endif
               </div>
               <a href="{{$art->urlNew}}" target="_blank"> 
               <img src="{{$art->urlImg}}" alt="">
@@ -182,8 +209,8 @@
               </div>
             </div>
             @endforeach
-      </div>
-  <div class="flex-center">
+      </div><!-- End container -->
+            <div class="flex-center">
       {{$articles->appends(['order'=>$order])->links() }}
 </div>
   </body>

@@ -93,8 +93,9 @@ class articulosController extends Controller
         }
         if(Auth::check()){
             $user_id = Auth::user()->id;
-            $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(20);
+            $bookmarks = DB::table('bookmarks')->where('user_id',$user_id)->paginate(21);
             $articles_id = array();
+
             foreach ($bookmarks as $book){  
             array_push($articles_id,$book->article_id);
             }

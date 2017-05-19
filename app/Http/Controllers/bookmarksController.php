@@ -27,7 +27,7 @@ class bookmarksController extends Controller
         foreach ($bookmarks as $book){  
         array_push($articles_id,$book->article_id);
         }
-        $news = Article::findMany($articles_id);
+        $news = Article::whereIn('id', $articles_id)->paginate(15);
 
         foreach ($news as $new){
 

@@ -111,6 +111,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::any('/bookmarks' , 'bookmarksController@listaBookmarks');
     Route::get('/bookmarks/add' , 'bookmarksController@addBookmark');
     Route::get('/categories/delete' , 'bookmarksController@deleteBookmark');
+    
+    //SUSCRIPTIONS FEED
+    Route::any('/suscriptionsCategories' , 'suscriptionsFeedController@listaSuscripcionesCategories');
+    Route::any('/suscriptionsSources' , 'suscriptionsFeedController@listaSuscripcionesSources');
 });
 
 // Autenticación de usuarios

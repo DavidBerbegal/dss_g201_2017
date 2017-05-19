@@ -115,7 +115,13 @@
               </li> 
               <li>
                 <a href="/foro">Foro</a>
-              </li>   
+              </li>
+              <li>
+                <a href="/suscriptionsSources">My Sources</a>
+              </li>
+               <li>
+                <a href="/suscriptionsCategories">My Categories</a>
+              </li>     
             @endif
           
               <form class="navbar-form navbar-left" action="{{ action('articulosController@searchFeed')}}" name="search"
