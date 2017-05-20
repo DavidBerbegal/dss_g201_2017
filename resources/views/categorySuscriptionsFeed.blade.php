@@ -123,22 +123,10 @@
                 </h2><hr class="style18">
         </div>
       @endif
-      <h2 style="color:gray">Search article:</h2>
+
       <div class="row">
 
-        <div class="col">
-          <form action="{{ action('articulosController@searchFeed')}}" name="search"
-                     method="GET">
-            <div class="input-group">
-                <input type="text" name="sName" id="sName" class="form-control" placeholder="Search article...">
-                <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                <i class="glyphicon glyphicon-search"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-      </div>
+
 
 
       <br>
