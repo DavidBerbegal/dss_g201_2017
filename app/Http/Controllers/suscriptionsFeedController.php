@@ -18,7 +18,7 @@ class suscriptionsFeedController extends Controller
     public function listaSuscripcionesCategories(Request $request){
        
             $user_id = Auth::user()->id;       
-            $cats = DB::table('categorysubscriptions')->where('user_id',$user_id)->paginate(21);
+            $cats = DB::table('categorysubscriptions')->where('user_id',$user_id)->get();
             $cats_ids = array();
             $articles_id = array();
             $mensaje = "";
@@ -56,7 +56,7 @@ class suscriptionsFeedController extends Controller
         public function listaSuscripcionesSources(Request $request){
        
             $user_id = Auth::user()->id;       
-            $sources = DB::table('sourcesubscriptions')->where('user_id',$user_id)->paginate(21);
+            $sources = DB::table('sourcesubscriptions')->where('user_id',$user_id)->get();
             $sources_ids = array();
             $articles_id = array();
             $mensaje = "";
@@ -78,7 +78,7 @@ class suscriptionsFeedController extends Controller
                 $articles_id = array();
             }
          
-            $news = Article::whereIn('category_id', $sources_ids)->paginate(15);
+            $news = Article::whereIn('source_id', $sources_ids)->paginate(15);
 
             foreach ($news as $new){
 

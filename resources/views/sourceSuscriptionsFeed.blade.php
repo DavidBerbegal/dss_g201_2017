@@ -211,7 +211,7 @@
             @endforeach
       </div><!-- End container -->
             <div class="flex-center">
-      {{$articles->appends(['order'=>$order])->links() }}
+      {{$articles->links() }}
 </div>
   </body>
 </html>
