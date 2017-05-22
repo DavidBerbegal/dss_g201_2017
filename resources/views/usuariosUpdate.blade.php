@@ -45,7 +45,7 @@
                         
                     </tr>
                     <tr>
-                        <td><label for="password">Password:</label>&nbsp&nbsp&nbsp<input type="text" name="password" id="password" value= {{ $password }}><br><br></td>
+                        <td><label for="password">Password:</label>&nbsp&nbsp&nbsp<input type="password" name="password" id="password"><br><br></td>
                         
                     </tr>
                     <tr>
